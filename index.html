@@ -1,295 +1,1210 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uzum Bank | Training System v2.0</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --uzum-purple: #5d2da8;
-            --uzum-orange: #ff5c00;
-            --dark-steel: #1e272e;
-            --bg-body: #f8f9fa;
-            --danger: #ff4757;
-            --success: #2ecc71;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intervyuer Qo'llanmasi — Zerkalo Sosiologik Servis</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --blue: #1a3a6e;
+    --accent: #e8a020;
+    --accent2: #3a8fd6;
+    --light: #f0f4fb;
+    --white: #ffffff;
+    --text: #1c2b45;
+    --muted: #5a7190;
+    --danger: #d93b3b;
+    --success: #1e8f5e;
+    --warn: #d97c10;
+    --card-shadow: 0 4px 24px rgba(10,22,40,0.10);
+  }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Manrope', sans-serif; background: var(--bg-body); display: flex; height: 100vh; overflow: hidden; color: #2d3436; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* Sidebar */
-        .sidebar { width: 340px; background: var(--dark-steel); color: white; display: flex; flex-direction: column; z-index: 10; box-shadow: 5px 0 25px rgba(0,0,0,0.1); }
-        .sidebar-header { padding: 40px 25px; background: var(--uzum-purple); text-align: left; }
-        .sidebar-header h2 { font-weight: 800; font-size: 1.5rem; letter-spacing: 1px; line-height: 1; }
-        .sidebar-header p { font-size: 0.7rem; margin-top: 8px; opacity: 0.7; text-transform: uppercase; letter-spacing: 2px; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--light);
+    color: var(--text);
+    min-height: 100vh;
+  }
 
-        .nav-list { flex-grow: 1; overflow-y: auto; padding: 20px 0; }
-        .nav-item { padding: 15px 25px; cursor: pointer; display: flex; align-items: center; transition: 0.3s; color: rgba(255,255,255,0.6); border-left: 4px solid transparent; }
-        .nav-item i { width: 25px; margin-right: 15px; font-size: 1.1rem; color: var(--uzum-orange); }
-        .nav-item:hover { background: rgba(255,255,255,0.05); color: white; }
-        .nav-item.active { background: rgba(255,255,255,0.1); color: white; border-left-color: var(--uzum-orange); font-weight: 600; }
+  /* HEADER */
+  header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+  }
+  .logo span { color: var(--white); }
+  .badge {
+    background: var(--accent);
+    color: var(--navy);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
 
-        /* Content Area */
-        .main-content { flex-grow: 1; overflow-y: auto; padding: 50px; scroll-behavior: smooth; }
-        .module { display: none; max-width: 900px; margin: 0 auto; animation: slideIn 0.4s ease; }
-        .module.active { display: block; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+    color: var(--white);
+    padding: 64px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(232,160,32,0.08);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(58,143,214,0.10);
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(232,160,32,0.18);
+    color: var(--accent);
+    border: 1px solid rgba(232,160,32,0.4);
+    border-radius: 20px;
+    padding: 5px 16px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 560px;
+    margin: 0 auto 28px;
+    line-height: 1.7;
+  }
+  .hero-steps {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+    position: relative;
+  }
+  .hero-step {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 8px 18px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.85);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-step .num {
+    background: var(--accent);
+    color: var(--navy);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.75rem;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
 
-        /* UI Cards */
-        .card { background: white; border-radius: 20px; padding: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px; border: 1px solid #edf2f7; }
-        .badge { display: inline-block; padding: 6px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; }
-        .badge-purple { background: #eeeaf7; color: var(--uzum-purple); }
-        
-        h1 { font-size: 2.5rem; font-weight: 800; color: var(--dark-steel); margin-bottom: 30px; letter-spacing: -1px; }
-        h2 { font-size: 1.4rem; margin-bottom: 20px; color: var(--uzum-purple); display: flex; align-items: center; gap: 10px; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 25px 0; }
-        .box { padding: 20px; border-radius: 15px; background: #f1f2f6; border: 1px solid #e1e2e6; }
-        .critical { border: 2px solid var(--danger); background: #fff5f5; padding: 25px; border-radius: 15px; margin: 20px 0; }
-        .critical h4 { color: var(--danger); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  /* PROGRESS BAR */
+  .progress-bar {
+    background: var(--white);
+    padding: 14px 24px;
+    border-bottom: 1px solid #dde5f0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    overflow-x: auto;
+  }
+  .progress-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .lessons-nav {
+    display: flex;
+    gap: 6px;
+  }
+  .lesson-dot {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: var(--light);
+    border: 2px solid #d0dcea;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .lesson-dot:hover, .lesson-dot.active {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+  }
 
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: white; border-radius: 10px; overflow: hidden; }
-        th, td { padding: 15px; text-align: left; border: 1px solid #eee; font-size: 0.95rem; }
-        th { background: #f8f9fa; color: var(--uzum-purple); font-weight: 700; }
+  /* LAYOUT */
+  .main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
 
-        .btn { padding: 15px 30px; background: var(--uzum-purple); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .btn:hover { background: var(--uzum-orange); transform: translateY(-2px); }
-    </style>
+  /* SIDEBAR */
+  .sidebar {
+    position: sticky;
+    top: 65px;
+  }
+  .sidebar-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    padding: 22px;
+    margin-bottom: 16px;
+  }
+  .sidebar-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.18s;
+    margin-bottom: 3px;
+    cursor: pointer;
+  }
+  .sidebar-link:hover { background: var(--light); color: var(--blue); }
+  .sidebar-link .icon {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: var(--light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .sidebar-link.active { background: var(--navy); color: var(--white); }
+  .sidebar-link.active .icon { background: rgba(255,255,255,0.15); }
+
+  /* CONTENT */
+  .content {}
+
+  /* LESSON CARD */
+  .lesson-section {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 24px;
+    overflow: hidden;
+    animation: fadeUp 0.5s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .lesson-section:nth-child(2) { animation-delay: 0.05s; }
+  .lesson-section:nth-child(3) { animation-delay: 0.10s; }
+  .lesson-section:nth-child(4) { animation-delay: 0.15s; }
+  .lesson-section:nth-child(5) { animation-delay: 0.20s; }
+  .lesson-section:nth-child(6) { animation-delay: 0.25s; }
+  .lesson-section:nth-child(7) { animation-delay: 0.30s; }
+  .lesson-section:nth-child(8) { animation-delay: 0.35s; }
+  .lesson-section:nth-child(9) { animation-delay: 0.40s; }
+
+  .lesson-header {
+    padding: 24px 28px 20px;
+    border-bottom: 1px solid #edf1f8;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .lesson-num {
+    background: var(--navy);
+    color: var(--accent);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .lesson-meta { flex: 1; }
+  .lesson-meta h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .lesson-meta p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .lesson-body { padding: 24px 28px; }
+
+  .lesson-body p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+
+  h3.sub {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--blue);
+    margin: 22px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  h3.sub::before {
+    content: '';
+    width: 4px; height: 18px;
+    background: var(--accent);
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  /* ALERT BOXES */
+  .alert {
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+  .alert-icon { font-size: 1.15rem; flex-shrink: 0; margin-top: 1px; }
+  .alert.danger { background: #fef2f2; border-left: 4px solid var(--danger); color: #7f1d1d; }
+  .alert.warn { background: #fffbeb; border-left: 4px solid var(--warn); color: #78350f; }
+  .alert.success { background: #f0fdf4; border-left: 4px solid var(--success); color: #14532d; }
+  .alert.info { background: #eff6ff; border-left: 4px solid var(--accent2); color: #1e3a5f; }
+  .alert strong { font-weight: 600; display: block; margin-bottom: 3px; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; margin: 10px 0 14px; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px dashed #e5eaf3;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '✓';
+    color: var(--success);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .checklist li.cross::before { content: '✗'; color: var(--danger); }
+  .checklist li.bullet::before { content: '→'; color: var(--accent2); }
+
+  /* STEPS */
+  .steps { margin: 14px 0; }
+  .step-item {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .step-circle {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-text { font-size: 0.93rem; line-height: 1.65; padding-top: 5px; }
+
+  /* TWO COLUMN */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 14px 0;
+  }
+  .col-card {
+    background: var(--light);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .col-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--navy);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .col-card p, .col-card li {
+    font-size: 0.87rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  .col-card ul { list-style: none; padding: 0; }
+  .col-card ul li { padding: 3px 0; }
+  .col-card ul li::before { content: '• '; color: var(--accent2); font-weight: 700; }
+
+  /* QUOTA TABLE */
+  .quota-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.87rem;
+    margin: 14px 0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .quota-table th {
+    background: var(--navy);
+    color: var(--white);
+    padding: 10px 14px;
+    text-align: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  .quota-table td {
+    padding: 9px 14px;
+    text-align: center;
+    border-bottom: 1px solid #edf1f8;
+    color: var(--text);
+  }
+  .quota-table tr:nth-child(even) td { background: var(--light); }
+  .quota-table tr.total td {
+    background: #e8f0fb;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  /* FAQ */
+  .faq-item {
+    border: 1px solid #e5eaf3;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .faq-q {
+    padding: 13px 18px;
+    background: var(--light);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: var(--navy);
+  }
+  .faq-q .arrow { color: var(--accent2); font-size: 1rem; }
+  .faq-a {
+    padding: 13px 18px;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    background: var(--white);
+    color: var(--muted);
+    border-top: 1px solid #e5eaf3;
+  }
+
+  /* HIGHLIGHT */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    color: var(--white);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin: 16px 0;
+  }
+  .highlight-box h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .highlight-box p { font-size: 0.9rem; line-height: 1.7; color: rgba(255,255,255,0.85); }
+
+  /* DIFF TABLE */
+  .diff-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.87rem;
+    margin: 12px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #dde5f0;
+  }
+  .diff-table th {
+    background: var(--accent);
+    color: var(--navy);
+    padding: 10px 14px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-align: left;
+  }
+  .diff-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #edf1f8;
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .diff-table tr:last-child td { border-bottom: none; }
+  .diff-table tr:nth-child(even) td { background: var(--light); }
+
+  /* KOBO STEPS */
+  .kobo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .kobo-card {
+    background: var(--light);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .kobo-card:hover { border-color: var(--accent); }
+  .kobo-card .emoji { font-size: 1.8rem; margin-bottom: 8px; }
+  .kobo-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .kobo-card p { font-size: 0.79rem; color: var(--muted); line-height: 1.5; }
+
+  /* CHECK ITEMS */
+  .check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin: 14px 0;
+  }
+  .check-item {
+    background: var(--light);
+    border-radius: 10px;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.87rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .check-item .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent2);
+    flex-shrink: 0;
+  }
+
+  /* INTRO SECTION */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .intro-item {
+    background: var(--light);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .intro-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .intro-item h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+  .intro-item p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .main { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .two-col { grid-template-columns: 1fr; }
+    .lesson-header { flex-direction: column; gap: 12px; }
+  }
+</style>
 </head>
 <body>
 
-    <nav class="sidebar">
-        <div class="sidebar-header">
-            <h2>UZUM ACADEMY</h2>
-            <p>Training & Validation System</p>
+<header>
+  <div class="header-inner">
+    <div class="logo">ZERKALO <span>SSS</span></div>
+    <div class="badge">🎓 Intervyuer Qo'llanmasi</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-tag">📋 O'quv Materiallari — Dala Ishi</div>
+  <h1>Intervyuer uchun <em>To'liq</em><br>Qo'llanma</h1>
+  <p>Ushbu qo'llanma dala ishini muvaffaqiyatli o'tkazish, to'g'ri so'rov o'tkazish va sifatli natija olish uchun barcha zarur ma'lumotlarni o'z ichiga oladi.</p>
+  <div class="hero-steps">
+    <div class="hero-step"><span class="num">1</span> Materialni o'rgan</div>
+    <div class="hero-step"><span class="num">2</span> Testdan o't</div>
+    <div class="hero-step"><span class="num">3</span> Taqlid intervyu</div>
+    <div class="hero-step"><span class="num">4</span> Dala ishi</div>
+    <div class="hero-step"><span class="num">5</span> Sifat tekshiruvi</div>
+  </div>
+</section>
+
+<div class="progress-bar">
+  <span class="progress-label">Darslar:</span>
+  <div class="lessons-nav">
+    <div class="lesson-dot active">K</div>
+    <div class="lesson-dot">1</div>
+    <div class="lesson-dot">2</div>
+    <div class="lesson-dot">3</div>
+    <div class="lesson-dot">4</div>
+    <div class="lesson-dot">5</div>
+    <div class="lesson-dot">6</div>
+    <div class="lesson-dot">7</div>
+    <div class="lesson-dot">8</div>
+    <div class="lesson-dot">9</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title">📚 Darslar</div>
+      <a class="sidebar-link active" href="#kirish"><span class="icon">🏠</span> Kirish</a>
+      <a class="sidebar-link" href="#dars1"><span class="icon">🏦</span> 1-dars: Banklar</a>
+      <a class="sidebar-link" href="#dars2"><span class="icon">🔍</span> 2-dars: TOM</a>
+      <a class="sidebar-link" href="#dars3"><span class="icon">📝</span> 3-dars: So'rov tartibi</a>
+      <a class="sidebar-link" href="#dars4"><span class="icon">❓</span> 4-dars: Anketa</a>
+      <a class="sidebar-link" href="#dars5"><span class="icon">📊</span> 5-dars: Kvotalar</a>
+      <a class="sidebar-link" href="#dars6"><span class="icon">🚶</span> 6-dars: Dala ishi</a>
+      <a class="sidebar-link" href="#dars7"><span class="icon">📱</span> 7-dars: Kobo</a>
+      <a class="sidebar-link" href="#dars8"><span class="icon">✅</span> 8-dars: Tekshiruv</a>
+      <a class="sidebar-link" href="#dars9"><span class="icon">🎯</span> 9-dars: Amaliy test</a>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title">📞 Aloqa</div>
+      <p style="font-size:0.87rem;color:var(--muted);line-height:1.65;">
+        Savollar bo'lsa — menejeringizga murojaat qiling.<br><br>
+        🌐 <a href="http://zerkalo.group" style="color:var(--accent2);">zerkalo.group</a>
+      </p>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- KIRISH -->
+    <div class="lesson-section" id="kirish">
+      <div class="lesson-header">
+        <div class="lesson-num">🏠</div>
+        <div class="lesson-meta">
+          <h2>Kirish: Loyihaga Xush Kelibsiz!</h2>
+          <p>Ushbu materiallar dala ishida ishonchli va to'g'ri ishlashga yordam beradi.</p>
         </div>
-        <div class="nav-list">
-            <div class="nav-item active" onclick="showMod(this, 'm1')"><i class="fas fa-play"></i> 1. Введение и Цели</div>
-            <div class="nav-item" onclick="showMod(this, 'm2')"><i class="fas fa-brain"></i> 2. Методология TOM</div>
-            <div class="nav-item" onclick="showMod(this, 'm3')"><i class="fas fa-id-card"></i> 3. Скрининг и ЦА</div>
-            <div class="nav-item" onclick="showMod(this, 'm4')"><i class="fas fa-users-gear"></i> 4. Квоты и Регионы</div>
-            <div class="nav-item" onclick="showMod(this, 'm5')"><i class="fas fa-location-dot"></i> 5. Работа в поле (F2F)</div>
-            <div class="nav-item" onclick="showMod(this, 'm6')"><i class="fas fa-tablet-screen-button"></i> 6. CAPI и Технологии</div>
-            <div class="nav-item" onclick="showMod(this, 'm7')"><i class="fas fa-shield-halved"></i> 7. Контроль качества</div>
-            <div class="nav-item" onclick="showMod(this, 'm8')"><i class="fas fa-triangle-exclamation"></i> 8. Сложные ситуации</div>
-            <div class="nav-item" onclick="showMod(this, 'm9')"><i class="fas fa-dumbbell"></i> 9. Практикум</div>
-            <div class="nav-item" onclick="showMod(this, 'm10')"><i class="fas fa-calendar-check"></i> 10. Тайминг и Тест</div>
+      </div>
+      <div class="lesson-body">
+        <div class="alert info">
+          <span class="alert-icon">ℹ️</span>
+          <div><strong>Zerkalo Sosiologik Servis</strong> (Toshkent) — O'zbekiston va Markaziy Osiyo bozorida faoliyat yurituvchi tadqiqot kompaniyasi. Biz sotsiologik va marketing tadqiqotlarini o'tkazamiz.</div>
         </div>
-    </nav>
 
-    <main class="main-content">
+        <h3 class="sub">Ushbu o'qitishda siz bilib olasiz:</h3>
+        <div class="intro-grid">
+          <div class="intro-item"><span class="intro-icon">🏦</span><div><h4>Banklar va MFT</h4><p>Bank, bank ilovasi va to'lov xizmatlari nima</p></div></div>
+          <div class="intro-item"><span class="intro-icon">🧠</span><div><h4>TOM nima</h4><p>Ko'meksiz bilimni o'lchash usuli</p></div></div>
+          <div class="intro-item"><span class="intro-icon">📝</span><div><h4>Anketa savollari</h4><p>Savollarni to'g'ri berish tartibi</p></div></div>
+          <div class="intro-item"><span class="intro-icon">🚶</span><div><h4>Dala ishi</h4><p>To'xtatib so'rash va intervyu o'tkazish</p></div></div>
+          <div class="intro-item"><span class="intro-icon">📊</span><div><h4>Kvotalar</h4><p>Kvotani saqlash va skreeningdan o'tish</p></div></div>
+          <div class="intro-item"><span class="intro-icon">📱</span><div><h4>Kobo tizimi</h4><p>Kobo ilovasida ishlash ko'rsatmalari</p></div></div>
+        </div>
 
-        <section id="m1" class="module active">
-            <span class="badge badge-purple">Модуль 1 • Введение</span>
-            <h1>О проекте Uzum Bank</h1>
-            <div class="card">
-                <h2>Зачем нужно это исследование?</h2>
-                <p>Мы проводим регулярные <b>Ad-hoc</b> и <b>Top of Mind</b> замеры, чтобы понять реальное знание бренда Uzum в Узбекистане. Это основа маркетинговой стратегии банка.</p>
-                <div class="grid">
-                    <div class="box">
-                        <strong>Объект:</strong> АО «Uzum Bank»<br>
-                        <strong>Частота:</strong> 6 волн в год<br>
-                        <strong>Длительность:</strong> до 10 минут
-                    </div>
-                    <div class="box">
-                        <strong>География:</strong> Весь Узбекистан (Ташкент, Долина, Центр/Юг, Запад)
-                    </div>
-                </div>
-                <div class="critical">
-                    <h4><i class="fas fa-circle-exclamation"></i> Главная Ошибка</h4>
-                    <p>Любая подсказка бренда (даже кивком) делает анкету браком. Респондент должен вспомнить бренд САМ.</p>
-                </div>
-            </div>
-        </section>
+        <h3 class="sub">O'qitish bosqichlari:</h3>
+        <div class="steps">
+          <div class="step-item"><div class="step-circle">1</div><div class="step-text">Telegram-kanalda materiallarni mustaqil o'rganasiz</div></div>
+          <div class="step-item"><div class="step-circle">2</div><div class="step-text">Darhol natija bilan onlayn-testdan o'tasiz</div></div>
+          <div class="step-item"><div class="step-circle">3</div><div class="step-text">Tanishlaringiz orasida ikkita taqlid intervyu o'tkazasiz</div></div>
+          <div class="step-item"><div class="step-circle">4</div><div class="step-text">Bizdan fikr-mulohaza olasiz</div></div>
+          <div class="step-item"><div class="step-circle">5</div><div class="step-text">1 kun davomida dalaga chiqasiz, ishingiz qayta tekshiriladi</div></div>
+          <div class="step-item"><div class="step-circle">6</div><div class="step-text">Sifat tasdiqlanganda — ishni davom ettirasiz</div></div>
+        </div>
+      </div>
+    </div>
 
-        <section id="m2" class="module">
-            <span class="badge badge-purple">Модуль 2 • Методология</span>
-            <h1>Механика Top of Mind (TOM)</h1>
-            <div class="card">
-                <h2>Как измеряется знание?</h2>
-                <div class="grid">
-                    <div class="box">
-                        <h3>1. TOM (Первый в уме)</h3>
-                        <p>Бренд, который человек называет САМЫМ ПЕРВЫМ на вопрос "Какие банки вы знаете?".</p>
-                    </div>
-                    <div class="box">
-                        <h3>2. Спонт (Спонтанное)</h3>
-                        <p>Все остальные бренды, которые он вспомнил следом без списка.</p>
-                    </div>
-                </div>
-                <h2>Правила записи:</h2>
-                <ul>
-                    <li>Записываем ответ <b>ДОСЛОВНО</b>. Если респондент сказал "Узум", пишем "Узум". Если "Карта рассрочки" -  пишем "Карта рассрочки".</li>
-                    <li><b>НЕ</b> исправляем ошибки респондента.</li>
-                    <li><b>НЕ</b> зачитываем список банков, пока это не предусмотрено вопросом "Подсказанное знание".</li>
-                </ul>
-            </div>
-        </section>
+    <!-- DARS 1 -->
+    <div class="lesson-section" id="dars1">
+      <div class="lesson-header">
+        <div class="lesson-num">01</div>
+        <div class="lesson-meta">
+          <h2>Tadqiqot Mavzusi: Banklar, MFT va To'lov Xizmatlari</h2>
+          <p>Moliyaviy tushunchalarni to'g'ri tushunish — muvaffaqiyatli intervyuning asosi</p>
+        </div>
+      </div>
+      <div class="lesson-body">
 
-        <section id="m3" class="module">
-            <span class="badge badge-purple">Модуль 3 • Скрининг</span>
-            <h1>Фильтрация респондентов</h1>
-            <div class="card">
-                <h2>Кого мы опрашиваем (ЦА):</h2>
-                <table>
-                    <tr><th>Параметр</th><th>Требование</th></tr>
-                    <tr><td>Возраст</td><td>16–59 лет</td></tr>
-                    <tr><td>Технологии</td><td>Наличие смартфона и мобильного интернета</td></tr>
-                    <tr><td>Карантин</td><td>Не участвовал в опросах последние 3 месяца</td></tr>
-                    <tr><td>Безопасность</td><td>Не знаком с интервьюером, не работает в банке/маркетинге</td></tr>
-                </ul>
-                </table>
-                <p style="margin-top:15px;"><i>Примечание:</i> Для Ad-hoc могут быть узкие группы (например, только пользователи рассрочки за 6 мес).</p>
-            </div>
-        </section>
+        <h3 class="sub">Bank nima?</h3>
+        <p>Bank — omonatlarni qabul qiluvchi, kreditlar beruvchi va kartalar chiqaruvchi moliyaviy tashkilot. <strong>MFT</strong> (mikromoliya tashkilotlari) esa mikrokarzlar beradi.</p>
+        <div class="alert success">
+          <span class="alert-icon">✅</span>
+          <div>Ushbu so'rovda <strong>banklar ham, MFT ham</strong> bo'yicha javoblar qabul qilinadi.<br>
+          Misollar: «Kapitalbank», «Asaka Bank», «Anorbank», «Shaffof Moliya», «TezCoin», «Fortuna Biznes»</div>
+        </div>
 
-        <section id="m4" class="module">
-            <span class="badge badge-purple">Модуль 4 • Квоты</span>
-            <h1>Квоты и Регионы</h1>
-            <div class="card">
-                <div class="grid">
-                    <div class="box">
-                        <h3>Демография</h3>
-                        <ul>
-                            <li>Пол: 50% М / 50% Ж</li>
-                            <li>16-24 года: 30%</li>
-                            <li>25-40 лет: 45%</li>
-                            <li>41-59 лет: 25%</li>
-                        </ul>
-                    </div>
-                    <div class="box">
-                        <h3>Язык (RU/UZ)</h3>
-                        <ul>
-                            <li><b>Ташкент:</b> 15-20% Рус / 80-85% Узб</li>
-                            <li><b>Регионы:</b> 0-5% Рус / 95-100% Узб</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="critical">
-                    <h4>Работа с квотами:</h4>
-                    <p>Если квота на мужчин 16-24 в Ташкенте заполнена -  вы обязаны искать только другие группы. Анкета вне квоты не оплачивается.</p>
-                </div>
-            </div>
-        </section>
+        <h3 class="sub">Bank ilovasi nima?</h3>
+        <p>Bank ilovasi — muayyan bankning rasmiy mobil ilovasi bo'lib, mijozlarga hisoblar va kartalarni boshqarish, omonatlar ochish, kreditlarni rasmiylashtirish va o'tkazmalarni amalga oshirish imkonini beradi. U <strong>faqat bitta bankka</strong> tegishli.</p>
 
-        <section id="m5" class="module">
-            <span class="badge badge-purple">Модуль 5 • Поле</span>
-            <h1>Работа в поле (F2F)</h1>
-            <div class="card">
-                <h2>Выбор локации</h2>
-                <div class="box" style="border-left:5px solid var(--uzum-orange);">
-                    <b>Правило 100% Нейтральности:</b> Опрос запрещен в зоне видимости рекламы Uzum или отделений ПВЗ. Респондент не должен видеть логотип во время ответа на вопрос TOM.
-                </div>
-                <h3 style="margin-top:20px;">Как представляться:</h3>
-                <ol style="margin-left:20px;">
-                    <li>Приветствие и имя.</li>
-                    <li>Цель: "Маркетинговое исследование финансового рынка".</li>
-                    <li>Гарантия анонимности и время (до 10 мин).</li>
-                </ol>
-            </div>
-        </section>
+        <h3 class="sub">To'lov xizmati nima?</h3>
+        <p>To'lov xizmati — bank hisobini ochish zaruratisiz tezkor to'lovlar, o'tkazmalar va xizmatlar uchun to'lovlarni amalga oshirishga mo'ljallangan universal mustaqil platforma.</p>
+        <p>Misollar: <strong>Paynet, Click, Payme</strong></p>
 
-        <section id="m6" class="module">
-            <span class="badge badge-purple">Модуль 6 • Технологии</span>
-            <h1>Работа в CAPI (Планшет)</h1>
-            <div class="card">
-                <h2>Технические требования:</h2>
-                <div class="grid">
-                    <div class="box">
-                        <h3><i class="fas fa-location-crosshairs"></i> Геометки (GPS)</h3>
-                        <p>Координаты снимаются автоматически в начале и в конце. <b>Запрещено</b> отключать GPS или проводить опрос "из дома".</p>
-                    </div>
-                    <div class="box">
-                        <h3><i class="fas fa-microphone"></i> Аудиозапись</h3>
-                        <p>Ведется 100% запись интервью. Система фиксирует не только слова респондента, но и ваши возможные подсказки.</p>
-                    </div>
-                </div>
-                <div class="box" style="background: #f8f9fa;">
-                    <h3>Лог времени и логика:</h3>
-                    <ul>
-                        <li><b>Skip Logic:</b> Анкета автоматически скрывает ненужные вопросы. Не пытайтесь "перехитрить" программу.</li>
-                        <li><b>Минимальное время:</b> Если анкета закрыта быстрее 4-5 минут -  это сигнал о фальсификации (Фрод).</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        <h3 class="sub">Bank ilovasi va To'lov xizmati: farqi nima?</h3>
+        <table class="diff-table">
+          <tr><th>Bank Ilovasi</th><th>To'lov Xizmati</th></tr>
+          <tr><td>Faqat bitta bankka tegishli</td><td>Mustaqil platforma</td></tr>
+          <tr><td>Hisoblar, kreditlar, omonatlarni boshqaradi</td><td>Faqat tranzaksiyalar uchun</td></tr>
+          <tr><td>Bank hisobi kerak</td><td>Bank hisobi shart emas</td></tr>
+          <tr><td>Misol: Kapitalbank App</td><td>Misol: Click, Payme</td></tr>
+        </table>
 
-        <section id="m7" class="module">
-            <span class="badge badge-purple">Модуль 7 • Контроль</span>
-            <h1>Валидация данных</h1>
-            <div class="card">
-                <p>Все анкеты проходят 4 уровня проверки:</p>
-                <table>
-                    <tr><th>Метод</th><th>Описание</th></tr>
-                    <tr><td>Прослушка аудио</td><td>Выявление подсказок и посторонних шумов.</td></tr>
-                    <tr><td>Проверка GPS</td><td>Сверка координат с маршрутным листом.</td></tr>
-                    <tr><td>Перезвон (15-20%)</td><td>Контролер звонит респонденту и подтверждает факт опроса.</td></tr>
-                    <tr><td>Логический анализ</td><td>Поиск дубликатов и нестыковок в ответах.</td></tr>
-                </table>
-            </div>
-        </section>
+        <div class="alert danger">
+          <span class="alert-icon">🚫</span>
+          <div><strong>MUHIM!</strong> Keltirilgan nomlar faqat sizning tushunishingiz uchun. Siz ularni respondentlarga <u>aytmasligingiz</u> kerak.</div>
+        </div>
 
-        <section id="m8" class="module">
-            <span class="badge badge-purple">Модуль 8 • Ситуации</span>
-            <h1>Сложные ситуации</h1>
-            <div class="card">
-                <div class="grid">
-                    <div class="box">
-                        <h4>Респондент спешит</h4>
-                        <p>Не настаивайте. Поблагодарите и ищите следующего. Недописанная анкета = 0 оплаты.</p>
-                    </div>
-                    <div class="box">
-                        <h4>"Откуда номер?"</h4>
-                        <p>Напомните, что вы не звоните, а общаетесь лично, и данные анонимны. Мы не собираем ФИО.</p>
-                    </div>
-                </div>
-                <div class="critical">
-                    <h4>Агрессия или вмешательство:</h4>
-                    <p>Если третье лицо (друг/супруг) начинает подсказывать -  интервью должно быть прекращено. Нам нужно ЛИЧНОЕ мнение.</p>
-                </div>
-            </div>
-        </section>
+        <h3 class="sub">Qayerda kredit olish mumkin?</h3>
+        <p>Kreditlar va mikrokarzlarni banklarda va mikromoliya tashkilotlarida olish mumkin. Omonatlar va depozitlar banklarda va ba'zi yirik MFTlarda ochiladi.</p>
+        <div class="alert danger">
+          <span class="alert-icon">🚫</span>
+          <div><strong>MUHIM!</strong> Buni respondentga tushuntirmang. Biz uning bilimlar darajasini ko'rsatmasdan bilishimizga qiziqamiz.</div>
+        </div>
+      </div>
+    </div>
 
-        <section id="m9" class="module">
-            <span class="badge badge-purple">Модуль 9 • Практика</span>
-            <h1>Практический блок</h1>
-            <div class="card">
-                <h2>Кейс для ролевой игры:</h2>
-                <div class="box">
-                    <b>Ситуация:</b> Респондент (45 лет, Ташкент) на вопрос про банки говорит: "Ну, этот... фиолетовый такой, в рекламе везде".<br><br>
-                    <b>Задача интервьюера:</b> Добиться названия бренда, НЕ произнося слово "Uzum".<br>
-                    <b>Правильный метод:</b> "А как именно он называется, не вспомните?" (Зондирование).
-                </div>
-                <p style="margin-top:20px;">Тренировка проводится парами "Интервьюер - Респондент" с реальным планшетом в руках.</p>
-            </div>
-        </section>
+    <!-- DARS 2 -->
+    <div class="lesson-section" id="dars2">
+      <div class="lesson-header">
+        <div class="lesson-num">02</div>
+        <div class="lesson-meta">
+          <h2>Ko'meksiz Bilimni O'lchash (TOM)</h2>
+          <p>Top of Mind — eng muhim tadqiqot metodologiyasi</p>
+        </div>
+      </div>
+      <div class="lesson-body">
+        <div class="highlight-box">
+          <h4>🧠 TOM nima?</h4>
+          <p>TOM (Top of Mind) — banklar, bank ilovalari va to'lov xizmatlarini <strong>ko'rsatmasdan</strong> bilish o'lchanadigan metodologiya. Avval nima esga keladi va yana nimalar eslab qolinadi — shu o'lchanadi.</p>
+        </div>
 
-        <section id="m10" class="module">
-            <span class="badge badge-purple">Модуль 10 • Итоги</span>
-            <h1>Тайминг тренинга</h1>
-            <div class="card">
-                <table>
-                    <tr><td>09:00 - 10:30</td><td>Теория: TOM, Скрининг, Квоты</td></tr>
-                    <tr><td>10:45 - 12:00</td><td>Технологии: CAPI, Аудио, GPS</td></tr>
-                    <tr><td>13:00 - 15:30</td><td>Практика: Ролевые игры и работа с отказами</td></tr>
-                    <tr><td>16:00 - 17:00</td><td>Финальный тест и допуск в поле</td></tr>
-                </table>
-                <center><button class="btn" onclick="alert('Тест успешно запущен! Проверьте понимание разницы между ТОМ и Спонт.')">ПРОЙТИ ТЕСТИРОВАНИЕ</button></center>
-            </div>
-        </section>
+        <h3 class="sub">Nima uchun ko'rsatish mumkin emas?</h3>
+        <p>Ko'rsatma bilan bilim — bu boshqa tadqiqot formati. Ushbu loyihada faqat <strong>ko'meksiz bilim (TOM)</strong> o'lchanadi.</p>
 
-    </main>
+        <h3 class="sub">Muhim qoidalar:</h3>
+        <div class="two-col">
+          <div class="col-card">
+            <h4>✅ Nima qilish mumkin</h4>
+            <ul>
+              <li>Savollarni ochiq berish</li>
+              <li>Javoblarni so'zma-so'z yozish</li>
+              <li>Neytral tushuntirish o'qib berish</li>
+              <li>3–5 soniya kutish</li>
+              <li>«Yana?» deb aniqlashtirishni davom ettirish</li>
+            </ul>
+          </div>
+          <div class="col-card">
+            <h4>🚫 Nima qilish mumkin emas</h4>
+            <ul>
+              <li>Nomlarni ko'rsatmang</li>
+              <li>Savolni yo'naltiruvchi tarzda qayta shakllantirmang</li>
+              <li>Banklar va xizmatlar farqini tushuntirmang</li>
+              <li>Respondentga eslashda yordam bermang</li>
+              <li>Javoblarni qisqartirmang</li>
+            </ul>
+          </div>
+        </div>
 
-    <script>
-        function showMod(el, id) {
-            document.querySelectorAll('.module').forEach(m => m.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            el.classList.add('active');
-            document.querySelector('.main-content').scrollTop = 0;
-        }
-    </script>
+        <h3 class="sub">Javob kutish:</h3>
+        <div class="alert warn">
+          <span class="alert-icon">⏱️</span>
+          <div>Savoldan keyin <strong>3–5 soniya</strong> kuting. Respondentga eslashda yordam bermang. Birinchi javobdan keyin respondent «boshqa bilmayman» deguncha <strong>«Yana?»</strong> deb aniqlashtiring.</div>
+        </div>
+
+        <h3 class="sub">Aralashib ketsa nima qilish kerak?</h3>
+        <p>Agar respondent bank ilovasi o'rniga to'lov xizmatini atasa — uni <strong>to'g'irlamang</strong>. Javobni so'zma-so'z yozing.</p>
+      </div>
+    </div>
+
+    <!-- DARS 3 -->
+    <div class="lesson-section" id="dars3">
+      <div class="lesson-header">
+        <div class="lesson-num">03</div>
+        <div class="lesson-meta">
+          <h2>So'rovni Boshlash va O'tkazish Tartibi</h2>
+          <p>Skrining va asosiy savollar ketma-ketligi</p>
+        </div>
+      </div>
+      <div class="lesson-body">
+        <h3 class="sub">So'rov tuzilmasi:</h3>
+        <div class="steps">
+          <div class="step-item"><div class="step-circle">1</div><div class="step-text"><strong>Skrining</strong> — mos respondentni tanlash</div></div>
+          <div class="step-item"><div class="step-circle">2</div><div class="step-text"><strong>Asosiy savollar</strong> — anketa bo'yicha ketma-ket</div></div>
+          <div class="step-item"><div class="step-circle">3</div><div class="step-text"><strong>Yakunlash</strong> — rahmat aytib, anketani yopish</div></div>
+        </div>
+
+        <h3 class="sub">Maqsadli auditoriya (Skrining):</h3>
+        <ul class="checklist">
+          <li>16–50 yoshdagi shaxslar</li>
+          <li>Smartfon foydalanuvchilari</li>
+          <li>Mobil internet foydalanuvchilari</li>
+          <li>So'nggi 3 oy ichida tadqiqotlarda qatnashmagan</li>
+          <li class="cross">Sizning qarindoshlaringiz yoki tanishlaringiz <strong>emas</strong></li>
+        </ul>
+
+        <div class="alert info">
+          <span class="alert-icon">📍</span>
+          <div>Nuqtaga <strong>birinchi chiqishda</strong> ID 1 kiriting va tizim talabini bajaring — lokatsiyaning aylana videosini yozib oling.</div>
+        </div>
+
+        <h3 class="sub">Suhbat davomida:</h3>
+        <table class="diff-table">
+          <tr><th>Holat</th><th>Nima qilish kerak</th></tr>
+          <tr><td>Respondent jim bo'lsa</td><td>Pauzani saqlang: «Yana nimalar esga keladi?»</td></tr>
+          <tr><td>Toifalarni aralashtirib yuborsa</td><td>So'zma-so'z yozing, to'g'irlamang</td></tr>
+          <tr><td>«Bilmayman» desa</td><td>Intervyuni to'g'ri yakunlang</td></tr>
+          <tr><td>Savolni tushunmasa</td><td>Ma'nosini o'zgartirmagan holda takrorlang</td></tr>
+        </table>
+
+        <h3 class="sub">So'rovni yakunlash:</h3>
+        <div class="alert success">
+          <span class="alert-icon">✅</span>
+          <div>Respondentga <strong>rahmat aytish</strong>. Anketani yopishdan oldin barcha maydonlar to'ldirilganini va forma yuborilganini tekshiring.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DARS 4 -->
+    <div class="lesson-section" id="dars4">
+      <div class="lesson-header">
+        <div class="lesson-num">04</div>
+        <div class="lesson-meta">
+          <h2>Anketa va Savollar bilan Ishlash</h2>
+          <p>Har bir savol uchun to'ldirish qoidalari</p>
+        </div>
+      </div>
+      <div class="lesson-body">
+        <table class="diff-table">
+          <tr><th>Savol raqami</th><th>Nima so'raladi</th><th>Qoidasi</th></tr>
+          <tr><td><strong>1-savol</strong></td><td>Ko'rsatmasiz nomlangan birinchi bank</td><td>Birinchi esga kelgan nomni yozish</td></tr>
+          <tr><td><strong>2-savol</strong></td><td>Boshqa banklar</td><td>Birinchi 4 ta maydon to'ldirilishi shart. «Yana?» deb davom eting</td></tr>
+          <tr><td><strong>3–4-savollar</strong></td><td>Bank ilovalari</td><td>Ko'rsatmasiz yozing. Tushuntirish kerak bo'lsa — neytral izoh</td></tr>
+          <tr><td><strong>5–6-savollar</strong></td><td>To'lov xizmatlari</td><td>Xuddi shunday qayd etish</td></tr>
+          <tr><td><strong>7–8-savollar</strong></td><td>Kredit/omonat uchun tashkilotlar</td><td>Muayyan nomlarni so'rash</td></tr>
+          <tr><td><strong>9–10-savollar</strong></td><td>Reklama eslash</td><td>Aniq brendlarni yozing</td></tr>
+          <tr><td><strong>11–13-savollar</strong></td><td>Karta va imkoniyatlari</td><td>Anketa bo'yicha belgilash</td></tr>
+        </table>
+
+        <div class="alert warn">
+          <span class="alert-icon">⚠️</span>
+          <div>Savollarni matn bo'yicha <strong>qat'iy bering</strong>. Maydonlarni o'tkazib yubormang. Har bir maydonga faqat bitta javob kiritish mumkin.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DARS 5 -->
+    <div class="lesson-section" id="dars5">
+      <div class="lesson-header">
+        <div class="lesson-num">05</div>
+        <div class="lesson-meta">
+          <h2>Kvotalar</h2>
+          <p>Tanlab olish tarkibini aholi tarkibiga yaqin holda saqlash</p>
+        </div>
+      </div>
+      <div class="lesson-body">
+        <div class="alert warn">
+          <span class="alert-icon">⚠️</span>
+          <div>Agar kvotalar saqlanmasa, <strong>natijalar buziladi</strong>. Har bir o'tkazilgan so'rovni belgilang va belgilangan sondan oshmang.</div>
+        </div>
+
+        <h3 class="sub">Cheklovlar nima uchun muhim?</h3>
+        <ul class="checklist">
+          <li>3 oy qatnashmagan — «professional respondentlar»dan qochish uchun</li>
+          <li>Smartfondan foydalanadi — tadqiqot mobil xizmatlarga tegishli</li>
+          <li>Shaxsan tanish emas — ob'ektivlikni saqlash uchun</li>
+        </ul>
+
+        <h3 class="sub">Kvota topshirig'i: Chirchiq shahri (16 respondent)</h3>
+        <p style="font-size:0.85rem;color:var(--muted);margin-bottom:8px;">📍 Nuqta: 3 dan 3 &nbsp;|&nbsp; Jami respondentlar: 16</p>
+        <table class="quota-table">
+          <tr>
+            <th rowspan="2">Jins</th>
+            <th colspan="3" style="background:#1a3a6e;">KVOTA (Reja)</th>
+            <th rowspan="2">Jami</th>
+            <th colspan="3" style="background:#1e5e3a;">BAJARISH (Nazorat)</th>
+            <th rowspan="2" style="background:#1e5e3a;">Jami</th>
+          </tr>
+          <tr>
+            <th style="background:#1a3a6e;">16–24</th>
+            <th style="background:#1a3a6e;">25–40</th>
+            <th style="background:#1a3a6e;">41–59</th>
+            <th style="background:#1e5e3a;">16–24</th>
+            <th style="background:#1e5e3a;">25–40</th>
+            <th style="background:#1e5e3a;">41–59</th>
+          </tr>
+          <tr>
+            <td><strong>Erkaklar</strong></td>
+            <td>2</td><td>4</td><td>2</td>
+            <td><strong>8</strong></td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td><strong>Ayollar</strong></td>
+            <td>2</td><td>4</td><td>2</td>
+            <td><strong>8</strong></td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr class="total">
+            <td>JAMI</td>
+            <td>4</td><td>8</td><td>4</td>
+            <td><strong>16</strong></td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+        </table>
+        <div class="alert info" style="margin-top:10px;">
+          <span class="alert-icon">📝</span>
+          <div>«BAJARISH» ustunlari — siz dala ishida o'tkazgan so'rovlarni belgilash uchun. Har bir bajarilgan intervyudan keyin to'ldiring.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DARS 6 -->
+    <div class="lesson-section" id="dars6">
+      <div class="lesson-header">
+        <div class="lesson-num">06</div>
+        <div class="lesson-meta">
+          <h2>Dala Ishi: To'xtatib So'rash</h2>
+          <p>Nuqtani tanlash, yaqinlashish va tez-tez so'raladigan savollarga javoblar</p>
+        </div>
+      </div>
+      <div class="lesson-body">
+        <div class="two-col">
+          <div class="col-card">
+            <h4>✅ Nuqta to'g'ri tanlashda:</h4>
+            <ul>
+              <li>Gavjum joylarda ishlang</li>
+              <li>Neytral lokatsiyani tanlang</li>
+              <li>Ko'rish zonasida moliyaviy reklama bo'lmasin</li>
+            </ul>
+          </div>
+          <div class="col-card">
+            <h4>🚫 Joiz emas:</h4>
+            <ul>
+              <li>Banklar yonida ishlash</li>
+              <li>Bank reklamalari ko'rinib turgan joylarda</li>
+              <li>Moliyaviy tashkilotlar yaqinida</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="sub">Qanday yaqinlashish:</h3>
+        <div class="alert success">
+          <span class="alert-icon">😊</span>
+          <div>O'zingizni <strong>tinch va ishonchli tarzda</strong> tanishtiring. Bejdik (ko'krak nishoni) ko'rinib turishi kerak.</div>
+        </div>
+
+        <h3 class="sub">Tez-tez so'raladigan savollarga javoblar:</h3>
+        <div class="faq-item">
+          <div class="faq-q">So'rovni kim o'tkazmoqda? <span class="arrow">→</span></div>
+          <div class="faq-a">«Zerkalo Sosiologik Servis» kompaniyasi, Toshkent shahri.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Buyurtmachi kim? <span class="arrow">→</span></div>
+          <div class="faq-a">Moliya bozorini o'rganayotgan kompaniya.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Yozib olish nima uchun? <span class="arrow">→</span></div>
+          <div class="faq-a">Sifat nazorati uchun.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Ma'lumotlar qanday ishlatiladi? <span class="arrow">→</span></div>
+          <div class="faq-a">Umumlashtirilgan holda.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Qancha vaqt ketadi? <span class="arrow">→</span></div>
+          <div class="faq-a">6–8 daqiqa.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Bu reklama emasmi? <span class="arrow">→</span></div>
+          <div class="faq-a">Yo'q.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Nima uchun aynan men? <span class="arrow">→</span></div>
+          <div class="faq-a">Tasodifiy tanlov.</div>
+        </div>
+        <div class="alert info">
+          <span class="alert-icon">ℹ️</span>
+          <div>Rad etilsa — <strong>rahmat aytib, keyingisiga o'ting.</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DARS 7 -->
+    <div class="lesson-section" id="dars7">
+      <div class="lesson-header">
+        <div class="lesson-num">07</div>
+        <div class="lesson-meta">
+          <h2>KoboCollect Ilovasida Ishlash</h2>
+          <p>Bosqichma-bosqich ko'rsatmalar</p>
+        </div>
+      </div>
+      <div class="lesson-body">
+        <div class="kobo-grid">
+          <div class="kobo-card">
+            <div class="emoji">📥</div>
+            <h4>O'rnatish</h4>
+            <p>Google Play orqali KoboCollect ilovasini o'rnating</p>
+          </div>
+          <div class="kobo-card">
+            <div class="emoji">📷</div>
+            <h4>Sozlash</h4>
+            <p>«Configure with QR code» ni tanlang va menejer QR-kodini skaner qiling</p>
+          </div>
+          <div class="kobo-card">
+            <div class="emoji">⬇️</div>
+            <h4>Yuklab olish</h4>
+            <p>Loyihaning joriy anketasini yuklab oling</p>
+          </div>
+          <div class="kobo-card">
+            <div class="emoji">▶️</div>
+            <h4>Boshlash</h4>
+            <p>«Start New Form» ni tanlang, tizim talablarini bajaring</p>
+          </div>
+          <div class="kobo-card">
+            <div class="emoji">💾</div>
+            <h4>Saqlash</h4>
+            <p>Formani saqlang va yuboring. Yuborish holatini tekshiring</p>
+          </div>
+        </div>
+
+        <h3 class="sub">Muhim eslatmalar:</h3>
+        <ul class="checklist">
+          <li>Anketalarni muvofiqlashtirmasdan o'chirmang</li>
+          <li>Qurilma zaryadini nazorat qiling</li>
+          <li>Audio yozuvni nazorat qiling</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DARS 8 -->
+    <div class="lesson-section" id="dars8">
+      <div class="lesson-header">
+        <div class="lesson-num">08</div>
+        <div class="lesson-meta">
+          <h2>Intervyuerning Ishi Qanday Tekshiriladi?</h2>
+          <p>Sifat nazorati tizimi va oqibatlar</p>
+        </div>
+      </div>
+      <div class="lesson-body">
+        <h3 class="sub">Nima tekshiriladi?</h3>
+        <div class="check-grid">
+          <div class="check-item"><span class="dot"></span> Audio yozuv</div>
+          <div class="check-item"><span class="dot"></span> GPS-koordinatalar</div>
+          <div class="check-item"><span class="dot"></span> Intervyu davomiyligi</div>
+          <div class="check-item"><span class="dot"></span> Skriningning to'g'riligi</div>
+          <div class="check-item"><span class="dot"></span> Kvotalarning saqlanishi</div>
+          <div class="check-item"><span class="dot"></span> Javoblarning so'zma-sozligi</div>
+          <div class="check-item"><span class="dot"></span> Ko'rsatmalar yo'qligi</div>
+        </div>
+
+        <h3 class="sub">Talablar buzilganda nima bo'ladi?</h3>
+        <div class="alert danger">
+          <span class="alert-icon">⚠️</span>
+          <div>Ushbu talablar buzilganda anketa <strong>xato (brak)</strong> deb tan olinishi mumkin. Oqibatlar: fikr-mulohaza, qayta o'qitish, anketalarni bekor qilish, vaqtinchalik to'xtatish yoki chetlashtirish.</div>
+        </div>
+
+        <div class="highlight-box">
+          <h4>💪 Mas'uliyatli yondashuv</h4>
+          <p>Ishga e'tibor va professionallik bilan yondashishingizni so'raymiz. Mas'uliyatli yondashuv bilan sizda xato anketalar bo'lmasligiga va barcha anketalar birinchi marta qabul qilinishiga aminmiz.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DARS 9 -->
+    <div class="lesson-section" id="dars9">
+      <div class="lesson-header">
+        <div class="lesson-num">09</div>
+        <div class="lesson-meta">
+          <h2>Amaliy Testlar va Ishga Yo'l Olish</h2>
+          <p>Oxirgi bosqichlar — hammasi shu yerda</p>
+        </div>
+      </div>
+      <div class="lesson-body">
+        <h3 class="sub">Amaliy bosqichlar:</h3>
+        <div class="steps">
+          <div class="step-item"><div class="step-circle">1</div><div class="step-text">Onlayn-testdan o'tish</div></div>
+          <div class="step-item"><div class="step-circle">2</div><div class="step-text">Ikkita taqlid intervyu o'tkazish (ID 1 va ID 2)</div></div>
+          <div class="step-item"><div class="step-circle">3</div><div class="step-text">Anketalarni yuborish</div></div>
+          <div class="step-item"><div class="step-circle">4</div><div class="step-text">Fikr-mulohaza olish</div></div>
+        </div>
+
+        <div class="alert warn">
+          <span class="alert-icon">🔑</span>
+          <div>Bu qadamlar yo'l olish uchun <strong>majburiydir</strong>.</div>
+        </div>
+
+        <h3 class="sub">Ishni boshlash tartibi:</h3>
+        <ul class="checklist">
+          <li>Muvaffaqiyatli tekshiruvdan so'ng siz shartnoma, kvota topshirig'i, bejdik va qo'llab-quvvatlash xati olasiz</li>
+          <li>Birinchi kundan so'ng — tekshirish uchun pauza</li>
+          <li>Qo'shimcha fikr-mulohaza olish</li>
+          <li>Sifat tasdiqlanganda — ishni davom ettirish</li>
+          <li>Xatolar aniqlanganda — tuzatish va qayta tekshirish</li>
+        </ul>
+
+        <div class="highlight-box">
+          <h4>🎯 Birgalik</h4>
+          <p>Biz ma'lumotlarning yuqori sifatini va sizning dalada ishonchli ishlashingizni ta'minlash uchun har bir bosqichda siz bilan birgamiz. Muvaffaqiyatli bajara olishingizga aminmiz!</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  // Sidebar active link
+  const links = document.querySelectorAll('.sidebar-link');
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Lesson dots
+  const dots = document.querySelectorAll('.lesson-dot');
+  const sections = ['kirish','dars1','dars2','dars3','dars4','dars5','dars6','dars7','dars8','dars9'];
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      dots.forEach(d => d.classList.remove('active'));
+      dot.classList.add('active');
+      const sec = document.getElementById(sections[i]);
+      if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Intersection observer for sidebar sync
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        links.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+        const idx = sections.indexOf(id);
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>
 </body>
 </html>
