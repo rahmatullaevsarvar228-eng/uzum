@@ -109,8 +109,8 @@ h3.s::before{content:'';width:5px;height:20px;background:var(--am);border-radius
 .btn:active{transform:scale(.97)}
 .bgo{background:var(--b1);color:#fff;box-shadow:0 4px 14px rgba(26,74,138,.28)}
 .bgo:hover{background:var(--b2)}
-.bnx{background:#a8ccff;color:var(--b1);box-shadow:0 4px 14px rgba(26,74,138,.18)}
-.bnx:hover{background:#88b8ff}
+.bnx{background:#1a4a8a;color:#ffffff;box-shadow:0 4px 14px rgba(26,74,138,.18)}
+.bnx:hover{background:#2d6cc0}
 .bbk{background:var(--bg);color:var(--t2);border:2px solid var(--br)}
 .btn[disabled]{opacity:.38;cursor:not-allowed;transform:none!important;box-shadow:none}
 .bf{width:100%}
@@ -171,7 +171,7 @@ h3.s::before{content:'';width:5px;height:20px;background:var(--am);border-radius
 </header>
 <div id="app"></div>
 <script>
-const PASS=70,LB=['A','B','V','G'];
+const PASS=70,LB=['A','B','C','D'];
 let ST={screen:'reg',name:'',lesson:0,unlocked:0,ans:{},sub:false};
 
 const LS=[
@@ -180,7 +180,7 @@ const LS=[
 <div class="bx bl"><span class="bxi">ℹ️</span><div class="bxt"><strong>Zerkalo Sosiologik Servis</strong> — Toshkent shahridagi so'rovlar kompaniyasi. O'zbekiston va Markaziy Osiyo bozorida ijtimoiy va marketing so'rovlarini o'tkazadi.</div></div>
 <h3 class="s">Ushbu o'qitishda siz bilib olasiz:</h3>
 <div class="ig">
-<div class="ic"><span class="ici">🏦</span><div><h4>Banklar va MFT</h4><p>Bank, bank ilovasi va to'lov xizmatlari nima</p></div></div>
+<div class="ic"><span class="ici">🏦</span><div><h4>Banklar va MKT</h4><p>Bank, bank ilovasi va to'lov xizmatlari nima</p></div></div>
 <div class="ic"><span class="ici">🧠</span><div><h4>TOM nima</h4><p>Ko'meksiz bilimni o'lchash usuli</p></div></div>
 <div class="ic"><span class="ici">🔍</span><div><h4>Skrining</h4><p>Mos respondentni aniqlash qoidalari</p></div></div>
 <div class="ic"><span class="ici">📋</span><div><h4>Anketa</h4><p>Savollarni to'g'ri to'ldirish tartibi</p></div></div>
@@ -205,10 +205,10 @@ qs:[
 ]},
 
 /* ═══ 1: BANKLAR ═══ */
-{ico:"🏦",title:"1-dars: Banklar, MFT va To'lov Xizmatlari",sub:"Moliyaviy tushunchalarni to'g'ri tushunish",body:`
+{ico:"🏦",title:"1-dars: Banklar, MKT va To'lov Xizmatlari",sub:"Moliyaviy tushunchalarni to'g'ri tushunish",body:`
 <h3 class="s">Bank nima?</h3>
-<p>Bank — omonatlarni qabul qiluvchi, kreditlar beruvchi va kartalar chiqaruvchi moliyaviy tashkilot. <strong>MFT</strong> (mikromoliya tashkilotlari) — mikrokarzlar beruvchi foydali tashkilot.</p>
-<div class="bx gn"><span class="bxi">✅</span><div class="bxt"><strong>Ushbu so'rovda banklar ham, MFT ham bo'yicha javoblar qabul qilinadi.</strong><br>Misollar: «Kapitalbank», «Asaka Bank», «Anorbank», «Shaffof Moliya», «TezCoin»</div></div>
+<p>Bank — omonatlarni qabul qiluvchi, kreditlar beruvchi va kartalar chiqaruvchi moliyaviy tashkilot. <strong>MKT</strong> (mikrokredit tashkiloti) — mikrokarzlar beruvchi foydali tashkilot.</p>
+<div class="bx gn"><span class="bxi">✅</span><div class="bxt"><strong>Ushbu so'rovda banklar ham, MKT ham bo'yicha javoblar qabul qilinadi.</strong><br>Misollar: «Kapitalbank», «Asaka Bank», «Anorbank», «Shaffof Moliya», «TezCoin»</div></div>
 <h3 class="s">Bank ilovasi nima?</h3>
 <p>Bank ilovasi — muayyan bankning rasmiy mobil ilovasi. Mijozlarga hisoblar, omonatlar, kreditlar va o'tkazmalarni amalga oshirish imkonini beradi. U <strong>faqat bitta bankka</strong> tegishli.</p>
 <h3 class="s">To'lov xizmati nima?</h3>
@@ -221,12 +221,12 @@ qs:[
 <tr><td>Bank hisobi kerak</td><td>Bir nechta bankning kartalarini qo'llab-quvvatlaydi</td></tr>
 <tr><td>Misol: Kapitalbank App</td><td>Misol: Click, Payme</td></tr>
 </table>
-<p>Kreditlarni <strong>banklarda, MFTlarda va ba'zi ilovalar</strong> orqali olish mumkin. Omonatlar banklarda va ba'zi yirik MFTlarda ochiladi.</p>
+<p>Kreditlarni <strong>banklarda, MKTlarda va ba'zi ilovalar</strong> orqali olish mumkin. Omonatlar banklarda va ba'zi yirik MKTlarda ochiladi.</p>
 <div class="bx rd"><span class="bxi">🚫</span><div class="bxt"><strong>MUHIM!</strong> Bu nomlar faqat sizning tushunishingiz uchun. Respondentlarga bu nomlarni aytmasligingiz kerak.</div></div>`,
 qs:[
 {q:"To'lov xizmati qanday platforma?",opts:["Faqat bitta bankka tegishli","Mustaqil platforma, bir nechta bankning kartalarini qo'llab-quvvatlaydi","Faqat kreditlar uchun","Faqat omonatlar uchun"],ok:1,ex:"To'lov xizmati mustaqil platforma bo'lib, bir nechta bankning kartalarini qo'llab-quvvatlashi mumkin."},
-{q:"MFT qanday tashkilot?",opts:["Maxsus davlat tashkiloti","Mobil faoliyat tizimi","Mikrokarzlar beruvchi foydali tashkilot","Marketing firmalari to'plami"],ok:2,ex:"MFT — mikromoliya tashkilotlari, mikrokarzlar beruvchi foydali tashkilot."},
-{q:"Kredit qayerlardan olish mumkin?",opts:["Faqat banklar","Faqat MFTlar","Banklar, MFTlar va ba'zi ilovalar orqali","Faqat to'lov xizmatlari"],ok:2,ex:"Kreditlarni banklarda, MFTlarda va ba'zi ilovalar orqali olish mumkin."},
+{q:"Respondent kredit qayerdan olish mumkinligini so'rasa nima javob berasiz?",opts:["Faqat bankdan olsa bo'ladi deyman","Banklar, MKTlar va ba'zi ilovalar orqali olish mumkinligini aytaman","Bilmayman deyman","Bu savol anketada yo'q deyman"],ok:1,ex:"Kreditlarni banklarda, MKTlarda va ba'zi ilovalar orqali olish mumkin."},
+{q:"Kredit qayerlardan olish mumkin?",opts:["Faqat banklar","Faqat MKTlar","Banklar, MKTlar va ba'zi ilovalar orqali","Faqat to'lov xizmatlari"],ok:2,ex:"Kreditlarni banklarda, MKTlarda va ba'zi ilovalar orqali olish mumkin."},
 {q:"Respondentga bank nomini aytsa bo'ladimi?",opts:["Ha, tushuntirish uchun","Faqat so'rasa","Yo'q, hech qachon — TOM qoidasiga zid","Ha, har doim"],ok:2,ex:"Bu nomlar faqat sizning tushunishingiz uchun. Respondentlarga aytmasligingiz kerak."}
 ]},
 
@@ -241,18 +241,18 @@ qs:[
 <h3 class="s">Amaliy misollar:</h3>
 <table class="dt">
 <tr><th>Vaziyat</th><th>Nima qilish kerak</th></tr>
-<tr><td>Respondent: «Kapitalbank» dedi</td><td>1-katakka yoz, «Yana?» de</td></tr>
-<tr><td>Respondent: «Ipoteka bank va Anorbank» dedi</td><td>Har birini <strong>alohida</strong> katakka yoz</td></tr>
-<tr><td>Respondent: «PayNet» dedi va to'xtadi</td><td>PayNet ni yoz, bo'sh kataklarga <strong>«BILMAYMAN»</strong> yoz</td></tr>
-<tr><td>Respondent 7 ta nom aytdi, 6 ta katak bor</td><td>Oxirgi katakka qolganlarni <strong>vergul</strong> bilan yoz</td></tr>
-<tr><td>Bank ilovasi so'ralganda «Click» dedi</td><td>So'zma-so'z yoz, <span class="rt">to'g'irlamang</span></td></tr>
+<tr><td>Respondent: «Kapitalbank» dedi</td><td>1-maydonga yozing, «Yana?» deb so'rang</td></tr>
+<tr><td>Respondent: «Ipoteka bank va Anorbank» dedi</td><td>Har birini <strong>alohida</strong> maydonga yozing</td></tr>
+<tr><td>Respondent: «PayNet» dedi va to'xtadi</td><td>PayNet ni yozing, bo'sh maydonlarga <strong>«BILMAYMAN»</strong> yozing</td></tr>
+<tr><td>Respondent 7 ta nom aytdi, 6 ta maydon bor</td><td>Oxirgi maydonga qolganlarni <strong>vergul</strong> bilan yozing</td></tr>
+<tr><td>Bank ilovasi so'ralganda «Click» dedi</td><td>So'zma-so'z yozing, <span class="rt">to'g'irlamang</span></td></tr>
 <tr><td>Respondent: «Bankda» dedi</td><td>«Qaysi bankda?» deb aniqlashtir</td></tr>
 </table>`,
 qs:[
 {q:"TOM qanday metodologiya?",opts:["Ko'rsatma yordamida bilim o'lchash","Ko'meksiz bilim — respondent o'z-o'zicha eslaydigan nomlar","Tanlov orqali bilimni baholash","Reklama ta'sirini o'lchash"],ok:1,ex:"TOM — ko'meksiz bilim. Respondent o'z-o'zicha eslaydigan nomlar o'lchanadi."},
-{q:"Respondent «Ipoteka bank va Anorbank» dedi. Qanday yozish kerak?",opts:["Ikkisini bitta katakka yozish","Har birini alohida katakka yozish","Faqat birinchisini yozish","Ikkisini ham o'tkazib yuborish"],ok:1,ex:"Har bir nomni alohida katakka yozing."},
-{q:"Respondent faqat «PayNet» aytdi va to'xtadi. Qolgan majburiy kataklarga nima yozish kerak?",opts:["Bo'sh qoldirish","«BILMAYMAN» deb yozish","Keyingi savolga o'tish","Menejerga xabar berish"],ok:1,ex:"Respondent eslay olmasa — majburiy bo'sh kataklarga «BILMAYMAN» deb yozing."},
-{q:"Respondent 7 ta nom aytdi, anketada esa 6 ta katak bor. Nima qilish kerak?",opts:["Faqat birinchi 6 tasini yozish","Oxirgi katakka qolgan nomlarni vergul bilan yozish","Respondentdan 6 tani tanlashini so'rash","Qo'shimcha varaq olish"],ok:1,ex:"Oxirgi katakka qolgan nomlarni vergul bilan yozing."},
+{q:"Respondent «Ipoteka bank va Anorbank» dedi. Qanday yozish kerak?",opts:["Ikkisini bitta maydonga yozish","Har birini alohida maydonga yozish","Faqat birinchisini yozish","Ikkisini ham o'tkazib yuborish"],ok:1,ex:"Har bir nomni alohida maydonga yozing."},
+{q:"Respondent faqat «PayNet» aytdi va to'xtadi. Qolgan majburiy maydonlarga nima yozish kerak?",opts:["Bo'sh qoldirish","«BILMAYMAN» deb yozish","Keyingi savolga o'tish","Menejerga xabar berish"],ok:1,ex:"Respondent eslay olmasa — majburiy bo'sh maydonlarga «BILMAYMAN» deb yozing."},
+{q:"Respondent 7 ta nom aytdi, anketada esa 6 ta maydon bor. Nima qilish kerak?",opts:["Faqat birinchi 6 tasini yozish","Oxirgi maydonga qolgan nomlarni vergul bilan yozish","Respondentdan 6 tani tanlashini so'rash","Qo'shimcha varaq olish"],ok:1,ex:"Oxirgi maydonga qolgan nomlarni vergul bilan yozing."},
 {q:"Bank ilovasi so'ralganda respondent «Click» dedi. Nima qilish kerak?",opts:["To'g'irlab tushuntiraman","So'zma-so'z yozaman, to'g'irlamayman","Savolni o'tkazib yuboraman","Anketani to'xtataman"],ok:1,ex:"Respondent bank ilovasi o'rniga to'lov xizmatini atasa — to'g'irlamang. So'zma-so'z yozing."},
 {q:"Respondent «Bankda» deb javob berdi. Nima qilish kerak?",opts:["Shunday yozib ketaman","«Qaysi bankda?» deb aniqlashtiraman","O'tkazib yuboraman","Anketani to'xtataman"],ok:1,ex:"Javob juda umumiy bo'lsa — «Qaysi bankda?» deb aniqlashtiring."}
 ]},
@@ -331,11 +331,11 @@ qs:[
 <h3 class="s">Ochiq savollarni to'ldirish qoidasi:</h3>
 <table class="dt">
 <tr><th>Qoida</th><th>Tushuntirish</th></tr>
-<tr><td>Har bir maydonga faqat bitta javob</td><td>Bir nechta nomni bitta katakka yozish mumkin emas</td></tr>
+<tr><td>Har bir maydonga faqat bitta javob</td><td>Bir nechta nomni bitta maydonga yozish mumkin emas</td></tr>
 <tr><td>«Yana-chi?» albatta bering</td><td>Birinchi javobdan keyin davom ettirib so'rang</td></tr>
 <tr><td>Javobni so'zma-so'z yozing</td><td>Respondentning javobini tuzatmang yoki qisqartirmang</td></tr>
 <tr><td>Majburiy maydonlar bo'sh qolmasin</td><td>Eslay olmasa — «BILMAYMAN» deb yozing</td></tr>
-<tr><td>Ko'p javob bo'lsa</td><td>Oxirgi katakka qolganlarni vergul bilan yozing</td></tr>
+<tr><td>Ko'p javob bo'lsa</td><td>Oxirgi maydonga qolganlarni vergul bilan yozing</td></tr>
 </table>
 <div class="bx rd"><span class="bxi">🚫</span><div class="bxt"><strong>HECH QACHON:</strong> nomlarni aytib yordam bermang, javoblarni tuzatmang, savolni o'z so'zingiz bilan aytmang.</div></div>
 <h3 class="s">7-savolga alohida diqqat:</h3>
@@ -363,7 +363,7 @@ qs:[
 <div class="al"><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div></div></div></div></div>
 <div class="bx am"><span class="bxi">⚠️</span><div class="bxt">7 va 8-savollarda aniq tashkilot nomini aytishini so'rang. Faqat «Bankda» degan javob mos kelmaydi.</div></div>
 <div class="qf"><div class="qfh">7-savol. Kredit yoki mikroqarzni qayerdan olsa bo'ladi?</div>
-<div class="qfb"><div class="qi"><div class="qin">Siz biladigan barcha banklar, MFTlar yoki ilovalarning nomlarini sanab o'ting.</div>
+<div class="qfb"><div class="qi"><div class="qin">Siz biladigan barcha banklar, MKTlar yoki ilovalarning nomlarini sanab o'ting.</div>
 <div class="al"><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div></div></div></div></div>
 <div class="qf"><div class="qfh">8-savol. Qayerda omonat yoki depozit ochish mumkin?</div>
 <div class="qfb"><div class="qi"><div class="qin">Siz biladigan barcha banklar yoki ilovalarning nomlarini sanab o'ting.</div>
@@ -395,14 +395,14 @@ qs:[
 </div></div></div></div>`,
 qs:[
 {q:"Topshiriq 1. «Xayolingizga birinchi bo'lib qaysi bankning nomi keladi?» — respondent «Kapitalbank va Anorbank» dedi. Qanday yozasiz?",opts:["Ikkala variantni ham birinchi maydonga yozish","«Kapitalbank»ni birinchi, «Anorbank»ni yozmaslik","«Kapitalbank»ni 1-javob, «Anorbank»ni 2-javob sifatida yozish","Faqat «Anorbank»ni yozish"],ok:2,ex:"«Kapitalbank»ni birinchi javob sifatida, «Anorbank»ni ikkinchi javob sifatida alohida yozing."},
-{q:"Topshiriq 2. «Yana-chi?» so'rog'iga respondent «Ipoteka bank va Anorbank» dedi. Qanday yozish kerak?",opts:["Ikkala bankni bitta maydonga yozish","Har bir bankni alohida maydonga yozish","Faqat bitta bankni yozish","Hech birini yozmaslik"],ok:1,ex:"Har bir nomni alohida katakka yozing."},
-{q:"Topshiriq 3. Respondent faqat «PayNet» dedi. Majburiy bo'sh kataklarga nima yozish kerak?",opts:["Maydonlarni bo'sh qoldirish","Majburiy maydonlarga «BILMAYMAN» deb yozish","Savolni o'tkazib yuborish","Menejerga xabar berish"],ok:1,ex:"Majburiy bo'sh kataklarga «BILMAYMAN» deb yozing."},
-{q:"Topshiriq 4. Respondent 7 ta nom aytdi, lekin anketada 6 ta maydon bor. Nima qilish kerak?",opts:["Faqat birinchi 6 tasini yozish","Oxirgi maydonga bir nechta variantni vergul orqali yozish","Respondentdan faqat 6 tasini tanlashni so'rash","Yangi maydon ochish"],ok:1,ex:"Oxirgi katakka qolgan nomlarni vergul bilan yozing."},
+{q:"Topshiriq 2. «Yana-chi?» so'rog'iga respondent «Ipoteka bank va Anorbank» dedi. Qanday yozish kerak?",opts:["Ikkala bankni bitta maydonga yozish","Har bir bankni alohida maydonga yozish","Faqat bitta bankni yozish","Hech birini yozmaslik"],ok:1,ex:"Har bir nomni alohida maydonga yozing."},
+{q:"Topshiriq 3. Respondent faqat «PayNet» dedi. Majburiy bo'sh maydonlarga nima yozish kerak?",opts:["Maydonlarni bo'sh qoldirish","Majburiy maydonlarga «BILMAYMAN» deb yozish","Savolni o'tkazib yuborish","Menejerga xabar berish"],ok:1,ex:"Majburiy bo'sh maydonlarga «BILMAYMAN» deb yozing."},
+{q:"Topshiriq 4. Respondent 7 ta nom aytdi, lekin anketada 6 ta maydon bor. Nima qilish kerak?",opts:["Faqat birinchi 6 tasini yozish","Oxirgi maydonga bir nechta variantni vergul orqali yozish","Respondentdan faqat 6 tasini tanlashni so'rash","Yangi maydon ochish"],ok:1,ex:"Oxirgi maydonga qolgan nomlarni vergul bilan yozing."},
 {q:"Topshiriq 5. Bank ilovalari haqidagi savolda respondent «Click» dedi. Nima qilish kerak?",opts:["Javobni to'g'rilab, bu bank ilovasi emasligini tushuntirish","Javobni aynan aytilganidek yozib olish","Faqat bank ilovalarini aytishini so'rash","Savolni o'tkazib yuborish"],ok:1,ex:"So'zma-so'z yozing — to'g'irlamang."},
 {q:"Topshiriq 6. Kredit savolida respondent «Bankda» dedi. Nima qilish kerak?",opts:["Javobni qanday bo'lsa shunday yozish","Aniq bank yoki tashkilot nomini aytishini so'rash","Savolni o'tkazib yuborish","Boshqa savolga o'tish"],ok:1,ex:"«Qaysi bankda?» deb aniqlashtiring — umumiy «Bankda» javob yetarli emas."},
 {q:"Topshiriq 7. Respondent 2 ta bank aytdi, intervyuer boshqa so'ramaslikka qaror qildi. Bu to'g'rimi?",opts:["Ha, 2 ta javob yetarli","Yo'q, «Yana-chi?» deb «Bilmayman» javobigacha so'rash kerak","Ha, vaqtni tejash kerak","Ha, respondent charchab qolishi mumkin"],ok:1,ex:"«Yana-chi?» deb respondent «Bilmayman» demaguncha so'rab turing."},
 {q:"Topshiriq 8. Respondent bank ilovasi nima ekanini tushunmadi. Nima qilish kerak?",opts:["Bank ilovalaridan misollar keltirish","Savol bo'yicha yo'riqnomadagi funksional tushuntirishni o'qib berish","Savolni o'tkazib yuborish","Anketani to'xtatish"],ok:1,ex:"Yo'riqnomadagi funksional tushuntirishni o'qib bering — nom aytmang."},
-{q:"Topshiriq 9. To'lov servislari savolida respondent «Click» dedi. Nima qilish kerak?",opts:["Javobni yozib olish","Bu mos kelmasligini aytish","Bank nomini aytishini so'rash","Savolni o'tkazib yuborish"],ok:0,ex:"To'lov servisi savoli uchun «Click» to'g'ri javob — yozib oling."},
+{q:"Topshiriq 9. Respondent «Yana-chi?» savolidan keyin: «Bilmayman, boshqa esimga kelmaydi» dedi. Majburiy maydonlar hali bo'sh. Nima qilish kerak?",opts:["Bo'sh maydonlarni shunday qoldirish","Majburiy bo'sh maydonlarga «BILMAYMAN» deb yozish","Respondentga nomlarni aytib eslatish","Savolni o'tkazib yuborish"],ok:1,ex:"Respondent «Bilmayman» degach, majburiy bo'sh maydonlarga «BILMAYMAN» deb yozing."},
 {q:"Topshiriq 10. Reklama savolida respondent «Televizorda ko'rgan reklama hisobga olinadimi?» deb so'radi. Nima javob berish kerak?",opts:["Har qanday reklama hisobga olinishini aytish","Faqat televizor reklamasi hisobga olinishini aytish","Faqat internet reklamasi hisobga olinishini aytish","Hech narsa demas, savolni takrorlash"],ok:0,ex:"Har qanday reklama (televidenie, internet, ko'cha va boshqalar) hisobga olinishini aytish kerak."}
 ]},
 
@@ -410,23 +410,23 @@ qs:[
 {ico:"🤔",title:"5-dars: Respondent Qiynalib Qolsa Nima Qilish Kerak?",sub:"Murakkab holatlarni to'g'ri boshqarish",body:`
 <div class="bx am"><span class="bxi">⚠️</span><div class="bxt">Ba'zida respondent javob berishda qiynalishi mumkin. Quyida asosiy holatlar va ular uchun to'g'ri yechimlar keltirilgan.</div></div>
 <h3 class="s">1-holat: Bir nechta nom aytdi, lekin eslay olmayapti</h3>
-<div class="bx bl"><span class="bxi">💡</span><div class="bxt">U aytgan nomlarni <strong>yozing</strong>. U «eslay olmayapman» degach, qolgan bo'sh kataklarga <strong>«BILMAYMAN»</strong> deb yozing.</div></div>
+<div class="bx bl"><span class="bxi">💡</span><div class="bxt">U aytgan nomlarni <strong>yozing</strong>. U «eslay olmayapman» degach, qolgan bo'sh maydonlarga <strong>«BILMAYMAN»</strong> deb yozing.</div></div>
 <h3 class="s">2-holat: Hech qanday nom eslay olmayapti</h3>
-<div class="bx bl"><span class="bxi">💡</span><div class="bxt">Unga biroz vaqt bering. Baribir eslay olmasa — barcha majburiy kataklarga <strong>«BILMAYMAN»</strong> deb yozing.</div></div>
+<div class="bx bl"><span class="bxi">💡</span><div class="bxt">Unga biroz vaqt bering. Baribir eslay olmasa — barcha majburiy maydonlarga <strong>«BILMAYMAN»</strong> deb yozing.</div></div>
 <h3 class="s">3-holat: Bank ilovasi yoki to'lov ilovasi nima ekanligini tushunmaydi</h3>
-<div class="bx bl"><span class="bxi">💡</span><div class="bxt">Ilovaning <strong>funksiyalari</strong> orqali tushuntiring, lekin <span class="rt">aniq nomlarni aytmang</span>.<br>Masalan: «Bu — telefonda pul o'tkazish, hisob-kitob qilish uchun ishlatiladigan ilova».</div></div>
+<div class="bx bl"><span class="bxi">💡</span><div class="bxt">Ilovaning <strong>funksiyalari</strong> orqali tushuntiring, lekin <span class="rt" style="font-size:1.05em">❗ aniq nomlarni aytmang</span>.<br>Masalan: «Bu — telefonda pul o'tkazish, hisob-kitob qilish uchun ishlatiladigan ilova».</div></div>
 <div class="bx rd"><span class="bxi">🚫</span><div class="bxt"><strong>MUHIM!</strong> Agar respondent «Siz PayMe yoki Click haqida so'rayapsizmi?» desa — bu savolni tasdiqlash <span class="rt">MUMKIN EMAS</span>. Funksiyalarni yana tushuntiring, <span class="rt">nom aytmang</span>.</div></div>
 <h3 class="s">Qisqacha jadval:</h3>
 <table class="dt">
 <tr><th>Holat</th><th>Nima qilish kerak</th></tr>
-<tr><td>Bir nechta nom aytdi, to'xtadi</td><td>Aytganlarini yoz, qolganlariga «BILMAYMAN» yoz</td></tr>
-<tr><td>Umuman eslay olmaydi</td><td>Biroz kut, so'ng barcha kataklarga «BILMAYMAN» yoz</td></tr>
+<tr><td>Bir nechta nom aytdi, to'xtadi</td><td>Aytganlarini yozing, qolganlariga «BILMAYMAN» yozing</td></tr>
+<tr><td>Umuman eslay olmaydi</td><td>Biroz kuting, so'ng barcha maydonlarga «BILMAYMAN» yozing</td></tr>
 <tr><td>Hech narsani bilmaydi (shubhali)</td><td>Hazil emasligiga ishonch hosil qil, kerak bo'lsa to'xtat</td></tr>
-<tr><td>Ilova nima ekanligini bilmaydi</td><td>Funksiyalarini tushuntir, <span class="rt">nom aytma</span></td></tr>
-<tr><td>«PayMe yoki Click?» deb so'raydi</td><td><span class="rt">Nom aytma</span>, funksiyalarni yana tushuntir</td></tr>
+<tr><td>Ilova nima ekanligini bilmaydi</td><td>Funksiyalarini tushuntiring, <span class="rt">nom aytmang</span></td></tr>
+<tr><td>«PayMe yoki Click?» deb so'raydi</td><td><span class="rt">Nom aytmang</span>, funksiyalarni yana tushuntiring</td></tr>
 </table>`,
 qs:[
-{q:"Respondent ikki nom aytdi va to'xtadi. Nima qilish kerak?",opts:["Unga yana bir nom aytib beraman","Aytgan nomlarini yozib, qolgan kataklarga «BILMAYMAN» deb yozaman","Savolni o'tkazib yuboraman","Anketani to'xtataman"],ok:1,ex:"Aytgan nomlarini yozing, u eslay olmagach qolgan bo'sh kataklarga «BILMAYMAN» deb yozing."},
+{q:"Respondent ikki nom aytdi va to'xtadi. Nima qilish kerak?",opts:["Unga yana bir nom aytib beraman","Aytgan nomlarini yozib, qolgan maydonlarga «BILMAYMAN» deb yozaman","Savolni o'tkazib yuboraman","Anketani to'xtataman"],ok:1,ex:"Aytgan nomlarini yozing, u eslay olmagach qolgan bo'sh maydonlarga «BILMAYMAN» deb yozing."},
 {q:"Respondent «Siz PayMe haqida so'rayapsizmi?» deb so'rasa nima qilasiz?",opts:["«Ha, aynan PayMe» deyman","Nom aytmasdan ilovaning funksiyalarini tushuntiraman","«Yo'q» deyman va savolni o'tkazib yuboraman","Anketani yopaman"],ok:1,ex:"Nomni tasdiqlash mumkin emas. Funksiyalar orqali yana tushuntiring — nom aytmang."},
 {q:"Bank ilovasi nima ekanligini tushunmaydigan respondentga qanday tushuntirish kerak?",opts:["Kapitalbank, Hamkorbank kabi misollar keltiraman","Funksiyalarini tushuntiraman — aniq nom aytmasdan","Savolni o'tkazib yuboraman","Anketani to'xtataman"],ok:1,ex:"Funksiyalari orqali tushuntiring (hisobni boshqarish, o'tkazma qilish va h.k.), lekin aniq nomlarni aytmang."}
 ]},
@@ -473,7 +473,7 @@ qs:[
 <p><span class="qpt">2-qism: Reja (Kvota)</span></p>
 <p>Jins va yosh bo'yicha opros qilish kerak bo'lgan aniq sonlar.</p>
 <p><span class="qpt">3-qism: Sizning ijroyingiz</span></p>
-<p>Har bir bajarilgan so'rovni mos katakka <strong>«1»</strong> raqami bilan belgilang — kvota bajarilishini nazorat qilish uchun.</p>
+<p>Har bir bajarilgan so'rovni mos maydonga <strong>«1»</strong> raqami bilan belgilang — kvota bajarilishini nazorat qilish uchun.</p>
 </div>
 <div class="bx rd"><span class="bxi">🚨</span><div class="bxt"><strong>MUHIM!</strong> Har bir o'tkazilgan so'rovni belgilang va belgilangan sondan oshmang!</div></div>
 <h3 class="s">Namuna: Chirchiq shahri — 3-nuqta | Jami: 16 respondent</h3>
@@ -492,7 +492,7 @@ qs:[
 <li>Ko'cha tanlovini Zerkalo menajeri bilan muvofiqlashtiring</li>
 </ul>`,
 qs:[
-{q:"Kvota jadvalining 3-qismi nima uchun kerak?",opts:["Menejerga hisobot berish uchun","Har bir bajarilgan so'rovni belgilab, kvota bajarilishini nazorat qilish uchun","Faqat yakuniy hisob uchun","Ish haqini hisoblash uchun"],ok:1,ex:"3-qism — sizning ijroyingiz. Har bir bajarilgan so'rovni mos katakka «1» bilan belgilang."},
+{q:"Kvota jadvalining 3-qismi nima uchun kerak?",opts:["Menejerga hisobot berish uchun","Har bir bajarilgan so'rovni belgilab, kvota bajarilishini nazorat qilish uchun","Faqat yakuniy hisob uchun","Ish haqini hisoblash uchun"],ok:1,ex:"3-qism — sizning ijroyingiz. Har bir bajarilgan so'rovni mos maydonga «1» bilan belgilang."},
 {q:"Ko'cha tanlashda eng muhim shart nima?",opts:["Ko'cha bank yaqinida bo'lishi kerak","Ko'cha gavjum bo'lishi va banklar/reklamalar yaqinida bo'lmasligi kerak","Ko'cha markazda bo'lishi kerak","Ko'cha uzun bo'lishi kerak"],ok:1,ex:"Ko'cha gavjum bo'lishi kerak, lekin banklar yoki ularning reklamalari yaqinida bo'lmasligi zarur."},
 {q:"Kvota buzilsa nima bo'ladi?",opts:["Hech narsa bo'lmaydi","Ta'sir qilmaydi","Natijalar buziladi","Pul to'lash kerak bo'ladi"],ok:2,ex:"Agar kvotalar saqlanmasa, natijalar buziladi."}
 ]},
@@ -530,7 +530,7 @@ qs:[
 <div class="kc"><div class="ke">▶️</div><h4>4. Boshlash</h4><p>«Start New Form» ni tanlang</p></div>
 <div class="kc"><div class="ke">💾</div><h4>5. Yuborish</h4><p>Formani saqlang va yuboring</p></div>
 </div>
-<div class="bx am"><span class="bxi">📄</span><div class="bxt"><strong>Qo'shimcha o'qish majburiy:</strong> Kobo ilovasida ishlash bo'yicha batafsil ko'rsatmalar uchun menejer tomonidan beriladigan <strong>«Kobo bo'yicha yo'riqnoma»</strong> hujjatini o'qib chiqing.</div></div>
+<div class="bx am"><span class="bxi">📄</span><div class="bxt"><strong>Qo'shimcha o'qish majburiy:</strong> Kobo ilovasida ishlash bo'yicha batafsil ko'rsatmalar uchun menejer tomonidan beriladigan <strong>«Kobo bo'yicha yo'riqnoma»</strong> hujjatini o'qing va <strong>Kobo bo'yicha videoni</strong> ko'rib chiqing.</div></div>
 <div class="bx rd"><span class="bxi">⚠️</span><div class="bxt"><strong>Muhim eslatmalar:</strong><br>• Anketalarni muvofiqlashtirmasdan o'chirmang<br>• Qurilma zaryadini nazorat qiling<br>• Audio yozuvni nazorat qiling</div></div>`,
 qs:[
 {q:"KoboCollect ilovasini qayerdan yuklab olish kerak?",opts:["App Store","Telegram","Google Play","Kompaniya veb-saytidan"],ok:2,ex:"KoboCollect ilovasini Google Play orqali yuklab olish kerak."},
@@ -701,7 +701,7 @@ function showDone(a){
         Endi dala ishiga to'liq tayyorsiz! 🎯<br>
         Menejerdan <strong>shaxsiy ID raqamingizni</strong> oling va amaliy bosqichni boshlang.
       </div>
-      <button class="btn bbk bf" style="max-width:340px;margin:0 auto" onclick="bl()">📖 Oxirgi darsni ko'rish</button>
+      <button class="btn bgo bf" style="max-width:340px;margin:0 auto" onclick="restart()">🔄 Kursni qaytadan boshlash</button>
     </div>
   </div></div>`;
 }
@@ -722,6 +722,7 @@ function nx(){
 }
 function fin(){ST.screen='done';render();}
 
+function restart(){ST={screen:'lesson',name:ST.name,lesson:0,unlocked:0,ans:{},sub:false};render();}
 render();
 </script>
 </body>
