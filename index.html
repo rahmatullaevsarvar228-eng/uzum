@@ -2,7 +2,7 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>KoboCollect – Интервьючи Тести</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -35,8 +35,6 @@
         .opt-btn.correct .opt-letter{background:var(--correct);color:#fff;}
         .opt-btn.wrong .opt-letter{background:var(--wrong);color:#fff;}
         .opt-btn:disabled{cursor:default;transform:none;}
-        .explanation{margin-top:1rem;padding:.8rem 1.1rem;background:#fffaf2;border-left:4px solid var(--accent);border-radius:12px;font-size:.9rem;color:#4a3310;line-height:1.55;display:none;}
-        .explanation.show{display:block;animation:fadeUp .25s ease;}
         .btn-next{margin-top:1.2rem;width:100%;padding:.85rem;background:linear-gradient(90deg,var(--blue),var(--teal));color:#fff;border:none;border-radius:14px;font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:.5px;transition:opacity .2s,transform .15s;display:none;}
         .btn-next:hover{opacity:.9;transform:translateY(-2px);}
         #result-screen{display:none;}
@@ -84,9 +82,9 @@
             <h2>📋 Тестни бошлашдан олдин</h2>
             <ul class="info-list">
                 <li>Жами 10 та савол, ҳар бирида 1 та тўғри жавоб</li>
-                <li>Ҳар жавобдан кейин изоҳ кўрсатилади</li>
+                <li>Ҳар бир саволга диққат билан жавоб беринг</li>
                 <li>Натижа автоматик Telegram га юборилади</li>
-                <li>7 ва ундан юқори балл — ўтди ✅</li>
+                <li><strong>ЎТИШ УЧУН 10 ТА САВОЛНИНГ ҲАММАСИГА ТЎҒРИ ЖАВОБ БЕРИШ КЕРАК</strong></li>
             </ul>
             <div class="input-group">
                 <label for="userName">Исмингиз (тўлиқ)</label>
@@ -109,7 +107,6 @@
             <div class="q-number" id="qNum">САВОЛ 1</div>
             <div class="q-text" id="qText"></div>
             <div class="options" id="optionsBox"></div>
-            <div class="explanation" id="explanation"></div>
             <button class="btn-next" id="btnNext" onclick="nextQuestion()">Кейинги савол →</button>
         </div>
     </div>
@@ -123,8 +120,8 @@
             </div>
             <h2>Тест якунланди!</h2>
             <div class="result-name" id="resultName"></div>
-            <div class="verdict" id="resultVerdict"></div>
             <div class="result-details" id="resultDetails"></div>
+            <div class="verdict" id="resultVerdict"></div>
             <div class="tg-status" id="tgStatus"></div>
             <button class="btn-retry" onclick="retryQuiz()">🔄 Қайтадан уриниш</button>
         </div>
@@ -132,74 +129,98 @@
 </div>
 
 <script>
+// ========== СИЗНИНГ TELEGRAM МАЪЛУМОТЛАРИНГИЗ ==========
 const TG_TOKEN   = "8221711611:AAE6Mnx40RAD9Qbzk9-_dytJJQiaoR-RmPE";
 const TG_CHAT_ID = "427711714";
+// =====================================================
 
-const QUESTIONS = [
+// Асосий саволлар (тўғри жавоб индекси билан)
+const ORIGINAL_QUESTIONS = [
     {
         q: "Янги нуқтада ҳақиқий интервьюларни бошлашдан АВВАЛ интервьючи қандай ID билан анкета тўлдириши керак?",
         opts: ["ID = 1 — биринчи респондент учун","ID = 0 — нуқтани техник рўйхатдан ўтказиш учун","ID = 999 — махсус скринер учун","ID киритиш шарт эмас, ихтиёрий"],
-        correct: 1,
-        explain: "📌 ID = 0 нуқтани техник рўйхатдан ўтказиш учун ишлатилади. Бу респондент билан интервю эмас — айлана видео ёзиш, GPS қайд этиш ва квота рақамини киритиш учун."
+        correct: 1
     },
     {
         q: "Нуқтада 360° айлана видео ёзилгандан сўнг, кейинги ҳақиқий респондентлар (ID 1, 2, 3…) учун видеони қайта ёзиш керакми?",
         opts: ["Ҳа, ҳар бир респондент учун қайта ёзиш шарт","Ҳа, лекин фақат жинс ёки ёш ўзгарганда","Йўқ, видео фақат ID = 0 да бир марта ёзилади","Фақат кун тугагандан кейин қайта ёзилади"],
-        correct: 2,
-        explain: "📌 Видео ID = 0 орқали нуқтани рўйхатдан ўтказишда бир марта ёзилади. Шу нуқтадаги ID 1, 2, 3 ва ундан кейинги интервьюлар учун видеони қайта ёзиш ШАРТ ЭМАС."
+        correct: 2
     },
     {
         q: "Скринер саволларига кўра қайси респондент тадқиқотдан ЧИҚАРИЛАДИ?",
         opts: ["Охирги 3 ойда чет элга чиққан","Кредит ёки бўлиб тўлаш олган","Охирги 3 ойда маркетинг тадқиқотида қатнашган","Ёши 30 дан катта бўлган"],
-        correct: 2,
-        explain: "📌 Скринер бўйича чиқарилади: охирги 3 ойда маркетинг тадқиқотида қатнашган, смартфон ёки мобил интернетдан фойдаланмайдиган респондент."
+        correct: 2
     },
     {
         q: "Респондент билмаса ёки жавоб беришдан бош тортса, мажбурий (*) майдонига қандай қиймат киритилади?",
         opts: ["0 (нол) киритилади","Бўш қолдирилади","999 (уч тўққиз) киритилади","«Билмайман» сўзи ёзилади"],
-        correct: 2,
-        explain: "📌 Агар респондент билмаса ёки рад этса — 999 (фақат уч тўққиз) ёзилади. Сифат назорати учун телефон рақами рад этилса ҳам 999999999 ёзилади."
+        correct: 2
     },
     {
         q: "«Top of Mind» биринчи эслатма саволида интервьючи НИМА қилиши тўғри?",
         opts: ["Банк номларини рўйхатдан ўқиб чиқади ва респондент танлайди","Респондент биринчи айтган банк номини алоҳида ёзади, ҳеч нарса таклиф қилмайди","«Халқ банки тўғрими?» деб тасдиқлаб сўрайди","Респондент бир неча ном айтса, ҳаммасини биринчи жавоб деб белгилайди"],
-        correct: 1,
-        explain: "📌 Top of Mind саволида: биринчи айтилган банкнигина алоҳида қайд этиш керак. Вариантларни таклиф қилиш, номларни айтиш ёки жавобни тўзатиш қатъиян ман этилади."
+        correct: 1
     },
     {
         q: "Респондентга мурожаат матнида интервю қанча вақт давом этиши айтилиши керак?",
         opts: ["«2 дақиқа» деб ваъда қилинади","«10–15 дақиқа» деб тўғри айтилади","«5–6 дақиқа» деб реал тахминий вақт айтилади","Вақт умуман айтилмайди"],
-        correct: 2,
-        explain: "📌 Респондентга «тахминан 5–6 дақиқа» деб реал айтилади. Интервю жуда қисқа деб ёлғон ваъда бермаслик керак, чунки кўпроқ вақт олиши мумкин."
+        correct: 2
     },
     {
         q: "Интервьючи нейтраллигини сақлаш учун қайси ибора ТЎҒРИ?",
         opts: ["«Яхши!» ва «Ажойиб!» деб респондентни рағбатлантириш керак","«Тўғри жавоб!» деб тасдиқлаш керак","«Ҳа, тушундим» ёки «Ёзиб олдим» деб нейтрал давом этиш керак","«Бу жавоб нотўғри, қайта ўйланг» деб йўналтириш керак"],
-        correct: 2,
-        explain: "📌 Интервьючи «Яхши», «Ажойиб», «Тўғри», «Баракалла» каби сўзларни ишлатмаслиги керак. Фақат нейтрал: «Ҳа, тушундим», «Рахмат», «Ёзиб олдим», «Кейингиси»."
+        correct: 2
     },
     {
         q: "Респондент 15 ёш ёки ундан кичик бўлса интервю билан нима қилиш керак?",
         opts: ["Ота-онасининг розилигини сўраб давом этиш керак","Интервю тўхтатилади","Фақат жинс ва ёш гуруҳини ёзиб, қолган саволларни ўтказиб юбориш керак","Ёшини каттароқ деб қайта киритиш керак"],
-        correct: 1,
-        explain: "📌 Агар респондент 15 ёш ёки кичик бўлса, интервю тўхтатилади. Шунингдек, 51 ва ундан катта бўлса ҳам тадқиқот шартларига кўра анкета тугалланади."
+        correct: 1
     },
     {
         q: "Тугалланган анкеталарни серверга юбориш учун KoboCollect да қайси бўлим ишлатилади?",
         opts: ["«Drafts» — қораламалар бўлими","«Ready to Send» — тайёр анкеталар бўлими","«Settings» — созламалар бўлими","«Get Blank Form» — янги форма юклаб олиш бўлими"],
-        correct: 1,
-        explain: "📌 KoboCollect бош менюсида «Ready to Send» бўлими — тугалланган анкеталар рўйхати. Барча тайёр анкеталарни белгилаб «Send Selected» тугмасини босиш керак."
+        correct: 1
     },
     {
         q: "Интервю ўтказиладиган нуқтани танлашда қайси шарт тўғри?",
         opts: ["Кўринадиган жойда банк, тўлов иловалари рекламаси бўлса ҳам бўлади","Одамлар кам бўлган тинч, ёлғиз жой танлаш керак","Нейтрал (атрофида реклама йўқ) ВА ишчан (ўткинчилар етарли) жой бўлиши керак","Фақат бозор ёки савдо марказлари яқинида ўтказилади"],
-        correct: 2,
-        explain: "📌 Нуқта бир вақтнинг ўзида НЕЙТРАЛ (атрофида банк/илова рекламалари йўқ) ва ИШЧАН (ўткинчилар етарли) бўлиши керак. Агар реклама кўринса, узоқроққа ўтиш керак."
+        correct: 2
     }
 ];
 
+// Ўзгарувчилар
+let currentQuestions = [];  // Саволларнинг тартибланган нусхаси
 let current=0, score=0, answered=false, userName="", userCity="", startTime=null;
 const L=["A","B","C","D"];
+
+// Массивни аралаштириш функцияси (Fisher-Yates)
+function shuffleArray(arr){
+    for(let i=arr.length-1; i>0; i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [arr[i], arr[j]]=[arr[j], arr[i]];
+    }
+    return arr;
+}
+
+// Савол объектини олиб, опцияларини аралаштириш
+function shuffleQuestion(q){
+    const shuffledOpts = [...q.opts];
+    shuffleArray(shuffledOpts);
+    // Тўғри жавобнинг янги индексини топиш
+    const newCorrectIndex = shuffledOpts.indexOf(q.opts[q.correct]);
+    return {
+        q: q.q,
+        opts: shuffledOpts,
+        correct: newCorrectIndex
+    };
+}
+
+// Тестни тайёрлаш (саволлар тартибини ва опцияларни аралаштириш)
+function prepareTest(){
+    let shuffled = [...ORIGINAL_QUESTIONS];
+    shuffled = shuffleArray(shuffled);  // Саволлар тартибини аралаштириш
+    currentQuestions = shuffled.map(q => shuffleQuestion(q)); // Ҳар бир саволда опцияларни аралаштириш
+}
 
 function startQuiz(){
     const n=document.getElementById("userName").value.trim();
@@ -208,6 +229,10 @@ function startQuiz(){
     document.getElementById("errMsg").style.display="none";
     userName=n; userCity=c; startTime=new Date();
     current=0; score=0; answered=false;
+    
+    // Тестни аралаштириб тайёрлаш
+    prepareTest();
+    
     document.getElementById("start-screen").style.display="none";
     document.getElementById("quiz-screen").style.display="block";
     renderQuestion();
@@ -215,13 +240,11 @@ function startQuiz(){
 
 function renderQuestion(){
     answered=false;
-    const q=QUESTIONS[current];
+    const q=currentQuestions[current];
     document.getElementById("qNum").textContent="САВОЛ "+(current+1);
     document.getElementById("qText").textContent=q.q;
-    document.getElementById("progLabel").textContent="Савол "+(current+1)+" / "+QUESTIONS.length;
-    document.getElementById("progFill").style.width=(((current+1)/QUESTIONS.length)*100)+"%";
-    document.getElementById("explanation").className="explanation";
-    document.getElementById("explanation").innerHTML="";
+    document.getElementById("progLabel").textContent="Савол "+(current+1)+" / "+currentQuestions.length;
+    document.getElementById("progFill").style.width=(((current+1)/currentQuestions.length)*100)+"%";
     document.getElementById("btnNext").style.display="none";
     const box=document.getElementById("optionsBox");
     box.innerHTML="";
@@ -239,58 +262,70 @@ function renderQuestion(){
 function selectAnswer(idx){
     if(answered)return;
     answered=true;
-    const q=QUESTIONS[current];
+    const q=currentQuestions[current];
     document.querySelectorAll(".opt-btn").forEach((btn,i)=>{
         btn.disabled=true;
         if(i===q.correct) btn.classList.add("correct");
         else if(i===idx)  btn.classList.add("wrong");
     });
     if(idx===q.correct) score++;
-    const expl=document.getElementById("explanation");
-    expl.innerHTML=q.explain; expl.classList.add("show");
     const bn=document.getElementById("btnNext");
     bn.style.display="block";
-    bn.textContent=current<QUESTIONS.length-1?"Кейинги савол →":"Натижани кўриш →";
+    bn.textContent=current<currentQuestions.length-1?"Кейинги савол →":"Натижани кўриш →";
 }
 
 function nextQuestion(){
     current++;
-    if(current<QUESTIONS.length) renderQuestion();
+    if(current<currentQuestions.length) renderQuestion();
     else showResult();
 }
 
 async function showResult(){
     document.getElementById("quiz-screen").style.display="none";
     document.getElementById("result-screen").style.display="block";
-    const pass=score>=7;
-    const pct=Math.round((score/QUESTIONS.length)*100);
-    const dur=Math.round((new Date()-startTime)/1000);
-    const mins=Math.floor(dur/60), secs=dur%60;
-    document.getElementById("scoreNum").textContent=score+"/"+QUESTIONS.length;
+    
+    const pass = (score === 10);  // Фақат 10/10 — ўтди
+    const pct = Math.round((score/currentQuestions.length)*100);
+    const dur = Math.round((new Date()-startTime)/1000);
+    const mins = Math.floor(dur/60), secs = dur%60;
+    
+    document.getElementById("scoreNum").textContent=score+"/"+currentQuestions.length;
     document.getElementById("resultName").textContent=userName+" — "+userCity;
-    const v=document.getElementById("resultVerdict");
-    v.textContent=pass?"✅ ЎТДИ":"❌ ЎТМАДИ";
-    v.className="verdict "+(pass?"verdict-pass":"verdict-fail");
     document.getElementById("resultDetails").innerHTML=
-        "Тўғри жавоблар: <strong>"+score+" та</strong> ("+pct+"%)<br>"+
-        "Хато жавоблар: <strong>"+(QUESTIONS.length-score)+" та</strong><br>"+
+        "Сиз <strong>"+score+"</strong> та саволга тўғри жавоб бердинз ("+pct+"%)<br>"+
         "Сарфланган вақт: <strong>"+mins+" дақ "+secs+" сония</strong>";
+    
+    const v=document.getElementById("resultVerdict");
+    if(pass){
+        v.textContent="✅ ТАБРИКЛАЙМИЗ! СИЗ ТЕСТДАН ЎТДИНГИЗ!";
+        v.className="verdict verdict-pass";
+    } else {
+        v.textContent="❌ АФСУСКИ, СИЗ ТЕСТДАН ЎТМАДИНГИЗ. Видеони диққат билан ўрганинг ва қайта уриниб кўринг!";
+        v.className="verdict verdict-fail";
+    }
+    
+    // Хар доим уведомление юбориш
     await sendTelegram(pass,pct,mins,secs);
 }
 
 async function sendTelegram(pass,pct,mins,secs){
     const st=document.getElementById("tgStatus");
-    const verdict=pass?"✅ ЎТДИ":"❌ ЎТМАДИ";
+    const verdict=pass?"✅ ТЕСТДАН ЎТДИ":"❌ ТЕСТДАН ЎТМАДИ";
     const emoji=pass?"🟢":"🔴";
     const now=new Date();
     const dateStr=now.toLocaleDateString("ru-RU")+" "+now.toLocaleTimeString("ru-RU");
-    const text=`${emoji} <b>KoboCollect Тести Натижаси</b>\n\n`+
+    let text = `${emoji} <b>KoboCollect Тести Натижаси</b>\n\n`+
         `👤 <b>Исм:</b> ${userName}\n`+
         `📍 <b>Шаҳар:</b> ${userCity}\n`+
-        `📊 <b>Балл:</b> ${score}/${QUESTIONS.length} (${pct}%)\n`+
+        `📊 <b>Тўғри жавоблар:</b> ${score}/${currentQuestions.length} (${pct}%)\n`+
         `⏱ <b>Вақт:</b> ${mins} дақ ${secs} сония\n`+
         `🏆 <b>Ҳолат:</b> ${verdict}\n`+
         `📅 <b>Сана:</b> ${dateStr}`;
+    
+    if(!pass){
+        text += `\n\n⚠️ Видеони диққат билан ўрганиб, қайта уриниб кўринг!`;
+    }
+    
     try{
         const res=await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`,{
             method:"POST",
@@ -313,4 +348,4 @@ function retryQuiz(){
 }
 </script>
 </body>
-</html> 
+</html>
