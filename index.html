@@ -1,729 +1,316 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=3">
-<title>Intervyuer Qo'llanmasi — Zerkalo</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#f4f7fc;--w:#fff;--b1:#1a4a8a;--b2:#2d6cc0;--b3:#e8f0fb;--b4:#c8dcf8;--am:#c8790a;--amb:#fff4e0;--rd:#b83232;--rdb:#fdf0f0;--gn:#1e7a4a;--gnb:#edfaf3;--tx:#18243a;--t2:#4a5a7a;--br:#d0ddf0;--sh:0 4px 20px rgba(26,74,138,.10)}
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{font-size:18px}
-body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;line-height:1.7}
-header{background:var(--b1);position:sticky;top:0;z-index:200;box-shadow:0 3px 16px rgba(0,0,0,.2)}
-.hdr{max-width:720px;margin:0 auto;padding:11px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.logo{font-size:.9rem;font-weight:900;color:#fff;line-height:1.25}
-.logo span{color:#a8ccff;font-weight:700;font-size:.76rem;display:block}
-.dots{display:flex;gap:3px;flex-wrap:wrap;justify-content:flex-end}
-.dot{min-width:24px;height:24px;border-radius:6px;border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.6rem;color:rgba(255,255,255,.35);transition:all .3s;padding:0 3px}
-.dot.done{background:#a8ccff;border-color:#a8ccff;color:var(--b1)}
-.dot.active{background:#fff;border-color:#fff;color:var(--b1)}
-#app{max-width:720px;margin:0 auto;padding:18px 13px 80px}
-.pg{animation:fu .35s ease both}
-@keyframes fu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.card{background:var(--w);border-radius:20px;box-shadow:var(--sh);margin-bottom:16px;overflow:hidden;border:1.5px solid var(--br)}
-.ctop{background:linear-gradient(135deg,var(--b1),var(--b2));padding:20px;display:flex;align-items:flex-start;gap:14px}
-.cico{font-size:2rem;flex-shrink:0;margin-top:2px}
-.ctop h2{font-size:1.1rem;font-weight:900;color:#fff;line-height:1.3;margin-bottom:3px}
-.ctop p{font-size:.85rem;color:rgba(255,255,255,.78)}
-.cbody{padding:20px}
-.cbody p{font-size:.97rem;line-height:1.75;margin-bottom:13px}
-.cbody strong{font-weight:800}
-h3.s{font-size:1rem;font-weight:800;color:var(--b1);margin:20px 0 10px;display:flex;align-items:center;gap:9px}
-h3.s::before{content:'';width:5px;height:20px;background:var(--am);border-radius:4px;flex-shrink:0}
-.bx{border-radius:13px;padding:14px 16px;margin:12px 0;display:flex;align-items:flex-start;gap:12px;font-size:.95rem;line-height:1.7}
-.bxi{font-size:1.3rem;flex-shrink:0;margin-top:1px}
-.bxt strong{font-weight:800;display:block;margin-bottom:2px}
-.bx.bl{background:var(--b3);border-left:5px solid var(--b2);color:#0e2a5a}
-.bx.am{background:var(--amb);border-left:5px solid var(--am);color:#5a3500}
-.bx.rd{background:var(--rdb);border-left:5px solid var(--rd);color:#5a1010}
-.bx.gn{background:var(--gnb);border-left:5px solid var(--gn);color:#0e3d22}
-.rt{color:var(--rd);font-weight:800}
-.cl{list-style:none;margin:8px 0 13px}
-.cl li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1.5px dashed var(--br);font-size:.95rem;line-height:1.6}
-.cl li:last-child{border-bottom:none}
-.cl li::before{content:'✓';color:var(--b2);font-weight:900;flex-shrink:0;margin-top:1px}
-.cl li.no::before{content:'✗';color:var(--rd)}
-.stps{margin:12px 0}
-.stp{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
-.stn{width:33px;height:33px;border-radius:50%;background:var(--b1);color:#fff;font-weight:900;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-.stt{font-size:.95rem;line-height:1.65;padding-top:5px}
-.ig{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
-.ic{background:var(--b3);border-radius:12px;padding:12px 13px;display:flex;align-items:flex-start;gap:9px;border:1.5px solid var(--b4)}
-.ici{font-size:1.35rem;flex-shrink:0}
-.ic h4{font-size:.83rem;font-weight:800;color:var(--b1);margin-bottom:2px}
-.ic p{font-size:.78rem;color:var(--t2);line-height:1.45}
-.tc{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
-.tcc{background:var(--bg);border-radius:12px;padding:13px;border:1.5px solid var(--br)}
-.tcc h4{font-size:.87rem;font-weight:800;margin-bottom:8px}
-.tcc ul{list-style:none}
-.tcc ul li{font-size:.84rem;line-height:1.6;color:var(--t2);padding:2px 0}
-.tcc ul li::before{content:'• ';color:var(--b2);font-weight:900}
-.dt{width:100%;border-collapse:collapse;font-size:.87rem;margin:12px 0;border-radius:11px;overflow:hidden;border:1.5px solid var(--br)}
-.dt th{background:var(--b1);color:#fff;padding:10px 12px;font-size:.82rem;font-weight:800;text-align:left}
-.dt td{padding:9px 12px;border-bottom:1.5px solid var(--br);vertical-align:top;line-height:1.5}
-.dt tr:last-child td{border-bottom:none}
-.dt tr:nth-child(even) td{background:var(--bg)}
-.qt{width:100%;border-collapse:collapse;font-size:.8rem;margin:10px 0;overflow:hidden;border-radius:10px}
-.qt th{background:var(--b1);color:#fff;padding:8px;text-align:center;font-size:.75rem;font-weight:800}
-.qt td{padding:8px;text-align:center;border-bottom:1.5px solid var(--br)}
-.qt tr:nth-child(even) td{background:var(--bg)}
-.qt tr.tot td{background:var(--b3);font-weight:800;color:var(--b1)}
-.fq{border:1.5px solid var(--br);border-radius:12px;margin-bottom:9px;overflow:hidden}
-.fqq{padding:12px 16px;background:var(--b3);font-weight:700;font-size:.92rem;display:flex;justify-content:space-between;align-items:center}
-.fqq span{color:var(--b2)}
-.fqa{padding:12px 16px;font-size:.92rem;line-height:1.7;background:var(--w);color:var(--t2);border-top:1.5px solid var(--br);font-weight:600}
-.kg{display:grid;grid-template-columns:repeat(auto-fit,minmax(115px,1fr));gap:9px;margin:12px 0}
-.kc{background:var(--b3);border-radius:12px;padding:14px 10px;text-align:center;border:1.5px solid var(--b4)}
-.kc .ke{font-size:1.8rem;margin-bottom:6px}
-.kc h4{font-size:.81rem;font-weight:800;color:var(--b1);margin-bottom:2px}
-.kc p{font-size:.74rem;color:var(--t2);line-height:1.45}
-.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:9px;margin:12px 0}
-.ci{background:var(--b3);border-radius:11px;padding:11px 13px;display:flex;align-items:center;gap:8px;font-size:.91rem;font-weight:700;color:var(--b1);border:1.5px solid var(--b4)}
-.ci::before{content:'✓';font-size:1rem;font-weight:900}
-.hb{background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;border-radius:16px;padding:19px;margin:14px 0}
-.hb h4{font-size:.97rem;font-weight:900;color:#a8ccff;margin-bottom:8px}
-.hb p{font-size:.92rem;line-height:1.7;color:rgba(255,255,255,.92)}
-.qf{background:var(--b3);border-radius:14px;border:1.5px solid var(--b4);margin:12px 0;overflow:hidden}
-.qfh{background:var(--b1);color:#fff;padding:11px 16px;font-size:.88rem;font-weight:800}
-.qfb{padding:13px 16px}
-.qi{padding:9px 0;border-bottom:1.5px dashed var(--br);font-size:.92rem;line-height:1.65}
-.qi:last-child{border-bottom:none}
-.qin{font-size:.78rem;color:var(--t2);font-style:italic;margin-top:2px}
-.qo{margin-top:7px;display:flex;flex-direction:column;gap:4px}
-.qop{display:flex;align-items:flex-start;gap:8px;font-size:.87rem;color:var(--t2);padding:3px 0}
-.qop::before{content:'○';color:var(--b2);font-size:.92rem;flex-shrink:0;line-height:1.3}
-.qop.stop{color:var(--rd);font-weight:700}
-.qop.stop::before{content:'⛔';font-size:.8rem}
-.qop.mini{color:var(--am);font-weight:700}
-.qop.mini::before{content:'→';color:var(--am)}
-.qop.nr{color:var(--t2);font-style:italic}
-.qop.nr::before{content:'🔇';font-size:.76rem}
-.al{display:flex;flex-direction:column;gap:5px;margin-top:7px}
-.aln{border-bottom:1.5px solid var(--b2);height:25px;width:100%}
-.qp{background:var(--b3);border-radius:12px;padding:14px;border:1.5px solid var(--b4);margin:12px 0}
-.qp p{font-size:.92rem;line-height:1.7;margin-bottom:8px}
-.qp p:last-child{margin-bottom:0}
-.qpt{display:inline-flex;align-items:center;background:var(--b1);color:#fff;border-radius:8px;padding:4px 11px;font-size:.79rem;font-weight:800;margin:2px 2px 2px 0}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:14px 24px;border-radius:14px;font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;cursor:pointer;border:none;transition:all .2s;text-align:center;min-height:52px}
-.btn:active{transform:scale(.97)}
-.bgo{background:var(--b1);color:#fff;box-shadow:0 4px 14px rgba(26,74,138,.28)}
-.bgo:hover{background:var(--b2)}
-.bnx{background:#1a4a8a;color:#ffffff;box-shadow:0 4px 14px rgba(26,74,138,.18)}
-.bnx:hover{background:#2d6cc0}
-.bbk{background:var(--bg);color:var(--t2);border:2px solid var(--br)}
-.btn[disabled]{opacity:.38;cursor:not-allowed;transform:none!important;box-shadow:none}
-.bf{width:100%}
-.sr{text-align:center;margin-top:6px}
-.qtop{background:linear-gradient(135deg,var(--b1),var(--b2));padding:18px 20px;display:flex;align-items:center;gap:12px}
-.qtop .qi2{font-size:1.9rem;flex-shrink:0}
-.qtop h3{font-size:1rem;font-weight:900;color:#fff;margin-bottom:2px}
-.qtop p{font-size:.83rem;color:rgba(255,255,255,.78)}
-.qbd{padding:19px}
-.qblk{margin-bottom:26px}
-.qn{font-size:.74rem;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px}
-.qt2{font-size:1rem;font-weight:800;margin-bottom:13px;line-height:1.42}
-.qdv{border-top:1.5px dashed var(--br);margin:22px 0}
-.ops{display:flex;flex-direction:column;gap:9px}
-.op{border:2.5px solid var(--br);border-radius:14px;padding:12px 15px;cursor:pointer;font-size:.94rem;font-weight:600;line-height:1.5;transition:all .18s;background:var(--w);color:var(--tx);text-align:left;width:100%;display:flex;align-items:center;gap:11px;min-height:52px}
-.op:hover:not([disabled]){border-color:var(--b2);background:var(--b3)}
-.olb{width:31px;height:31px;border-radius:8px;background:var(--bg);border:2px solid var(--br);font-weight:900;font-size:.84rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--t2);transition:all .18s}
-.op.sel{border-color:var(--b2);background:var(--b3)}
-.op.sel .olb{background:var(--b2);border-color:var(--b2);color:#fff}
-.op.ws{border-color:var(--rd)!important;background:var(--rdb)!important;color:var(--rd)}
-.op.ws .olb{background:var(--rd);border-color:var(--rd);color:#fff}
-.op[disabled]{pointer-events:none}
-.fb{display:none;margin-top:10px;border-radius:10px;padding:11px 14px;font-size:.9rem;line-height:1.65;font-weight:600}
-.fb.show{display:block}
-.fb.bad{background:var(--rdb);color:#5a1010;border-left:5px solid var(--rd)}
-.qft{margin-top:22px;padding-top:17px;border-top:1.5px solid var(--br)}
-.qftt{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:7px}
-.qsc{font-size:.91rem;font-weight:700;color:var(--t2)}
-.qfbs{display:flex;flex-direction:column;gap:9px}
-.rb{background:var(--br);border-radius:10px;height:12px;margin:12px auto 22px;max-width:270px;overflow:hidden}
-.rf{height:100%;border-radius:10px;background:var(--b2);transition:width 1s ease}
-.sc{max-width:720px;margin:0 auto;padding:30px 16px 80px;display:flex;flex-direction:column;align-items:center}
-.bc{background:var(--w);border-radius:22px;box-shadow:var(--sh);padding:34px 28px;width:100%;max-width:440px;border:1.5px solid var(--br);text-align:center}
-.bc .bi{font-size:3rem;margin-bottom:12px}
-.bc h2{font-size:1.3rem;font-weight:900;color:var(--b1);margin-bottom:7px}
-.bc p{font-size:.92rem;color:var(--t2);line-height:1.7;margin-bottom:20px}
-.inp{width:100%;padding:13px 16px;border-radius:12px;border:2px solid var(--br);font-family:'Nunito',sans-serif;font-size:1rem;color:var(--tx);background:var(--bg);outline:none;transition:all .2s;margin-bottom:12px}
-.inp:focus{border-color:var(--b2);background:var(--w)}
-@media(max-width:500px){
-  html{font-size:16px}
-  .ig,.tc{grid-template-columns:1fr}
-  .dots{display:none}
-  .ctop,.cbody,.qbd{padding:15px 13px}
-  .hdr{padding:10px 13px}
-  .dt{font-size:.77rem}
-  .dt th,.dt td{padding:7px 8px}
-  .btn{font-size:.94rem;padding:13px 15px}
-  .bc{padding:22px 17px}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KoboCollect – Интервьючи Тести</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue:#1a5f7a; --teal:#2c8fa8; --accent:#f4a261;
+            --light:#eef4f8; --white:#ffffff; --text:#1e2a3e; --sub:#4a6278;
+            --correct:#27ae60; --wrong:#e74c3c; --border:#cfe0ea;
+            --shadow:rgba(26,95,122,0.10);
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Noto Sans',sans-serif;background:linear-gradient(135deg,#ddeef5 0%,#eaf3f8 60%,#f8fbfc 100%);min-height:100vh;color:var(--text);padding:2rem 1rem 4rem;}
+        .wrap{max-width:740px;margin:0 auto;}
+        .header{text-align:center;margin-bottom:2.5rem;}
+        .header .logo{display:inline-block;background:var(--blue);color:#fff;font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.35rem .9rem;border-radius:30px;margin-bottom:.75rem;}
+        .header h1{font-family:'Montserrat',sans-serif;font-size:1.85rem;font-weight:800;color:var(--blue);line-height:1.25;}
+        .header p{margin-top:.5rem;color:var(--sub);font-size:.95rem;}
+        .progress-bar-bg{background:var(--border);border-radius:99px;height:8px;margin-bottom:1.5rem;overflow:hidden;}
+        .progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--accent));border-radius:99px;transition:width .4s ease;}
+        .progress-label{font-size:.82rem;color:var(--sub);margin-bottom:.4rem;text-align:right;}
+        .card{background:var(--white);border-radius:24px;box-shadow:0 10px 36px var(--shadow);padding:2rem 2rem 1.6rem;margin-bottom:1.2rem;border:1px solid var(--border);animation:fadeUp .35s ease;}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+        .q-number{font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.65rem;}
+        .q-text{font-size:1.08rem;font-weight:500;line-height:1.6;margin-bottom:1.4rem;color:var(--text);}
+        .options{display:flex;flex-direction:column;gap:.65rem;}
+        .opt-btn{background:var(--light);border:2px solid var(--border);border-radius:14px;padding:.8rem 1.1rem;text-align:left;cursor:pointer;font-family:'Noto Sans',sans-serif;font-size:.95rem;color:var(--text);transition:border-color .2s,background .2s,transform .15s;display:flex;align-items:center;gap:.75rem;}
+        .opt-btn:hover:not(:disabled){border-color:var(--teal);background:#d6edf5;transform:translateX(4px);}
+        .opt-letter{min-width:28px;height:28px;background:var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;color:var(--blue);transition:background .2s,color .2s;flex-shrink:0;}
+        .opt-btn.correct{border-color:var(--correct);background:#e6f9ee;}
+        .opt-btn.wrong{border-color:var(--wrong);background:#fdecea;}
+        .opt-btn.correct .opt-letter{background:var(--correct);color:#fff;}
+        .opt-btn.wrong .opt-letter{background:var(--wrong);color:#fff;}
+        .opt-btn:disabled{cursor:default;transform:none;}
+        .explanation{margin-top:1rem;padding:.8rem 1.1rem;background:#fffaf2;border-left:4px solid var(--accent);border-radius:12px;font-size:.9rem;color:#4a3310;line-height:1.55;display:none;}
+        .explanation.show{display:block;animation:fadeUp .25s ease;}
+        .btn-next{margin-top:1.2rem;width:100%;padding:.85rem;background:linear-gradient(90deg,var(--blue),var(--teal));color:#fff;border:none;border-radius:14px;font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:.5px;transition:opacity .2s,transform .15s;display:none;}
+        .btn-next:hover{opacity:.9;transform:translateY(-2px);}
+        #result-screen{display:none;}
+        .result-card{background:var(--white);border-radius:24px;box-shadow:0 10px 36px var(--shadow);padding:2.5rem 2rem;text-align:center;border:1px solid var(--border);animation:fadeUp .4s ease;}
+        .score-circle{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 1.5rem;box-shadow:0 6px 24px rgba(26,95,122,.35);}
+        .score-circle .big{font-family:'Montserrat',sans-serif;font-size:2.2rem;font-weight:800;line-height:1;}
+        .score-circle .small{font-size:.78rem;opacity:.85;}
+        .result-card h2{font-family:'Montserrat',sans-serif;font-size:1.55rem;font-weight:800;color:var(--blue);margin-bottom:.5rem;}
+        .result-name{font-size:1.05rem;color:var(--sub);margin-bottom:1.2rem;}
+        .verdict{display:inline-block;padding:.4rem 1.1rem;border-radius:30px;font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5rem;}
+        .verdict-pass{background:#e6f9ee;color:var(--correct);}
+        .verdict-fail{background:#fdecea;color:var(--wrong);}
+        .result-details{font-size:.95rem;color:var(--sub);line-height:1.7;margin-bottom:1.5rem;}
+        .tg-status{padding:.7rem 1rem;border-radius:12px;font-size:.87rem;margin-bottom:1.2rem;display:none;}
+        .tg-ok{background:#e6f9ee;color:#1e6b3c;display:block;}
+        .tg-fail{background:#fdecea;color:#8a2020;display:block;}
+        .btn-retry{padding:.75rem 2rem;background:var(--light);border:2px solid var(--border);border-radius:14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.95rem;color:var(--blue);cursor:pointer;transition:background .2s;}
+        .btn-retry:hover{background:#cde4ef;}
+        .start-card{background:var(--white);border-radius:24px;box-shadow:0 10px 36px var(--shadow);padding:2.5rem 2rem;border:1px solid var(--border);animation:fadeUp .4s ease;}
+        .start-card h2{font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:800;color:var(--blue);margin-bottom:1rem;}
+        .info-list{list-style:none;margin:1rem 0 1.4rem;display:flex;flex-direction:column;gap:.4rem;}
+        .info-list li{font-size:.9rem;color:var(--sub);padding-left:1.4rem;position:relative;}
+        .info-list li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:700;}
+        .input-group{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem;}
+        .input-group label{font-size:.88rem;font-weight:600;color:var(--sub);}
+        .input-group input{padding:.75rem 1rem;border:2px solid var(--border);border-radius:12px;font-family:'Noto Sans',sans-serif;font-size:1rem;color:var(--text);outline:none;transition:border-color .2s;}
+        .input-group input:focus{border-color:var(--teal);}
+        .btn-start{width:100%;padding:.9rem;background:linear-gradient(90deg,var(--blue),var(--teal));color:#fff;border:none;border-radius:14px;font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:opacity .2s;margin-top:.5rem;}
+        .btn-start:hover{opacity:.9;}
+        .err-msg{color:var(--wrong);font-size:.85rem;margin-top:.5rem;display:none;}
+        @media(max-width:540px){.header h1{font-size:1.45rem;}.card{padding:1.4rem 1.2rem 1.2rem;}.q-text{font-size:.97rem;}}
+    </style>
 </head>
 <body>
-<header>
-  <div class="hdr">
-    <div class="logo">ZERKALO SSS<span>Intervyuer Qo'llanmasi</span></div>
-    <div class="dots" id="dots"></div>
-  </div>
-</header>
-<div id="app"></div>
+<div class="wrap">
+    <div class="header">
+        <div class="logo">KoboCollect</div>
+        <h1>Интервьючи билим тести</h1>
+        <p>Видео-сенарий асосида 10 та савол</p>
+    </div>
+
+    <!-- START -->
+    <div id="start-screen">
+        <div class="start-card">
+            <h2>📋 Тестни бошлашдан олдин</h2>
+            <ul class="info-list">
+                <li>Жами 10 та савол, ҳар бирида 1 та тўғри жавоб</li>
+                <li>Ҳар жавобдан кейин изоҳ кўрсатилади</li>
+                <li>Натижа автоматик Telegram га юборилади</li>
+                <li>7 ва ундан юқори балл — ўтди ✅</li>
+            </ul>
+            <div class="input-group">
+                <label for="userName">Исмингиз (тўлиқ)</label>
+                <input type="text" id="userName" placeholder="Масалан: Азиза Каримова">
+            </div>
+            <div class="input-group">
+                <label for="userCity">Шаҳар / Вилоят</label>
+                <input type="text" id="userCity" placeholder="Масалан: Фарғона">
+            </div>
+            <div class="err-msg" id="errMsg">Илтимос, исм ва шаҳарни киритинг.</div>
+            <button class="btn-start" onclick="startQuiz()">Тестни бошлаш →</button>
+        </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div id="quiz-screen" style="display:none;">
+        <div class="progress-label" id="progLabel">Савол 1 / 10</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" id="progFill" style="width:10%"></div></div>
+        <div class="card" id="qCard">
+            <div class="q-number" id="qNum">САВОЛ 1</div>
+            <div class="q-text" id="qText"></div>
+            <div class="options" id="optionsBox"></div>
+            <div class="explanation" id="explanation"></div>
+            <button class="btn-next" id="btnNext" onclick="nextQuestion()">Кейинги савол →</button>
+        </div>
+    </div>
+
+    <!-- RESULT -->
+    <div id="result-screen">
+        <div class="result-card">
+            <div class="score-circle">
+                <span class="big" id="scoreNum">0/10</span>
+                <span class="small">натижа</span>
+            </div>
+            <h2>Тест якунланди!</h2>
+            <div class="result-name" id="resultName"></div>
+            <div class="verdict" id="resultVerdict"></div>
+            <div class="result-details" id="resultDetails"></div>
+            <div class="tg-status" id="tgStatus"></div>
+            <button class="btn-retry" onclick="retryQuiz()">🔄 Қайтадан уриниш</button>
+        </div>
+    </div>
+</div>
+
 <script>
-const PASS=70,LB=['A','B','C','D'];
-let ST={screen:'reg',name:'',lesson:0,unlocked:0,ans:{},sub:false};
+const TG_TOKEN   = "8221711611:AAE6Mnx40RAD9Qbzk9-_dytJJQiaoR-RmPE";
+const TG_CHAT_ID = "427711714";
 
-const LS=[
-/* ═══ 0: KIRISH ═══ */
-{ico:"🏠",title:"Kirish: Loyihaga Xush Kelibsiz!",sub:"Loyiha va o'qitish tartibi haqida",body:`
-<div class="bx bl"><span class="bxi">ℹ️</span><div class="bxt"><strong>Zerkalo Sosiologik Servis</strong> — Toshkent shahridagi so'rovlar kompaniyasi. O'zbekiston va Markaziy Osiyo bozorida ijtimoiy va marketing so'rovlarini o'tkazadi.</div></div>
-<h3 class="s">Ushbu o'qitishda siz bilib olasiz:</h3>
-<div class="ig">
-<div class="ic"><span class="ici">🏦</span><div><h4>Banklar va MKT</h4><p>Bank, bank ilovasi va to'lov xizmatlari nima</p></div></div>
-<div class="ic"><span class="ici">🧠</span><div><h4>TOM nima</h4><p>Ko'meksiz bilimni o'lchash usuli</p></div></div>
-<div class="ic"><span class="ici">🔍</span><div><h4>Skrining</h4><p>Mos respondentni aniqlash qoidalari</p></div></div>
-<div class="ic"><span class="ici">📋</span><div><h4>Anketa</h4><p>Savollarni to'g'ri to'ldirish tartibi</p></div></div>
-<div class="ic"><span class="ici">🚶</span><div><h4>Dala ishi</h4><p>To'xtatib so'rash ko'rsatmalari</p></div></div>
-<div class="ic"><span class="ici">📊</span><div><h4>Kvotalar</h4><p>Kvotani saqlash va boshqarish</p></div></div>
-<div class="ic"><span class="ici">📱</span><div><h4>Kobo tizimi</h4><p>KoboCollect ilovasida ishlash</p></div></div>
-<div class="ic"><span class="ici">✅</span><div><h4>Sifat nazorati</h4><p>Ish qanday tekshiriladi</p></div></div>
-</div>
-<h3 class="s">O'qitish bosqichlari:</h3>
-<div class="stps">
-<div class="stp"><div class="stn">1</div><div class="stt">Telegram-kanalda materiallarni mustaqil o'rganasiz</div></div>
-<div class="stp"><div class="stn">2</div><div class="stt">Darhol natija bilan onlayn-testdan o'tasiz</div></div>
-<div class="stp"><div class="stn">3</div><div class="stt">Tanishlaringiz orasida ikkita taqlid intervyu o'tkazasiz</div></div>
-<div class="stp"><div class="stn">4</div><div class="stt">Bizdan fikr-mulohaza olasiz</div></div>
-<div class="stp"><div class="stn">5</div><div class="stt">1 kun davomida dalaga chiqasiz — ishingiz tekshiriladi</div></div>
-<div class="stp"><div class="stn">6</div><div class="stt">Sifat tasdiqlanganda — ishni davom ettirasiz</div></div>
-</div>`,
-qs:[
-{q:"Zerkalo Sosiologik Servis qaysi shaharda joylashgan?",opts:["Samarqand","Toshkent","Namangan","Buxoro"],ok:1,ex:"Zerkalo Sosiologik Servis Toshkent shahrida joylashgan."},
-{q:"O'qitish necha bosqichdan iborat?",opts:["3 bosqich","4 bosqich","6 bosqich","8 bosqich"],ok:2,ex:"O'qitish 6 bosqichdan iborat."},
-{q:"O'qitishdan so'ng siz nima qila olasiz?",opts:["Faqat banklar haqida gapira olasiz","Intervyularni to'g'ri va ishonchli o'tkaza olasiz","Faqat kvotalarni to'ldira olasiz","Shunchaki testdan o'ta olasiz"],ok:1,ex:"O'qitishdan so'ng intervyularni ishonchli va to'g'ri o'tkaza olasiz."}
-]},
-
-/* ═══ 1: BANKLAR ═══ */
-{ico:"🏦",title:"1-dars: Banklar, MKT va To'lov Xizmatlari",sub:"Moliyaviy tushunchalarni to'g'ri tushunish",body:`
-<h3 class="s">Bank nima?</h3>
-<p>Bank — omonatlarni qabul qiluvchi, kreditlar beruvchi va kartalar chiqaruvchi moliyaviy tashkilot. <strong>MKT</strong> (mikrokredit tashkiloti) — mikrokarzlar beruvchi foydali tashkilot.</p>
-<div class="bx gn"><span class="bxi">✅</span><div class="bxt"><strong>Ushbu so'rovda banklar ham, MKT ham bo'yicha javoblar qabul qilinadi.</strong><br>Misollar: «Kapitalbank», «Asaka Bank», «Anorbank», «Shaffof Moliya», «TezCoin»</div></div>
-<h3 class="s">Bank ilovasi nima?</h3>
-<p>Bank ilovasi — muayyan bankning rasmiy mobil ilovasi. Mijozlarga hisoblar, omonatlar, kreditlar va o'tkazmalarni amalga oshirish imkonini beradi. U <strong>faqat bitta bankka</strong> tegishli.</p>
-<h3 class="s">To'lov xizmati nima?</h3>
-<p>To'lov xizmati — bank hisobini ochish zaruratisiz tezkor to'lovlar va o'tkazmalar uchun mustaqil platforma. U <strong>bir nechta bankning kartalarini qo'llab-quvvatlashi</strong> mumkin. <strong>Misollar: Paynet, Click, Payme</strong></p>
-<h3 class="s">Asosiy farq:</h3>
-<table class="dt">
-<tr><th>Bank Ilovasi</th><th>To'lov Xizmati</th></tr>
-<tr><td>Faqat bitta bankka tegishli</td><td>Mustaqil platforma</td></tr>
-<tr><td>Hisoblar, kreditlar, omonatlarni boshqaradi</td><td>Faqat tranzaksiyalar uchun</td></tr>
-<tr><td>Bank hisobi kerak</td><td>Bir nechta bankning kartalarini qo'llab-quvvatlaydi</td></tr>
-<tr><td>Misol: Kapitalbank App</td><td>Misol: Click, Payme</td></tr>
-</table>
-<p>Kreditlarni <strong>banklarda, MKTlarda va ba'zi ilovalar</strong> orqali olish mumkin. Omonatlar banklarda va ba'zi yirik MKTlarda ochiladi.</p>
-<div class="bx rd"><span class="bxi">🚫</span><div class="bxt"><strong>MUHIM!</strong> Bu nomlar faqat sizning tushunishingiz uchun. Respondentlarga bu nomlarni aytmasligingiz kerak.</div></div>`,
-qs:[
-{q:"To'lov xizmati qanday platforma?",opts:["Faqat bitta bankka tegishli","Mustaqil platforma, bir nechta bankning kartalarini qo'llab-quvvatlaydi","Faqat kreditlar uchun","Faqat omonatlar uchun"],ok:1,ex:"To'lov xizmati mustaqil platforma bo'lib, bir nechta bankning kartalarini qo'llab-quvvatlashi mumkin."},
-{q:"Respondent kredit qayerdan olish mumkinligini so'rasa nima javob berasiz?",opts:["Kapitalbank'dan olsa bo'ladi","Bizni sizning fikringiz qiziqtiradi","Anorbank ilovasida olsa bo'ladi","Olmaslik yaxshi, bu xavfli"],ok:1,ex:"To'g'ri javob: bizni respondentning o'z fikri qiziqtiradi — nomlarni aytmaymiz."},
-{q:"Kredit qayerlardan olish mumkin?",opts:["Faqat banklar","Faqat MKTlar","Banklar, MKTlar va ba'zi ilovalar orqali","Faqat to'lov xizmatlari"],ok:2,ex:"Kreditlarni banklarda, MKTlarda va ba'zi ilovalar orqali olish mumkin."},
-{q:"Respondentga bank nomini aytsa bo'ladimi?",opts:["Ha, tushuntirish uchun","Faqat so'rasa","Yo'q, hech qachon — TOM qoidasiga zid","Ha, har doim"],ok:2,ex:"Bu nomlar faqat sizning tushunishingiz uchun. Respondentlarga aytmasligingiz kerak."}
-]},
-
-/* ═══ 2: TOM ═══ */
-{ico:"🧠",title:"2-dars: Ko'meksiz Bilimni O'lchash (TOM)",sub:"Top of Mind metodologiyasi va amaliy misollar",body:`
-<div class="hb"><h4>🧠 TOM nima?</h4><p>TOM (Top of Mind) — banklar, bank ilovalari va to'lov xizmatlarini <strong>ko'rsatmasdan</strong> bilish o'lchanadigan metodologiya. Avval nima esga keladi — shu o'lchanadi.</p></div>
-<div class="tc">
-<div class="tcc"><h4>✅ Nima qilish mumkin</h4><ul><li>Savollarni ochiq berish</li><li>Javoblarni so'zma-so'z yozish</li><li>Neytral tushuntirish o'qish</li><li>3–5 soniya kutish</li><li>«Yana?» deb davom ettirish</li></ul></div>
-<div class="tcc"><h4>🚫 Nima qilish mumkin emas</h4><ul><li>Nomlarni ko'rsatmang</li><li>Savolni qayta shakllantirmang</li><li>Farqlarni tushuntirmang</li><li>Eslashda yordam bermang</li><li>Javoblarni qisqartirmang</li></ul></div>
-</div>
-<div class="bx am"><span class="bxi">⏱️</span><div class="bxt">Savoldan keyin <strong>3–5 soniya</strong> kuting. Respondent «boshqa bilmayman» deguncha <strong>«Yana?»</strong> deb so'rab turing.</div></div>
-<h3 class="s">Amaliy misollar:</h3>
-<table class="dt">
-<tr><th>Vaziyat</th><th>Nima qilish kerak</th></tr>
-<tr><td>Respondent: «Kapitalbank» dedi</td><td>1-maydonga yozing, «Yana?» deb so'rang</td></tr>
-<tr><td>Respondent: «Ipoteka bank va Anorbank» dedi</td><td>Har birini <strong>alohida</strong> maydonga yozing</td></tr>
-<tr><td>Respondent: «PayNet» dedi va to'xtadi</td><td>PayNet ni yozing, bo'sh maydonlarga <strong>«BILMAYMAN»</strong> yozing</td></tr>
-<tr><td>Respondent 7 ta nom aytdi, 6 ta maydon bor</td><td>Oxirgi maydonga qolganlarni <strong>vergul</strong> bilan yozing</td></tr>
-<tr><td>Bank ilovasi so'ralganda «Click» dedi</td><td>So'zma-so'z yozing, <span class="rt">to'g'irlamang</span></td></tr>
-<tr><td>Respondent: «Bankda» dedi</td><td>«Qaysi bankda?» deb aniqlashtir</td></tr>
-</table>`,
-qs:[
-{q:"TOM qanday metodologiya?",opts:["Ko'rsatma yordamida bilim o'lchash","Ko'meksiz bilim — respondent o'z-o'zicha eslaydigan nomlar","Tanlov orqali bilimni baholash","Reklama ta'sirini o'lchash"],ok:1,ex:"TOM — ko'meksiz bilim. Respondent o'z-o'zicha eslaydigan nomlar o'lchanadi."},
-{q:"Respondent «Ipoteka bank va Anorbank» dedi. Qanday yozish kerak?",opts:["Ikkisini bitta maydonga yozish","Har birini alohida maydonga yozish","Faqat birinchisini yozish","Ikkisini ham o'tkazib yuborish"],ok:1,ex:"Har bir nomni alohida maydonga yozing."},
-{q:"Respondent faqat «PayNet» aytdi va to'xtadi. Qolgan majburiy maydonlarga nima yozish kerak?",opts:["Bo'sh qoldirish","«BILMAYMAN» deb yozish","Keyingi savolga o'tish","Menejerga xabar berish"],ok:1,ex:"Respondent eslay olmasa — majburiy bo'sh maydonlarga «BILMAYMAN» deb yozing."},
-{q:"Respondent 7 ta nom aytdi, anketada esa 6 ta maydon bor. Nima qilish kerak?",opts:["Faqat birinchi 6 tasini yozish","Oxirgi maydonga qolgan nomlarni vergul bilan yozish","Respondentdan 6 tani tanlashini so'rash","Qo'shimcha varaq olish"],ok:1,ex:"Oxirgi maydonga qolgan nomlarni vergul bilan yozing."},
-{q:"Bank ilovasi so'ralganda respondent «Click» dedi. Nima qilish kerak?",opts:["To'g'irlab tushuntiraman","So'zma-so'z yozaman, to'g'irlamayman","Savolni o'tkazib yuboraman","Anketani to'xtataman"],ok:1,ex:"Respondent bank ilovasi o'rniga to'lov xizmatini atasa — to'g'irlamang. So'zma-so'z yozing."},
-{q:"Respondent «Bankda» deb javob berdi. Nima qilish kerak?",opts:["Shunday yozib ketaman","«Qaysi bankda?» deb aniqlashtiraman","O'tkazib yuboraman","Anketani to'xtataman"],ok:1,ex:"Javob juda umumiy bo'lsa — «Qaysi bankda?» deb aniqlashtiring."}
-]},
-
-/* ═══ 3: SKRINING ═══ */
-{ico:"🔍",title:"3-dars: Skrining — Mos Respondentni Aniqlash",sub:"Skrining savollari va mini-savollar bilan to'g'ri yakunlash",body:`
-<div class="bx bl"><span class="bxi">📌</span><div class="bxt">So'rovni boshlashdan avval respondentning mos kelishini aniqlaydigan <strong>5 ta skrining savoli</strong> beriladi: jins, yosh, oxirgi 3 oy faoliyati, smartfon va mobil internet.</div></div>
-<h3 class="s">Skrining nima uchun kerak?</h3>
-<p>Skrining respondentning so'rovda ishtirok etishga mos kelishini aniqlashga yordam beradi. Bizga quyidagilar <strong>mos kelmaydi:</strong></p>
-<ul class="cl">
-<li class="no">16 yoshdan kichik yoki 50 yoshdan katta bo'lganlar</li>
-<li class="no">Smartfon yoki mobil internetdan foydalanmaganlar</li>
-<li class="no">Oxirgi 3 oy ichida so'rovlarda qatnashganlar</li>
-<li class="no">Jins va yosh bo'yicha kvota allaqachon to'ldirilgan bo'lsa</li>
-</ul>
-<div class="bx am"><span class="bxi">💡</span><div class="bxt">Agar respondent mos kelmasa — unga <span class="rt">to'g'ridan-to'g'ri «siz mos emassiz» deb aytish noo'rin</span>. Buning o'rniga 3 ta qisqa mini-savol berib, so'rovni muloyim yakunlash kerak.</div></div>
-<div class="bx rd"><span class="bxi">⚠️</span><div class="bxt"><strong>Faqat istisno:</strong> Respondent 15 yoshdan kichik bo'lsa — so'rov <strong>avtomatik</strong> yakunlanadi, mini-savollarsiz.</div></div>
-<h3 class="s">Respondentga murojaat:</h3>
-<div class="qf"><div class="qfh">🗣️ Respondentga aytish kerak bo'lgan so'zlar</div>
-<div class="qfb"><div class="qi"><div style="font-style:italic;color:var(--t2);line-height:1.8">"Yaxshi kun! Biz bank xizmatlari va mobil ilovalar haqida qisqa so'rov o'tkazyapmiz. Intervyu taxminan 5–6 daqiqa davom etadi. So'rov to'liq anonim, sizning javoblaringiz faqat umumlashtirilgan shaklda ishlatiladi. Sizning fikringiz shahrimiz aholisi sifatida biz uchun juda muhim. Iltimos, so'rovda ishtirok eting!"</div></div></div></div>
-<h3 class="s">Skrining savollari:</h3>
-<div class="qf"><div class="qfh">S1. Respondentning jinsi — SO'RAMASDAN BELGILANG</div>
-<div class="qfb"><div class="qi"><div class="qo"><div class="qop">Erkak</div><div class="qop">Ayol</div></div></div></div></div>
-<div class="qf"><div class="qfh">S2. Sizning to'liq yoshingiz nechida?</div>
-<div class="qfb"><div class="qi"><div class="qin">RAQAMNI YOZING: ________</div>
-<div class="qo" style="margin-top:9px">
-<div class="qop stop">15 va undan kam → SO'ROV AVTOMATIK YAKUNLANADI</div>
-<div class="qop">16 – 24</div><div class="qop">25 – 40</div><div class="qop">41 – 50</div>
-<div class="qop mini">51+ → MOS KELMAYDI — mini-savollar berilib so'rov yakunlanadi</div>
-</div></div></div></div>
-<div class="qf"><div class="qfh">S3. Oxirgi 3 oy ichida quyidagilardan qaysilarini qilgansiz?</div>
-<div class="qfb"><div class="qi"><div class="qin">BARCHA VARIANTLARNI O'QIB BERING. BIR NECHTA JAVOB BO'LISHI MUMKIN.</div>
-<div class="qo">
-<div class="qop">Kredit yoki muddatli to'lovni rasmiylashtirdim</div>
-<div class="qop">Yirik maishiy texnika sotib oldim</div>
-<div class="qop mini">So'rov yoki so'rovnomalarda ishtirok etdim → MOS KELMAYDI — mini-savollar berilib yakunlanadi</div>
-<div class="qop">Chet elga chiqdim</div>
-<div class="qop nr">O'QILMAYDI: Yuqoridagilardan hech biri</div>
-</div></div></div></div>
-<div class="qf"><div class="qfh">S4. Siz smartfondan foydalanasizmi?</div>
-<div class="qfb"><div class="qi"><div class="qo">
-<div class="qop">Ha</div>
-<div class="qop mini">Yo'q → MOS KELMAYDI — mini-savollar berilib yakunlanadi</div>
-</div></div></div></div>
-<div class="qf"><div class="qfh">S5. Siz mobil internetdan foydalanasizmi?</div>
-<div class="qfb"><div class="qi"><div class="qo">
-<div class="qop">Ha</div>
-<div class="qop mini">Yo'q → MOS KELMAYDI — mini-savollar berilib yakunlanadi</div>
-</div></div></div></div>
-<div class="bx gn"><span class="bxi">✅</span><div class="bxt"><strong>Agar respondent mezonlarga mos kelsa</strong> — tizim sizni anketa savollariga o'tkazadi.<br><strong>Agar mos kelmasa</strong> — tizim sizni 3 ta mini-savolga o'tkazadi.</div></div>
-<h3 class="s">Mini-savollar (aloqani muloyim yakunlash uchun):</h3>
-<div class="qf"><div class="qfh">M1. Xaridlar va xizmatlar uchun ko'pincha qanday usulda to'lov qilasiz? (bir nechta javob mumkin)</div>
-<div class="qfb"><div class="qi"><div class="qin">HAR BIR VARIANTNI O'QIB ESHITTIRING</div>
-<div class="qo"><div class="qop">Naqd pulda</div><div class="qop">Bank kartasi orqali</div><div class="qop">Mobil ilova orqali</div></div></div></div></div>
-<div class="qf"><div class="qfh">M2. Ko'pincha qaysi bank kartasidan foydalanasiz? (bitta javob)</div>
-<div class="qfb"><div class="qi"><div class="qo">
-<div class="qop">Xalq banki / NBU</div><div class="qop">O'zpromstroybank</div><div class="qop">Agrobank</div>
-<div class="qop">TBC bank</div><div class="qop">Ipoteka-bank</div><div class="qop">Ipak Yo'li banki</div>
-<div class="qop">ANOR bank</div><div class="qop">Hamkorbank</div><div class="qop">Aloqabank</div>
-<div class="qop">Kapitalbank</div><div class="qop">Boshqa</div>
-</div></div></div></div>
-<div class="qf"><div class="qfh">M3. To'lovlar uchun ko'pincha qaysi mobil ilovadan foydalanasiz? (bitta javob)</div>
-<div class="qfb"><div class="qi"><div class="qo">
-<div class="qop">Click</div><div class="qop">Payme</div><div class="qop">Paynet</div><div class="qop">Boshqa</div>
-</div></div></div></div>`,
-qs:[
-{q:"Anketada skrining nima uchun ishlatiladi?",opts:["So'rovning asosiy savollarini berish uchun","Respondent so'rovda ishtirok etishga mos keladimi yoki yo'qligini aniqlash uchun","Intervyu davomiyligini qisqartirish uchun","Respondent haqida qo'shimcha ma'lumot yig'ish uchun"],ok:1,ex:"Skrining — respondentning so'rovga mos kelishini aniqlash uchun ishlatiladi."},
-{q:"Respondent mezonlarga mos kelmasa, so'rovni qanday yakunlash kerak?",opts:["To'g'ridan-to'g'ri «Siz bizning mezonlarga mos kelmaysiz» deb aytish","2–3 ta qisqa mini-savol berib, muloyim tarzda yakunlash","So'rovni odatdagidek davom ettirish","Hech narsa demay ketish"],ok:1,ex:"Skriningdan o'tmagan respondentlarga 2–3 ta mini-savol berib, so'rovni muloyim va hurmatli tarzda yakunlash kerak."},
-{q:"Nima uchun mos kelmaydigan respondentlarga mini-savollar beriladi?",opts:["Intervyular sonini ko'paytirish uchun","Suhbatni muloyim yakunlash va murojaatimiz bilan vaqtini olgan odamni ranjitmaslik uchun","Respondentning javobini o'zgartirish mumkinligini tekshirish uchun","Qo'shimcha ma'lumot yig'ish uchun"],ok:1,ex:"Mini-savollar respondentni ranjitmaslik va suhbatni hurmatli tarzda yakunlash uchun beriladi."},
-{q:"Agar respondent 15 yoshdan kichik bo'lsa nima bo'ladi?",opts:["Intervyuer qo'shimcha savollar beradi","Intervyuer so'rovni davom ettiradi","So'rov avtomatik ravishda yakunlanadi","Mini-savollarga o'tiladi"],ok:2,ex:"Respondent 15 yoshdan kichik bo'lsa — so'rov avtomatik yakunlanadi."}
-]},
-
-/* ═══ 4: ANKETA ═══ */
-{ico:"📋",title:"4-dars: Anketa — Savollar va To'ldirish Qoidalari",sub:"Ochiq savollar tamoyili va barcha savollar mazmuni",body:`
-<div class="bx bl"><span class="bxi">📌</span><div class="bxt">Anketada <strong>1 dan 15 gacha</strong> bo'lgan savollar ochiq savollar hisoblanadi. Har biri <strong>ikki bosqichda</strong> beriladi: avval asosiy savol, so'ngra «Yana-chi?» orqali qo'shimcha javoblar yig'iladi.</div></div>
-<h3 class="s">Ochiq savollarni to'ldirish qoidasi:</h3>
-<table class="dt">
-<tr><th>Qoida</th><th>Tushuntirish</th></tr>
-<tr><td>Har bir maydonga faqat bitta javob</td><td>Bir nechta nomni bitta maydonga yozish mumkin emas</td></tr>
-<tr><td>«Yana-chi?» albatta bering</td><td>Birinchi javobdan keyin davom ettirib so'rang</td></tr>
-<tr><td>Javobni so'zma-so'z yozing</td><td>Respondentning javobini tuzatmang yoki qisqartirmang</td></tr>
-<tr><td>Majburiy maydonlar bo'sh qolmasin</td><td>Eslay olmasa — «BILMAYMAN» deb yozing</td></tr>
-<tr><td>Ko'p javob bo'lsa</td><td>Oxirgi maydonga qolganlarni vergul bilan yozing</td></tr>
-</table>
-<div class="bx rd"><span class="bxi">🚫</span><div class="bxt"><strong>HECH QACHON:</strong> nomlarni aytib yordam bermang, javoblarni tuzatmang, savolni o'z so'zingiz bilan aytmang.</div></div>
-<h3 class="s">7-savolga alohida diqqat:</h3>
-<div class="bx am"><span class="bxi">⚠️</span><div class="bxt">Kredit yoki omonat haqida so'raganda respondent «Bankda» deb javob bersa — <strong>«Qaysi bankda?»</strong> deb aniqlashtiring. Faqat «Bankda» degan javob yetarli emas.</div></div>
-<h3 class="s">So'rovnoma savollari:</h3>
-<div class="qf"><div class="qfh">1-savol. Xayolingizga birinchi bo'lib qaysi bankning nomi keladi?</div>
-<div class="qfb"><div class="qi"><div class="qin">BIRINCHI ESLATMANI BELGILASH</div>
-<div class="al"><div class="aln"></div></div></div></div></div>
-<div class="qf"><div class="qfh">2-savol. Yana-chi? Bilganlaringizning hammasini sanab bering.</div>
-<div class="qfb"><div class="qi"><div class="qin">HAMMA ESLATMALARNI BELGILASH. KAMIDA 3 ta («ENDI BILMAYMAN» deb javob bermaguncha)</div>
-<div class="al"><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div></div></div></div></div>
-<div class="bx bl"><span class="bxi">📝</span><div class="bxt"><strong>3-savol uchun intervyuer izohi:</strong> Bank ilovasi — muayyan bankning rasmiy mobil ilovasi bo'lib, u mijozlarga shaxsiy hisoblar va kartalarni boshqarish, omonatlar ochish, kreditlar rasmiylashtirish, o'tkazmalarni amalga oshirish imkonini beradi.</div></div>
-<div class="qf"><div class="qfh">3-savol. Bank xizmatlarini amalga oshirish uchun qanday ilovalarni bilasiz?</div>
-<div class="qfb"><div class="qi"><div class="qin">BIRINCHI ESLATMANI BELGILASH</div>
-<div class="al"><div class="aln"></div></div></div></div></div>
-<div class="qf"><div class="qfh">4-savol. Yana-chi? Bilganlaringizning hammasini sanab bering.</div>
-<div class="qfb"><div class="qi"><div class="qin">HAMMA ESLATMALARNI BELGILASH. KAMIDA 3 ta</div>
-<div class="al"><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div></div></div></div></div>
-<div class="bx bl"><span class="bxi">📝</span><div class="bxt"><strong>5-savol uchun intervyuer izohi:</strong> To'lov servisi — bank hisobini ochish zaruratisiz tezkor to'lovlar, o'tkazmalar va xizmatlar uchun to'lovlarni amalga oshirishga mo'ljallangan mustaqil platformadir.</div></div>
-<div class="qf"><div class="qfh">5-savol. To'lov va pul o'tkazmalarini amalga oshirish uchun qanday ilovalarni bilasiz?</div>
-<div class="qfb"><div class="qi"><div class="qin">BIRINCHI ESLATMANI BELGILASH</div>
-<div class="al"><div class="aln"></div></div></div></div></div>
-<div class="qf"><div class="qfh">6-savol. Yana-chi? Bilganlaringizning hammasini sanab bering.</div>
-<div class="qfb"><div class="qi"><div class="qin">HAMMA ESLATMALARNI BELGILASH. KAMIDA 3 ta</div>
-<div class="al"><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div></div></div></div></div>
-<div class="bx am"><span class="bxi">⚠️</span><div class="bxt">7 va 8-savollarda aniq tashkilot nomini aytishini so'rang. Faqat «Bankda» degan javob mos kelmaydi.</div></div>
-<div class="qf"><div class="qfh">7-savol. Kredit yoki mikroqarzni qayerdan olsa bo'ladi?</div>
-<div class="qfb"><div class="qi"><div class="qin">Siz biladigan barcha banklar, MKTlar yoki ilovalarning nomlarini sanab o'ting.</div>
-<div class="al"><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div></div></div></div></div>
-<div class="qf"><div class="qfh">8-savol. Qayerda omonat yoki depozit ochish mumkin?</div>
-<div class="qfb"><div class="qi"><div class="qin">Siz biladigan barcha banklar yoki ilovalarning nomlarini sanab o'ting.</div>
-<div class="al"><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div></div></div></div></div>
-<div class="qf"><div class="qfh">9-savol. Oxirgi 4 hafta ichida qaysi banklar va to'lov ilovalarining reklamalarini ko'rdingiz?</div>
-<div class="qfb"><div class="qi"><div class="qin">Ko'rganlaringizning hammasini sanab bering. (Televidenie, internet, ko'cha — barchasi hisobga olinadi)</div>
-<div class="al"><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div></div></div></div></div>
-<div class="qf"><div class="qfh">13-savol. Oylik maoshingizdan tashqari qaysi bankning kartalarini bilasiz?</div>
-<div class="qfb"><div class="qi"><div class="qin">Aniq bank nomlarini aytishini so'rang.</div>
-<div class="al"><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div><div class="aln"></div></div></div></div></div>
-<div class="qf"><div class="qfh">14-savol. Uzum kartasi haqida bilasizmi?</div>
-<div class="qfb"><div class="qi"><div class="qo">
-<div class="qop">Ha</div><div class="qop stop">Yo'q → SO'ROV YAKUNLANADI</div>
-</div></div></div></div>
-<div class="qf"><div class="qfh">15-savol. Uzum kartasining qanday imkoniyatlarini bilasiz?</div>
-<div class="qfb"><div class="qi"><div class="qin">BARCHA VARIANTLARNI OVOZLANTIRING. BIR NECHTA JAVOB BO'LISHI MUMKIN.</div>
-<div class="qo">
-<div class="qop">Bepul o'tkazmalar</div>
-<div class="qop">Metro va avtobuslar uchun keshbek</div>
-<div class="qop">Uzum Market va Uzum Tezkor'da chegirmalar</div>
-<div class="qop">30 kunga foizsiz mikroqarz</div>
-<div class="qop">Komissiyasiz naqd pul yechib olish</div>
-<div class="qop">Uzum to'lov orqali QR keshbek bilan to'lov</div>
-<div class="qop">Hech birini bilmayman</div>
-</div></div></div></div>
-<div class="qf"><div class="qfh">16-savol. Uzum kartasini allaqachon rasmiylashtirganmisiz?</div>
-<div class="qfb"><div class="qi"><div class="qo">
-<div class="qop">Ha</div><div class="qop stop">Yo'q → SO'ROV YAKUNLANADI</div>
-</div></div></div></div>`,
-qs:[
-{q:"Topshiriq 1. «Xayolingizga birinchi bo'lib qaysi bankning nomi keladi?» — respondent «Kapitalbank va Anorbank» dedi. Qanday yozasiz?",opts:["Ikkala variantni ham birinchi maydonga yozish","«Kapitalbank»ni birinchi, «Anorbank»ni yozmaslik","«Kapitalbank»ni 1-javob, «Anorbank»ni 2-javob sifatida yozish","Faqat «Anorbank»ni yozish"],ok:2,ex:"«Kapitalbank»ni birinchi javob sifatida, «Anorbank»ni ikkinchi javob sifatida alohida yozing."},
-{q:"Topshiriq 2. «Yana-chi?» so'rog'iga respondent «Ipoteka bank va Anorbank» dedi. Qanday yozish kerak?",opts:["Ikkala bankni bitta maydonga yozish","Har bir bankni alohida maydonga yozish","Faqat bitta bankni yozish","Hech birini yozmaslik"],ok:1,ex:"Har bir nomni alohida maydonga yozing."},
-{q:"Topshiriq 3. Respondent faqat «PayNet» dedi. Majburiy bo'sh maydonlarga nima yozish kerak?",opts:["Maydonlarni bo'sh qoldirish","Majburiy maydonlarga «BILMAYMAN» deb yozish","Savolni o'tkazib yuborish","Menejerga xabar berish"],ok:1,ex:"Majburiy bo'sh maydonlarga «BILMAYMAN» deb yozing."},
-{q:"Topshiriq 4. Respondent 7 ta nom aytdi, lekin anketada 6 ta maydon bor. Nima qilish kerak?",opts:["Faqat birinchi 6 tasini yozish","Oxirgi maydonga bir nechta variantni vergul orqali yozish","Respondentdan faqat 6 tasini tanlashni so'rash","Yangi maydon ochish"],ok:1,ex:"Oxirgi maydonga qolgan nomlarni vergul bilan yozing."},
-{q:"Topshiriq 5. Bank ilovalari haqidagi savolda respondent «Click» dedi. Nima qilish kerak?",opts:["Javobni to'g'rilab, bu bank ilovasi emasligini tushuntirish","Javobni aynan aytilganidek yozib olish","Faqat bank ilovalarini aytishini so'rash","Savolni o'tkazib yuborish"],ok:1,ex:"So'zma-so'z yozing — to'g'irlamang."},
-{q:"Topshiriq 6. Kredit savolida respondent «Bankda» dedi. Nima qilish kerak?",opts:["Javobni qanday bo'lsa shunday yozish","Aniq bank yoki tashkilot nomini aytishini so'rash","Savolni o'tkazib yuborish","Boshqa savolga o'tish"],ok:1,ex:"«Qaysi bankda?» deb aniqlashtiring — umumiy «Bankda» javob yetarli emas."},
-{q:"Topshiriq 7. Respondent 2 ta bank aytdi, intervyuer boshqa so'ramaslikka qaror qildi. Bu to'g'rimi?",opts:["Ha, 2 ta javob yetarli","Yo'q, «Yana-chi?» deb «Bilmayman» javobigacha so'rash kerak","Ha, vaqtni tejash kerak","Ha, respondent charchab qolishi mumkin"],ok:1,ex:"«Yana-chi?» deb respondent «Bilmayman» demaguncha so'rab turing."},
-{q:"Topshiriq 8. Respondent bank ilovasi nima ekanini tushunmadi. Nima qilish kerak?",opts:["Bank ilovalaridan misollar keltirish","Savol bo'yicha yo'riqnomadagi funksional tushuntirishni o'qib berish","Savolni o'tkazib yuborish","Anketani to'xtatish"],ok:1,ex:"Yo'riqnomadagi funksional tushuntirishni o'qib bering — nom aytmang."},
-{q:"Topshiriq 9. Respondent «Yana-chi?» savolidan keyin: «Bilmayman, boshqa esimga kelmaydi» dedi. Majburiy maydonlar hali bo'sh. Nima qilish kerak?",opts:["Bo'sh maydonlarni shunday qoldirish","Majburiy bo'sh maydonlarga «BILMAYMAN» deb yozish","Respondentga nomlarni aytib eslatish","Savolni o'tkazib yuborish"],ok:1,ex:"Respondent «Bilmayman» degach, majburiy bo'sh maydonlarga «BILMAYMAN» deb yozing."},
-{q:"Topshiriq 10. Reklama savolida respondent «Televizorda ko'rgan reklama hisobga olinadimi?» deb so'radi. Nima javob berish kerak?",opts:["Har qanday reklama hisobga olinishini aytish","Faqat televizor reklamasi hisobga olinishini aytish","Faqat internet reklamasi hisobga olinishini aytish","Hech narsa demas, savolni takrorlash"],ok:0,ex:"Har qanday reklama (televidenie, internet, ko'cha va boshqalar) hisobga olinishini aytish kerak."}
-]},
-
-/* ═══ 5: MURAKKAB HOLATLAR ═══ */
-{ico:"🤔",title:"5-dars: Respondent Qiynalib Qolsa Nima Qilish Kerak?",sub:"Murakkab holatlarni to'g'ri boshqarish",body:`
-<div class="bx am"><span class="bxi">⚠️</span><div class="bxt">Ba'zida respondent javob berishda qiynalishi mumkin. Quyida asosiy holatlar va ular uchun to'g'ri yechimlar keltirilgan.</div></div>
-<h3 class="s">1-holat: Bir nechta nom aytdi, lekin eslay olmayapti</h3>
-<div class="bx bl"><span class="bxi">💡</span><div class="bxt">U aytgan nomlarni <strong>yozing</strong>. U «eslay olmayapman» degach, qolgan bo'sh maydonlarga <strong>«BILMAYMAN»</strong> deb yozing.</div></div>
-<h3 class="s">2-holat: Hech qanday nom eslay olmayapti</h3>
-<div class="bx bl"><span class="bxi">💡</span><div class="bxt">Unga biroz vaqt bering. Baribir eslay olmasa — barcha majburiy maydonlarga <strong>«BILMAYMAN»</strong> deb yozing.</div></div>
-<h3 class="s">3-holat: Bank ilovasi yoki to'lov ilovasi nima ekanligini tushunmaydi</h3>
-<div class="bx bl"><span class="bxi">💡</span><div class="bxt">Ilovaning <strong>funksiyalari</strong> orqali tushuntiring, lekin <span class="rt" style="font-size:1.05em">❗ aniq nomlarni aytmang</span>.<br>Masalan: «Bu — telefonda pul o'tkazish, hisob-kitob qilish uchun ishlatiladigan ilova».</div></div>
-<div class="bx rd"><span class="bxi">🚫</span><div class="bxt"><strong>MUHIM!</strong> Agar respondent «Siz PayMe yoki Click haqida so'rayapsizmi?» desa — bu savolni tasdiqlash <span class="rt">MUMKIN EMAS</span>. Funksiyalarni yana tushuntiring, <span class="rt">nom aytmang</span>.</div></div>
-<h3 class="s">Qisqacha jadval:</h3>
-<table class="dt">
-<tr><th>Holat</th><th>Nima qilish kerak</th></tr>
-<tr><td>Bir nechta nom aytdi, to'xtadi</td><td>Aytganlarini yozing, qolganlariga «BILMAYMAN» yozing</td></tr>
-<tr><td>Umuman eslay olmaydi</td><td>Biroz kuting, so'ng barcha maydonlarga «BILMAYMAN» yozing</td></tr>
-<tr><td>Hech narsani bilmaydi (shubhali)</td><td>Hazil emasligiga ishonch hosil qil, kerak bo'lsa to'xtat</td></tr>
-<tr><td>Ilova nima ekanligini bilmaydi</td><td>Funksiyalarini tushuntiring, <span class="rt">nom aytmang</span></td></tr>
-<tr><td>«PayMe yoki Click?» deb so'raydi</td><td><span class="rt">Nom aytmang</span>, funksiyalarni yana tushuntiring</td></tr>
-</table>`,
-qs:[
-{q:"Respondent ikki nom aytdi va to'xtadi. Nima qilish kerak?",opts:["Unga yana bir nom aytib beraman","Aytgan nomlarini yozib, qolgan maydonlarga «BILMAYMAN» deb yozaman","Savolni o'tkazib yuboraman","Anketani to'xtataman"],ok:1,ex:"Aytgan nomlarini yozing, u eslay olmagach qolgan bo'sh maydonlarga «BILMAYMAN» deb yozing."},
-{q:"Respondent «Siz PayMe haqida so'rayapsizmi?» deb so'rasa nima qilasiz?",opts:["«Ha, aynan PayMe» deyman","Nom aytmasdan ilovaning funksiyalarini tushuntiraman","«Yo'q» deyman va savolni o'tkazib yuboraman","Anketani yopaman"],ok:1,ex:"Nomni tasdiqlash mumkin emas. Funksiyalar orqali yana tushuntiring — nom aytmang."},
-{q:"Bank ilovasi nima ekanligini tushunmaydigan respondentga qanday tushuntirish kerak?",opts:["Kapitalbank, Hamkorbank kabi misollar keltiraman","Funksiyalarini tushuntiraman — aniq nom aytmasdan","Savolni o'tkazib yuboraman","Anketani to'xtataman"],ok:1,ex:"Funksiyalari orqali tushuntiring (hisobni boshqarish, o'tkazma qilish va h.k.), lekin aniq nomlarni aytmang."}
-]},
-
-/* ═══ 6: SO'ROV TARTIBI ═══ */
-{ico:"📝",title:"6-dars: So'rovni Boshlash va O'tkazish Tartibi",sub:"Skrining va suhbat boshqaruvi",body:`
-<h3 class="s">So'rov tuzilmasi:</h3>
-<div class="stps">
-<div class="stp"><div class="stn">1</div><div class="stt"><strong>Skrining</strong> — mos respondentni tanlash</div></div>
-<div class="stp"><div class="stn">2</div><div class="stt"><strong>Asosiy savollar</strong> — anketa bo'yicha ketma-ket</div></div>
-<div class="stp"><div class="stn">3</div><div class="stt"><strong>Yakunlash</strong> — rahmat aytib, anketani yopish</div></div>
-</div>
-<h3 class="s">Maqsadli auditoriya:</h3>
-<ul class="cl">
-<li>16–50 yoshdagi shaxslar</li>
-<li>Smartfon foydalanuvchilari</li>
-<li>Mobil internet foydalanuvchilari</li>
-<li>So'nggi 3 oy ichida so'rovlarda qatnashmagan</li>
-<li class="no">Sizning qarindoshlaringiz yoki tanishlaringiz emas</li>
-</ul>
-<div class="bx bl"><span class="bxi">📍</span><div class="bxt">Nuqtaga <strong>birinchi chiqishda</strong> ID 1 kiriting va lokatsiyaning aylana videosini yozib oling.</div></div>
-<h3 class="s">Suhbat davomida qoidalar:</h3>
-<table class="dt">
-<tr><th>Holat</th><th>Nima qilish kerak</th></tr>
-<tr><td>Respondent jim bo'lsa</td><td>«Yana nimalar esga keladi?»</td></tr>
-<tr><td>Toifalarni aralashtirib yuborsa</td><td>So'zma-so'z yozing, to'g'irlamang</td></tr>
-<tr><td>«Bilmayman» desa</td><td>Intervyuni to'g'ri yakunlang</td></tr>
-<tr><td>Savolni tushunmasa</td><td>Ma'nosini o'zgartirmagan holda takrorlang</td></tr>
-</table>
-<div class="bx gn"><span class="bxi">✅</span><div class="bxt">So'rovni yakunlashda respondentga <strong>rahmat ayting</strong>. Barcha maydonlar to'ldirilganini tekshiring.</div></div>`,
-qs:[
-{q:"Maqsadli auditoriyaning yosh chegarasi?",opts:["18–65 yosh","16–50 yosh","20–45 yosh","14–60 yosh"],ok:1,ex:"Maqsadli auditoriya: 16–50 yoshdagi shaxslar."},
-{q:"Tanish yoki qarindoshingizga so'rov o'tkazish mumkinmi?",opts:["Ha, agar ular smartfon ishlatsa","Ha, agar 3 oy qatnashmagan bo'lsa","Yo'q, ular skriningdan o'ta olmaydi","Ha, har doim"],ok:2,ex:"Maqsadli auditoriyaga sizning qarindoshlaringiz yoki tanishlaringiz kirmasligi kerak."},
-{q:"Respondent savolni tushunmasa nima qilish kerak?",opts:["Savolni o'z so'zlarim bilan tushuntiraman","Misol keltiraman","Ma'nosini o'zgartirmagan holda takrorlayman","Keyingi savolga o'taman"],ok:2,ex:"Savolni ma'nosini o'zgartirmagan holda takrorlang."}
-]},
-
-/* ═══ 7: KVOTALAR ═══ */
-{ico:"📊",title:"7-dars: Kvotalar — Qanday Ishlash Kerak",sub:"Kvota jadvali tuzilishi va to'ldirish qoidalari",body:`
-<div class="bx am"><span class="bxi">⚠️</span><div class="bxt">Agar kvotalar saqlanmasa, <strong>natijalar buziladi</strong>. Har bir o'tkazilgan so'rovni belgilang va belgilangan sondan oshmang.</div></div>
-<h3 class="s">Kvota jadvali 3 qismdan iborat:</h3>
-<div class="qp">
-<p><span class="qpt">1-qism: Sarlavha</span></p>
-<p>Qaysi shahar, qaysi nuqta va jami nechta respondent bo'lishi kerakligi ko'rsatiladi.</p>
-<p><span class="qpt">2-qism: Reja (Kvota)</span></p>
-<p>Jins va yosh bo'yicha opros qilish kerak bo'lgan aniq sonlar.</p>
-<p><span class="qpt">3-qism: Sizning ijroyingiz</span></p>
-<p>Har bir bajarilgan so'rovni mos maydonga <strong>«1»</strong> raqami bilan belgilang — kvota bajarilishini nazorat qilish uchun.</p>
-</div>
-<div class="bx rd"><span class="bxi">🚨</span><div class="bxt"><strong>MUHIM!</strong> Har bir o'tkazilgan so'rovni belgilang va belgilangan sondan oshmang!</div></div>
-<h3 class="s">Namuna: Chirchiq shahri — 3-nuqta | Jami: 16 respondent</h3>
-<table class="qt">
-<tr><th rowspan="2">Jins</th><th colspan="3" style="background:#1038a0">KVOTA (Reja)</th><th rowspan="2">Jami</th><th colspan="3" style="background:#1e5e3a">BAJARISH (Ijro)</th><th rowspan="2" style="background:#1e5e3a">Jami</th></tr>
-<tr><th style="background:#1038a0">16–24</th><th style="background:#1038a0">25–40</th><th style="background:#1038a0">41–50</th><th style="background:#1e5e3a">16–24</th><th style="background:#1e5e3a">25–40</th><th style="background:#1e5e3a">41–50</th></tr>
-<tr><td><strong>Erkaklar</strong></td><td>2</td><td>4</td><td>2</td><td><strong>8</strong></td><td></td><td></td><td></td><td></td></tr>
-<tr><td><strong>Ayollar</strong></td><td>2</td><td>4</td><td>2</td><td><strong>8</strong></td><td></td><td></td><td></td><td></td></tr>
-<tr class="tot"><td>JAMI</td><td>4</td><td>8</td><td>4</td><td><strong>16</strong></td><td></td><td></td><td></td><td></td></tr>
-</table>
-<h3 class="s">So'rov ko'chasini qanday tanlash kerak:</h3>
-<ul class="cl">
-<li>Ko'cha <strong>gavjum</strong> bo'lishi kerak</li>
-<li>Banklar yoki ularning reklamalari yaqinida ishlash mumkin emas</li>
-<li>Ko'chalar shaharning turli qismlarida joylashishi kerak</li>
-<li>Ko'cha tanlovini Zerkalo menajeri bilan muvofiqlashtiring</li>
-</ul>`,
-qs:[
-{q:"Kvota jadvalining 3-qismi nima uchun kerak?",opts:["Menejerga hisobot berish uchun","Har bir bajarilgan so'rovni belgilab, kvota bajarilishini nazorat qilish uchun","Faqat yakuniy hisob uchun","Ish haqini hisoblash uchun"],ok:1,ex:"3-qism — sizning ijroyingiz. Har bir bajarilgan so'rovni mos maydonga «1» bilan belgilang."},
-{q:"Ko'cha tanlashda eng muhim shart nima?",opts:["Ko'cha bank yaqinida bo'lishi kerak","Ko'cha gavjum bo'lishi va banklar/reklamalar yaqinida bo'lmasligi kerak","Ko'cha markazda bo'lishi kerak","Ko'cha uzun bo'lishi kerak"],ok:1,ex:"Ko'cha gavjum bo'lishi kerak, lekin banklar yoki ularning reklamalari yaqinida bo'lmasligi zarur."},
-{q:"Kvota buzilsa nima bo'ladi?",opts:["Hech narsa bo'lmaydi","Ta'sir qilmaydi","Natijalar buziladi","Pul to'lash kerak bo'ladi"],ok:2,ex:"Agar kvotalar saqlanmasa, natijalar buziladi."}
-]},
-
-/* ═══ 8: DALA ISHI ═══ */
-{ico:"🚶",title:"8-dars: Dala Ishi — To'xtatib So'rash",sub:"Yaqinlashish va tez-tez so'raladigan savollarga javoblar",body:`
-<div class="tc">
-<div class="tcc"><h4>✅ To'g'ri joylashish:</h4><ul><li>Gavjum joylarda ishlang</li><li>Neytral lokatsiya</li><li>Moliyaviy reklama ko'rinmasin</li></ul></div>
-<div class="tcc"><h4>🚫 Joiz emas:</h4><ul><li>Banklar yonida ishlash</li><li>Bank reklamalari ko'rinib turgan joyda</li><li>Moliyaviy tashkilotlar yaqinida</li></ul></div>
-</div>
-<div class="bx gn"><span class="bxi">😊</span><div class="bxt">O'zingizni <strong>tinch va ishonchli tarzda</strong> tanishtiring. Bejdik (ko'krak nishoni) ko'rinib turishi kerak.</div></div>
-<h3 class="s">Tez-tez so'raladigan savollarga javoblar:</h3>
-<div class="fq"><div class="fqq">So'rovni kim o'tkazmoqda? <span>→</span></div><div class="fqa">«Zerkalo Sosiologik Servis» kompaniyasi, Toshkent shahri. Biz ijtimoiy va marketing so'rovlarini o'tkazamiz.</div></div>
-<div class="fq"><div class="fqq">Buyurtmachi kim? <span>→</span></div><div class="fqa">Moliya bozorini o'rganayotgan kompaniya. Aniq javoblar buyurtmachiga uzatilmaydi — faqat umumlashtirilgan holda tahlil qilinadi. <strong style="color:var(--rd)">Muhim: so'rov tugamaguncha hech qanday bank yoki ilovaning nomini aytmasligingiz kerak!</strong></div></div>
-<div class="fq"><div class="fqq">Militsiyani chaqiraman. <span>→</span></div><div class="fqa">Siz bunga haqlisiz. Bizning so'rovimiz rasmiy tarzda o'tkaziladi va mahalliy hokimiyat xabardor. Bizda qo'llab-quvvatlash xati va xizmat guvohnomasi mavjud.</div></div>
-<div class="fq"><div class="fqq">Yozib olish nima uchun? <span>→</span></div><div class="fqa">Audio yozuv faqat intervyu sifatini nazorat qilish uchun. Bu yozuvlar e'lon qilinmaydi va uchinchi shaxslarga uzatilmaydi.</div></div>
-<div class="fq"><div class="fqq">Ma'lumotlar qanday ishlatiladi? <span>→</span></div><div class="fqa">Barcha javoblar faqat umumlashtirilgan holda, shaxsiy ma'lumotsiz ishlatiladi.</div></div>
-<div class="fq"><div class="fqq">Qancha vaqt ketadi? <span>→</span></div><div class="fqa">6–8 daqiqa. Agar xohlasangiz, istalgan vaqtda to'xtatishingiz mumkin.</div></div>
-<div class="fq"><div class="fqq">Bu so'rov emasmi — reklama? <span>→</span></div><div class="fqa">Yo'q, bu so'rov — biz hech narsa sotmaymiz va karta/hisob taklif qilmaymiz.</div></div>
-<div class="fq"><div class="fqq">Nima uchun aynan men? <span>→</span></div><div class="fqa">Biz ko'chada tasodifiy ravishda odamlarni so'roq qilamiz — ob'ektiv manzara olish uchun.</div></div>
-<div class="bx bl"><span class="bxi">ℹ️</span><div class="bxt">Rad etilsa — <strong>rahmat aytib, keyingisiga o'ting.</strong></div></div>`,
-qs:[
-{q:"Respondent «Militsiyani chaqiraman» desa nima qilasiz?",opts:["So'rovni rasmiy ekanligi, hokimiyat xabardorligi va qo'llab-quvvatlash xati borligini tushuntiraman","Qo'rqib anketani yopaman","Menejerga xabar beraman","Respondentdan uzr so'raman"],ok:0,ex:"So'rovimiz rasmiy. Mahalliy hokimiyat xabardor, bizda qo'llab-quvvatlash xati va xizmat guvohnomasi mavjud."},
-{q:"«Buyurtmachi kim?» savoliga javob berayotganda nima aytish MUMKIN EMAS?",opts:["Natijalar umumlashtirilganligini aytish","Aniq javoblar uzatilmasligini aytish","So'rov tugamaguncha bank yoki ilova nomlarini aytish","Kompaniya moliya bozorini o'rganayotganini aytish"],ok:2,ex:"So'rov tugamaguncha hech qanday bank yoki ilovaning nomini aytmasligingiz kerak!"},
-{q:"Bu so'rov — reklama emasmi? deb so'rasa nima javob berish kerak?",opts:["«Ha, bu reklama»","«Bu so'rov — biz hech narsa sotmaymiz»","«Bilmayman»","«Ha, lekin bepul»"],ok:1,ex:"To'g'ri javob: bu so'rov, reklama emas — biz hech narsa sotmaymiz."},
-{q:"Intervyu qancha vaqt davom etadi?",opts:["2–3 daqiqa","15–20 daqiqa","6–8 daqiqa","30 daqiqa"],ok:2,ex:"Intervyu 6–8 daqiqa davom etadi."}
-]},
-
-/* ═══ 9: KOBO ═══ */
-{ico:"📱",title:"9-dars: KoboCollect Ilovasida Ishlash",sub:"Bosqichma-bosqich ko'rsatmalar",body:`
-<div class="kg">
-<div class="kc"><div class="ke">📥</div><h4>1. O'rnatish</h4><p>Google Play orqali KoboCollect ilovasini o'rnating</p></div>
-<div class="kc"><div class="ke">📷</div><h4>2. Sozlash</h4><p>«Configure with QR code» ni tanlang va menejer QR-kodini skaner qiling</p></div>
-<div class="kc"><div class="ke">⬇️</div><h4>3. Yuklab olish</h4><p>Loyihaning joriy anketasini yuklab oling</p></div>
-<div class="kc"><div class="ke">▶️</div><h4>4. Boshlash</h4><p>«Start New Form» ni tanlang</p></div>
-<div class="kc"><div class="ke">💾</div><h4>5. Yuborish</h4><p>Formani saqlang va yuboring</p></div>
-</div>
-<div class="bx am"><span class="bxi">📄</span><div class="bxt"><strong>Qo'shimcha o'qish majburiy:</strong> Kobo ilovasida ishlash bo'yicha batafsil ko'rsatmalar uchun menejer tomonidan beriladigan <strong>«Kobo bo'yicha yo'riqnoma»</strong> hujjatini o'qing va <strong>Kobo bo'yicha videoni</strong> ko'rib chiqing.</div></div>
-<div class="bx rd"><span class="bxi">⚠️</span><div class="bxt"><strong>Muhim eslatmalar:</strong><br>• Anketalarni muvofiqlashtirmasdan o'chirmang<br>• Qurilma zaryadini nazorat qiling<br>• Audio yozuvni nazorat qiling</div></div>`,
-qs:[
-{q:"KoboCollect ilovasini qayerdan yuklab olish kerak?",opts:["App Store","Telegram","Google Play","Kompaniya veb-saytidan"],ok:2,ex:"KoboCollect ilovasini Google Play orqali yuklab olish kerak."},
-{q:"Ilovani sozlashda qanday usul ishlatiladi?",opts:["Login va parol kiritish","QR-kod skanerlash","Email orqali ro'yxatdan o'tish","Telefon raqamini kiritish"],ok:1,ex:"«Configure with QR code» ni tanlang va menejer QR-kodini skaner qiling."},
-{q:"Anketani o'chirishdan oldin nima qilish kerak?",opts:["Menejer bilan muvofiqlashtirish","Uni yuborish","Skrinshot olish","Hech narsa, avtomatik o'chadi"],ok:0,ex:"Anketalarni muvofiqlashtirmasdan o'chirmang — bu muhim qoida."}
-]},
-
-/* ═══ 10: SIFAT NAZORATI ═══ */
-{ico:"✅",title:"10-dars: Sifat Nazorati",sub:"Ish qanday tekshiriladi va qanday oqibatlar bo'ladi",body:`
-<h3 class="s">Nima tekshiriladi?</h3>
-<div class="cg">
-<div class="ci">Audio yozuv</div><div class="ci">GPS-koordinatalar</div>
-<div class="ci">Intervyu davomiyligi</div><div class="ci">Skriningning to'g'riligi</div>
-<div class="ci">Kvotalarning saqlanishi</div><div class="ci">Javoblarning so'zma-sozligi</div>
-<div class="ci">Ko'rsatmalar yo'qligi</div>
-</div>
-<div class="bx rd"><span class="bxi">⚠️</span><div class="bxt">Talablar buzilganda anketa <strong>xato (brak)</strong> deb tan olinishi mumkin. Oqibatlar: fikr-mulohaza, qayta o'qitish, anketalarni bekor qilish yoki chetlashtirish.</div></div>
-<div class="hb"><h4>💪 Mas'uliyatli yondashuv</h4><p>Ishga e'tibor va professionallik bilan yondashishingizni so'raymiz. Mas'uliyatli yondashuv bilan barcha anketalar birinchi marta qabul qilinishiga aminmiz.</p></div>`,
-qs:[
-{q:"Sifat nazoratida nechta parametr tekshiriladi?",opts:["3 ta","5 ta","7 ta","10 ta"],ok:2,ex:"7 ta parametr tekshiriladi: audio yozuv, GPS, davomiylik, skrining to'g'riligi, kvotalar, javoblar so'zma-sozligi, ko'rsatmalar yo'qligi."},
-{q:"Anketa «brak» deb topilsa qanday oqibatlar bo'ladi?",opts:["Faqat ogohlantiriladi","Hech narsa bo'lmaydi","Fikr-mulohaza, qayta o'qitish, bekor qilish yoki chetlashtirish","Pul jarima to'lanadi"],ok:2,ex:"Oqibatlar: fikr-mulohaza, qayta o'qitish, anketalarni bekor qilish yoki chetlashtirish."},
-{q:"Tekshiruv qanday o'tkaziladi?",opts:["Faqat birinchi kuni","Oy oxirida bir marta","Tizimli va muntazam ravishda","Faqat shikoyat bo'lganda"],ok:2,ex:"Sifat nazorati tizimli va muntazam o'tkaziladi."}
-]},
-
-/* ═══ 11: AMALIY TEST ═══ */
-{ico:"🎯",title:"11-dars: Amaliy Test va Ishga Yo'l Olish",sub:"Nazariy qism tugadi — amaliy bosqich boshlanadi",body:`
-<div class="hb"><h4>🎉 Nazariy o'qitish tugadi!</h4><p>Siz barcha nazariy darslarni muvaffaqiyatli yakunladingiz va amaliy testga tayyorsiz!</p></div>
-<h3 class="s">Keyingi qadamlar:</h3>
-<div class="stps">
-<div class="stp"><div class="stn">1</div><div class="stt"><strong>Loyiha menejeridan shaxsiy raqamingizni (ID) oling.</strong> ID olmay turib anketani boshlamang!</div></div>
-<div class="stp"><div class="stn">2</div><div class="stt"><strong>KoboCollect ilovasini o'rnating</strong> va menejer beradigan QR-kod orqali sozlang.</div></div>
-<div class="stp"><div class="stn">3</div><div class="stt"><strong>2 ta taqlid anketa to'ldiring:</strong><br>• Birinchi anketaga <strong>ID 1</strong> kiriting<br>• Ikkinchi anketaga <strong>ID 2</strong> kiriting</div></div>
-<div class="stp"><div class="stn">4</div><div class="stt"><strong>Anketalarni yuboring</strong> va menejerdan fikr-mulohaza oling.</div></div>
-</div>
-<div class="bx am"><span class="bxi">🔑</span><div class="bxt">Bu qadamlar ishga yo'l olish uchun <strong>majburiydir</strong>.</div></div>
-<h3 class="s">Muvaffaqiyatli tekshiruvdan so'ng olasiz:</h3>
-<ul class="cl">
-<li>Shartnoma</li><li>Kvota topshirig'i</li>
-<li>Bejdik (ko'krak nishoni)</li><li>Qo'llab-quvvatlash xati</li>
-</ul>`,
-qs:[
-{q:"Taqlid intervyuni boshlashdan avval eng birinchi nima qilish kerak?",opts:["Darhol Koboni o'rnatish","Loyiha menejeridan shaxsiy ID raqamini olish","2 ta anketa to'ldirish","Anketani yuborish"],ok:1,ex:"Avvalo menejeridan shaxsiy ID raqamingizni oling — ID olmay turib anketani boshlamang!"},
-{q:"Taqlid anketalarni to'ldirishda qanday ID kiritish kerak?",opts:["Ikkalasiga ham bir xil ID","Birinchisiga ID 1, ikkinchisiga ID 2","Birinchisiga ID 2, ikkinchisiga ID 1","ID kiritish shart emas"],ok:1,ex:"Birinchi anketaga ID 1, ikkinchi anketaga ID 2 kiriting."},
-{q:"Muvaffaqiyatli tekshiruvdan so'ng nima olasiz?",opts:["Faqat anketa","Shartnoma, kvota topshirig'i, bejdik va qo'llab-quvvatlash xati","Faqat bejdik","Pul to'lovi"],ok:1,ex:"Shartnoma, kvota topshirig'i, bejdik va qo'llab-quvvatlash xati olasiz."}
-]}
+const QUESTIONS = [
+    {
+        q: "Янги нуқтада ҳақиқий интервьюларни бошлашдан АВВАЛ интервьючи қандай ID билан анкета тўлдириши керак?",
+        opts: ["ID = 1 — биринчи респондент учун","ID = 0 — нуқтани техник рўйхатдан ўтказиш учун","ID = 999 — махсус скринер учун","ID киритиш шарт эмас, ихтиёрий"],
+        correct: 1,
+        explain: "📌 ID = 0 нуқтани техник рўйхатдан ўтказиш учун ишлатилади. Бу респондент билан интервю эмас — айлана видео ёзиш, GPS қайд этиш ва квота рақамини киритиш учун."
+    },
+    {
+        q: "Нуқтада 360° айлана видео ёзилгандан сўнг, кейинги ҳақиқий респондентлар (ID 1, 2, 3…) учун видеони қайта ёзиш керакми?",
+        opts: ["Ҳа, ҳар бир респондент учун қайта ёзиш шарт","Ҳа, лекин фақат жинс ёки ёш ўзгарганда","Йўқ, видео фақат ID = 0 да бир марта ёзилади","Фақат кун тугагандан кейин қайта ёзилади"],
+        correct: 2,
+        explain: "📌 Видео ID = 0 орқали нуқтани рўйхатдан ўтказишда бир марта ёзилади. Шу нуқтадаги ID 1, 2, 3 ва ундан кейинги интервьюлар учун видеони қайта ёзиш ШАРТ ЭМАС."
+    },
+    {
+        q: "Скринер саволларига кўра қайси респондент тадқиқотдан ЧИҚАРИЛАДИ?",
+        opts: ["Охирги 3 ойда чет элга чиққан","Кредит ёки бўлиб тўлаш олган","Охирги 3 ойда маркетинг тадқиқотида қатнашган","Ёши 30 дан катта бўлган"],
+        correct: 2,
+        explain: "📌 Скринер бўйича чиқарилади: охирги 3 ойда маркетинг тадқиқотида қатнашган, смартфон ёки мобил интернетдан фойдаланмайдиган респондент."
+    },
+    {
+        q: "Респондент билмаса ёки жавоб беришдан бош тортса, мажбурий (*) майдонига қандай қиймат киритилади?",
+        opts: ["0 (нол) киритилади","Бўш қолдирилади","999 (уч тўққиз) киритилади","«Билмайман» сўзи ёзилади"],
+        correct: 2,
+        explain: "📌 Агар респондент билмаса ёки рад этса — 999 (фақат уч тўққиз) ёзилади. Сифат назорати учун телефон рақами рад этилса ҳам 999999999 ёзилади."
+    },
+    {
+        q: "«Top of Mind» биринчи эслатма саволида интервьючи НИМА қилиши тўғри?",
+        opts: ["Банк номларини рўйхатдан ўқиб чиқади ва респондент танлайди","Респондент биринчи айтган банк номини алоҳида ёзади, ҳеч нарса таклиф қилмайди","«Халқ банки тўғрими?» деб тасдиқлаб сўрайди","Респондент бир неча ном айтса, ҳаммасини биринчи жавоб деб белгилайди"],
+        correct: 1,
+        explain: "📌 Top of Mind саволида: биринчи айтилган банкнигина алоҳида қайд этиш керак. Вариантларни таклиф қилиш, номларни айтиш ёки жавобни тўзатиш қатъиян ман этилади."
+    },
+    {
+        q: "Респондентга мурожаат матнида интервю қанча вақт давом этиши айтилиши керак?",
+        opts: ["«2 дақиқа» деб ваъда қилинади","«10–15 дақиқа» деб тўғри айтилади","«5–6 дақиқа» деб реал тахминий вақт айтилади","Вақт умуман айтилмайди"],
+        correct: 2,
+        explain: "📌 Респондентга «тахминан 5–6 дақиқа» деб реал айтилади. Интервю жуда қисқа деб ёлғон ваъда бермаслик керак, чунки кўпроқ вақт олиши мумкин."
+    },
+    {
+        q: "Интервьючи нейтраллигини сақлаш учун қайси ибора ТЎҒРИ?",
+        opts: ["«Яхши!» ва «Ажойиб!» деб респондентни рағбатлантириш керак","«Тўғри жавоб!» деб тасдиқлаш керак","«Ҳа, тушундим» ёки «Ёзиб олдим» деб нейтрал давом этиш керак","«Бу жавоб нотўғри, қайта ўйланг» деб йўналтириш керак"],
+        correct: 2,
+        explain: "📌 Интервьючи «Яхши», «Ажойиб», «Тўғри», «Баракалла» каби сўзларни ишлатмаслиги керак. Фақат нейтрал: «Ҳа, тушундим», «Рахмат», «Ёзиб олдим», «Кейингиси»."
+    },
+    {
+        q: "Респондент 15 ёш ёки ундан кичик бўлса интервю билан нима қилиш керак?",
+        opts: ["Ота-онасининг розилигини сўраб давом этиш керак","Интервю тўхтатилади","Фақат жинс ва ёш гуруҳини ёзиб, қолган саволларни ўтказиб юбориш керак","Ёшини каттароқ деб қайта киритиш керак"],
+        correct: 1,
+        explain: "📌 Агар респондент 15 ёш ёки кичик бўлса, интервю тўхтатилади. Шунингдек, 51 ва ундан катта бўлса ҳам тадқиқот шартларига кўра анкета тугалланади."
+    },
+    {
+        q: "Тугалланган анкеталарни серверга юбориш учун KoboCollect да қайси бўлим ишлатилади?",
+        opts: ["«Drafts» — қораламалар бўлими","«Ready to Send» — тайёр анкеталар бўлими","«Settings» — созламалар бўлими","«Get Blank Form» — янги форма юклаб олиш бўлими"],
+        correct: 1,
+        explain: "📌 KoboCollect бош менюсида «Ready to Send» бўлими — тугалланган анкеталар рўйхати. Барча тайёр анкеталарни белгилаб «Send Selected» тугмасини босиш керак."
+    },
+    {
+        q: "Интервю ўтказиладиган нуқтани танлашда қайси шарт тўғри?",
+        opts: ["Кўринадиган жойда банк, тўлов иловалари рекламаси бўлса ҳам бўлади","Одамлар кам бўлган тинч, ёлғиз жой танлаш керак","Нейтрал (атрофида реклама йўқ) ВА ишчан (ўткинчилар етарли) жой бўлиши керак","Фақат бозор ёки савдо марказлари яқинида ўтказилади"],
+        correct: 2,
+        explain: "📌 Нуқта бир вақтнинг ўзида НЕЙТРАЛ (атрофида банк/илова рекламалари йўқ) ва ИШЧАН (ўткинчилар етарли) бўлиши керак. Агар реклама кўринса, узоқроққа ўтиш керак."
+    }
 ];
 
-/* ════════════════════════════════ RENDER ════════════════════════════════ */
-function dots(){
-  if(ST.screen==='reg'){document.getElementById('dots').innerHTML='';return;}
-  document.getElementById('dots').innerHTML=LS.map((_,i)=>{
-    let c='dot';
-    if(i<ST.unlocked)c='dot done';
-    else if(i===ST.lesson)c='dot active';
-    return `<div class="${c}">${i===0?'K':i}</div>`;
-  }).join('');
+let current=0, score=0, answered=false, userName="", userCity="", startTime=null;
+const L=["A","B","C","D"];
+
+function startQuiz(){
+    const n=document.getElementById("userName").value.trim();
+    const c=document.getElementById("userCity").value.trim();
+    if(!n||!c){document.getElementById("errMsg").style.display="block";return;}
+    document.getElementById("errMsg").style.display="none";
+    userName=n; userCity=c; startTime=new Date();
+    current=0; score=0; answered=false;
+    document.getElementById("start-screen").style.display="none";
+    document.getElementById("quiz-screen").style.display="block";
+    renderQuestion();
 }
 
-function render(){
-  dots();
-  const a=document.getElementById('app');
-  if(ST.screen==='reg'){showReg(a);return;}
-  if(ST.screen==='done'){showDone(a);return;}
-  const L=LS[ST.lesson];
-  if(ST.screen==='lesson')showLesson(a,L);
-  else showQuiz(a,L);
+function renderQuestion(){
+    answered=false;
+    const q=QUESTIONS[current];
+    document.getElementById("qNum").textContent="САВОЛ "+(current+1);
+    document.getElementById("qText").textContent=q.q;
+    document.getElementById("progLabel").textContent="Савол "+(current+1)+" / "+QUESTIONS.length;
+    document.getElementById("progFill").style.width=(((current+1)/QUESTIONS.length)*100)+"%";
+    document.getElementById("explanation").className="explanation";
+    document.getElementById("explanation").innerHTML="";
+    document.getElementById("btnNext").style.display="none";
+    const box=document.getElementById("optionsBox");
+    box.innerHTML="";
+    q.opts.forEach((opt,i)=>{
+        const btn=document.createElement("button");
+        btn.className="opt-btn";
+        btn.innerHTML=`<span class="opt-letter">${L[i]}</span><span>${opt}</span>`;
+        btn.onclick=()=>selectAnswer(i);
+        box.appendChild(btn);
+    });
+    const card=document.getElementById("qCard");
+    card.style.animation="none"; card.offsetHeight; card.style.animation="";
 }
 
-function showReg(a){
-  a.innerHTML=`<div class="sc"><div class="bc">
-    <div class="bi">👋</div>
-    <h2>Ismingizni kiriting</h2>
-    <p>Bu biz uchun muhim — o'qitishni kim o'tayotganini bilish kerak.</p>
-    <input class="inp" id="ni" type="text" placeholder="Ism va familiya" oninput="chk()">
-    <button class="btn bgo bf" id="rb" onclick="go()" disabled>Boshlash →</button>
-  </div></div>`;
-}
-function chk(){document.getElementById('rb').disabled=document.getElementById('ni').value.trim().length<2;}
-function go(){
-  const v=document.getElementById('ni').value.trim();
-  if(v.length<2)return;
-  ST.name=v;ST.screen='lesson';render();
-}
-
-function showLesson(a,L){
-  a.innerHTML=`<div class="pg">
-    <div class="card">
-      <div class="ctop"><div class="cico">${L.ico}</div>
-        <div><h2>${L.title}</h2><p>${L.sub}</p></div>
-      </div>
-      <div class="cbody">${L.body}</div>
-    </div>
-    <div class="sr"><button class="btn bgo bf" onclick="gq()">📝 &nbsp;Testga o'tish →</button></div>
-  </div>`;
+function selectAnswer(idx){
+    if(answered)return;
+    answered=true;
+    const q=QUESTIONS[current];
+    document.querySelectorAll(".opt-btn").forEach((btn,i)=>{
+        btn.disabled=true;
+        if(i===q.correct) btn.classList.add("correct");
+        else if(i===idx)  btn.classList.add("wrong");
+    });
+    if(idx===q.correct) score++;
+    const expl=document.getElementById("explanation");
+    expl.innerHTML=q.explain; expl.classList.add("show");
+    const bn=document.getElementById("btnNext");
+    bn.style.display="block";
+    bn.textContent=current<QUESTIONS.length-1?"Кейинги савол →":"Натижани кўриш →";
 }
 
-function showQuiz(a,L){
-  const qs=L.qs;
-  const answered=Object.keys(ST.ans).length;
-  const allDone=answered===qs.length;
+function nextQuestion(){
+    current++;
+    if(current<QUESTIONS.length) renderQuestion();
+    else showResult();
+}
 
-  const qhtml=qs.map((q,qi)=>{
-    const ch=ST.ans[qi];
-    const ohtml=q.opts.map((opt,oi)=>{
-      let cl='op',dis='';
-      if(ST.sub){
-        dis='disabled';
-        if(ch===oi&&oi!==q.ok)cl+=' ws';
-      } else {
-        if(ch===oi)cl+=' sel';
-      }
-      return `<button class="${cl}" ${dis} onclick="pick(${qi},${oi})">
-        <span class="olb">${LB[oi]}</span>${opt}
-      </button>`;
-    }).join('');
-    let fb='';
-    if(ST.sub&&ST.ans[qi]!==undefined&&ST.ans[qi]!==q.ok){
-      fb=`<div class="fb show bad">❌ Noto'g'ri. Darsni qayta o'qing va urinib ko'ring.</div>`;
+async function showResult(){
+    document.getElementById("quiz-screen").style.display="none";
+    document.getElementById("result-screen").style.display="block";
+    const pass=score>=7;
+    const pct=Math.round((score/QUESTIONS.length)*100);
+    const dur=Math.round((new Date()-startTime)/1000);
+    const mins=Math.floor(dur/60), secs=dur%60;
+    document.getElementById("scoreNum").textContent=score+"/"+QUESTIONS.length;
+    document.getElementById("resultName").textContent=userName+" — "+userCity;
+    const v=document.getElementById("resultVerdict");
+    v.textContent=pass?"✅ ЎТДИ":"❌ ЎТМАДИ";
+    v.className="verdict "+(pass?"verdict-pass":"verdict-fail");
+    document.getElementById("resultDetails").innerHTML=
+        "Тўғри жавоблар: <strong>"+score+" та</strong> ("+pct+"%)<br>"+
+        "Хато жавоблар: <strong>"+(QUESTIONS.length-score)+" та</strong><br>"+
+        "Сарфланган вақт: <strong>"+mins+" дақ "+secs+" сония</strong>";
+    await sendTelegram(pass,pct,mins,secs);
+}
+
+async function sendTelegram(pass,pct,mins,secs){
+    const st=document.getElementById("tgStatus");
+    const verdict=pass?"✅ ЎТДИ":"❌ ЎТМАДИ";
+    const emoji=pass?"🟢":"🔴";
+    const now=new Date();
+    const dateStr=now.toLocaleDateString("ru-RU")+" "+now.toLocaleTimeString("ru-RU");
+    const text=`${emoji} <b>KoboCollect Тести Натижаси</b>\n\n`+
+        `👤 <b>Исм:</b> ${userName}\n`+
+        `📍 <b>Шаҳар:</b> ${userCity}\n`+
+        `📊 <b>Балл:</b> ${score}/${QUESTIONS.length} (${pct}%)\n`+
+        `⏱ <b>Вақт:</b> ${mins} дақ ${secs} сония\n`+
+        `🏆 <b>Ҳолат:</b> ${verdict}\n`+
+        `📅 <b>Сана:</b> ${dateStr}`;
+    try{
+        const res=await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`,{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({chat_id:TG_CHAT_ID,text,parse_mode:"HTML"})
+        });
+        const data=await res.json();
+        if(data.ok){st.className="tg-status tg-ok";st.textContent="✅ Натижа Telegram га муваффақиятли юборилди!";}
+        else throw new Error(data.description);
+    }catch(e){
+        st.className="tg-status tg-fail";
+        st.textContent="⚠️ Telegram га юборишда хато: "+e.message;
     }
-    return `<div class="qblk">
-      <div class="qn">Savol ${qi+1} / ${qs.length}</div>
-      <div class="qt2">${q.q}</div>
-      <div class="ops">${ohtml}</div>${fb}
-    </div>`;
-  }).join('<div class="qdv"></div>');
-
-  let foot='';
-  if(!ST.sub){
-    foot=`<div class="qft">
-      <div class="qftt"><span class="qsc">${answered} / ${qs.length} javob berildi</span></div>
-      <button class="btn bgo bf" onclick="sub()" ${allDone?'':'disabled'}>✓ Tekshirish</button>
-    </div>`;
-  } else {
-    const sc=qs.filter((_,i)=>ST.ans[i]===qs[i].ok).length;
-    const pct=Math.round(sc/qs.length*100);
-    const pass=pct>=PASS;
-    const last=ST.lesson===LS.length-1;
-    foot=`<div class="qft">
-      <div class="qftt"><span class="qsc">Natija: <strong>${sc}/${qs.length}</strong> (${pct}%) — ${pass?'✅ O\'tdingiz!':'❌ Qayta urinib ko\'ring'}</span></div>
-      <div class="qfbs">
-        ${pass&&!last?`<button class="btn bnx bf" onclick="nx()">Keyingi darsga o'tish →</button>`:''}
-        ${pass&&last?`<button class="btn bnx bf" onclick="fin()">🏆 Kursni yakunlash</button>`:''}
-        ${!pass?`<button class="btn bbk bf" onclick="bl()">📖 Darsni qayta o'qish</button>`:''}
-      </div>
-    </div>`;
-  }
-
-  a.innerHTML=`<div class="pg"><div class="card">
-    <div class="qtop"><div class="qi2">📝</div>
-      <div><h3>${L.title} — Test</h3>
-      <p>Keyingi darsga o'tish uchun kamida ${PASS}% to'g'ri javob bering</p></div>
-    </div>
-    <div class="qbd">${qhtml}${foot}</div>
-  </div></div>`;
 }
 
-function showDone(a){
-  a.innerHTML=`<div class="pg"><div class="card">
-    <div style="text-align:center;padding:38px 20px">
-      <div style="font-size:4rem;margin-bottom:14px">🏆</div>
-      <div style="font-size:1.5rem;font-weight:900;color:var(--b1);margin-bottom:6px">Tabriklaymiz!</div>
-      <div style="font-size:1.15rem;font-weight:800;color:var(--am);margin-bottom:16px">${ST.name}</div>
-      <div class="rb"><div class="rf" style="width:100%"></div></div>
-      <div style="font-size:.97rem;color:var(--t2);line-height:1.75;margin-bottom:10px">
-        Siz barcha <strong>${LS.length} ta dars</strong>ni va testlarni muvaffaqiyatli yakunladingiz.
-      </div>
-      <div style="font-size:.97rem;color:var(--tx);line-height:1.75;margin-bottom:26px">
-        Endi dala ishiga to'liq tayyorsiz! 🎯<br>
-        Menejerdan <strong>shaxsiy ID raqamingizni</strong> oling va amaliy bosqichni boshlang.
-      </div>
-      <button class="btn bgo bf" style="max-width:340px;margin:0 auto" onclick="restart()">🔄 Kursni qaytadan boshlash</button>
-    </div>
-  </div></div>`;
+function retryQuiz(){
+    current=0; score=0; answered=false;
+    document.getElementById("result-screen").style.display="none";
+    document.getElementById("start-screen").style.display="block";
 }
-
-function gq(){ST.screen='quiz';ST.ans={};ST.sub=false;render();}
-function bl(){ST.screen='lesson';render();}
-function pick(qi,oi){if(!ST.sub){ST.ans[qi]=oi;render();}}
-function sub(){
-  if(Object.keys(ST.ans).length<LS[ST.lesson].qs.length)return;
-  ST.sub=true;render();
-}
-function nx(){
-  const n=ST.lesson+1;
-  if(n<LS.length){
-    if(ST.unlocked<n)ST.unlocked=n;
-    ST.lesson=n;ST.screen='lesson';ST.ans={};ST.sub=false;render();
-  }
-}
-function fin(){ST.screen='done';render();}
-
-function restart(){ST={screen:'lesson',name:ST.name,lesson:0,unlocked:0,ans:{},sub:false};render();}
-render();
 </script>
 </body>
-</html>
+</html> 
